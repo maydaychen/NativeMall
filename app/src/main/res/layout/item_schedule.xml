@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+    <LinearLayout
+        android:id="@+id/ll_schedule_item_title"
+        android:layout_width="80dp"
+        android:layout_height="182dp"
+        android:orientation="vertical">
+
+
+        <View
+            style="@style/divide_line_horizontal_little_999"/>
+        <TextView
+            android:id="@+id/tv_schedule_day"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            style="@style/tv_font_24px_666" />
+
+        <View
+            style="@style/divide_line_horizontal_little_999"/>
+
+        <TextView
+            android:id="@+id/tv_schedule_morning"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            style="@style/tv_font_24px_white" />
+
+        <View
+            style="@style/divide_line_horizontal_little_999"/>
+
+        <TextView
+            android:id="@+id/tv_schedule_afternoon"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            style="@style/tv_font_24px_white" />
+
+        <View
+            style="@style/divide_line_horizontal_little_999"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/ll_schedule_item_title"
+        android:background="@color/divide_line" />
+
+
+</LinearLayout>

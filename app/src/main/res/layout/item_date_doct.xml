@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_size_10dp">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/iv_doct"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/doct_img_bg"
+        android:padding="1dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_doct_name"
+        style="@style/tv_font_28px_333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/iv_doct"
+        android:layout_marginLeft="@dimen/margin_size_10dp"
+        android:layout_marginTop="@dimen/margin_size_6dp"
+        android:layout_toRightOf="@id/iv_doct"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_hos_name"
+        style="@style/tv_font_24px_666"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_doct_name"
+        android:layout_below="@id/tv_doct_name"
+        android:layout_marginTop="@dimen/margin_size_10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_hos_level"
+        style="@style/tv_font_24px_666"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_hos_name"
+        android:layout_marginLeft="@dimen/margin_size_6dp"
+        android:layout_toRightOf="@id/tv_hos_name"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_doct_field"
+        style="@style/tv_font_24px_666"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_doct_name"
+        android:layout_below="@id/tv_hos_name"
+        android:layout_marginTop="@dimen/margin_size_10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_field_detail"
+        style="@style/tv_font_24px_666"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_doct_field"
+        android:layout_marginLeft="@dimen/margin_size_6dp"
+        android:layout_toRightOf="@id/tv_doct_field"
+        />
+
+
+</RelativeLayout>

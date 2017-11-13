@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.example.nativeMall.ui.Activity.InquiryDetailAct">
+
+    <com.example.nativeMall.ui.widget.CustomTitle
+        android:id="@+id/custom_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp"
+        app:srcRightIv="@drawable/news"
+        app:textTitle="咨询详情">
+
+    </com.example.nativeMall.ui.widget.CustomTitle>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_title1"
+            style="@style/tv_font_28px_333"
+            android:textStyle="bold"
+            android:paddingTop="@dimen/margin_size_16dp"
+            android:paddingLeft="@dimen/margin_size_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="慢性鼻炎"/>
+
+        <View
+            android:layout_marginTop="@dimen/margin_size_16dp"
+            style="@style/divide_line_horizontal_little_999">
+
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_size_16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="描述："
+                style="@style/tv_font_28px_25afff"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_describe"
+                style="@style/tv_font_28px_333"
+                android:lineSpacingExtra="@dimen/margin_size_12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_size_16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="回复："
+                style="@style/tv_font_28px_ff952c"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_answer"
+                style="@style/tv_font_28px_333"
+                android:lineSpacingExtra="@dimen/margin_size_12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

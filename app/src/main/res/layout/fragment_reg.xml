@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.example.nativeMall.ui.widget.CustomTitle
+        android:id="@+id/custom_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcRightIv="@drawable/news"
+        app:textTitle="寻医问药">
+    </com.example.nativeMall.ui.widget.CustomTitle>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            >
+
+            <!--<com.example.mall.ui.widget.CustomTitle-->
+            <!--android:id="@+id/custom_title"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:srcRightIv="@drawable/news"-->
+            <!--app:textTitle="寻医问药">-->
+            <!--</com.example.mall.ui.widget.CustomTitle>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/rl_onekey_reg"
+                    android:layout_width="@dimen/margin_size_0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    >
+
+                    <com.loopj.android.image.SmartImageView
+                        android:id="@+id/iv_onekey_reg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_size_20dp"
+                        android:src="@drawable/yuyue_chenggong"/>
+
+                    <TextView
+                        android:id="@+id/tv_onekey_reg"
+                        style="@style/tv_font_28px_333"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_onekey_reg"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_size_8dp"
+                        android:text="一键挂号"
+                        />
+
+                    <TextView
+                        style="@style/tv_font_24px_999"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_onekey_reg"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_size_6dp"
+                        android:text="100%预约三甲医生"/>
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/divide_line_vertival_little_999">
+                </View>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_online_inquiry"
+                    android:layout_width="@dimen/margin_size_0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    >
+
+                    <com.loopj.android.image.SmartImageView
+                        android:id="@+id/iv_online_inquiry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_size_20dp"
+                        android:src="@drawable/zxys_zdys"/>
+
+                    <TextView
+                        android:id="@+id/tv_online_inquiry"
+                        style="@style/tv_font_28px_333"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_online_inquiry"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_size_8dp"
+                        android:text="在线问诊"
+                        />
+
+                    <TextView
+                        style="@style/tv_font_24px_999"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_online_inquiry"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_size_6dp"
+                        android:text="医生在线 免费解答"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/divide_line_horizontal_big_999"/>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_recommend_doct"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="推荐医生"
+                    />
+            </RelativeLayout>
+
+
+            <View
+                style="@style/divide_line_horizontal_little_999"
+                />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_recommend_doct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+
+                >
+            </android.support.v7.widget.RecyclerView>
+
+
+            <View
+                style="@style/divide_line_horizontal_big_999"/>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_hot_topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/margin_size_10dp">
+
+                <TextView
+                    android:id="@+id/tv_hot_topic"
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="热门话题"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/divide_line_horizontal_little_999"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
+                >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_hot_topic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+
+                    >
+                </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

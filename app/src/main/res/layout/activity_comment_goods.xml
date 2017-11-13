@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_comment_goods"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.example.nativeMall.ui.Activity.CommentGoodsActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_mine_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/search_background">
+
+            <ImageView
+                android:id="@+id/iv_gomment_goods_back"
+                style="@style/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+            <TextView
+                style="@style/tv_white_24_margin8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/goods_comment"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_comment_goods_ordernum"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginLeft="@dimen/margin_size_8dp"
+            android:gravity="center_vertical"
+            android:text="@string/tv_order_number"
+            android:textColor="@color/font_666"
+            android:textSize="@dimen/font_size_12sp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_comment_goods_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/bt_comment_goods_commit"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginLeft="@dimen/margin_size_8dp"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:layout_marginBottom="@dimen/margin_size_20dp"
+            android:layout_marginTop="@dimen/margin_size_16dp"
+            android:gravity="center"
+            android:background="@drawable/bt_blue_boder"
+            android:text="@string/comment_goods_commit"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</ScrollView>

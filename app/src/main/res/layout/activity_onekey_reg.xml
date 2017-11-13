@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.Activity.OnekeyRegAct">
+
+    <com.example.nativeMall.ui.widget.CustomTitle
+        android:id="@+id/custom_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp"
+        app:srcRightIv="@drawable/news"
+        app:textTitle="一键挂号">
+    </com.example.nativeMall.ui.widget.CustomTitle>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:background="@color/background">
+
+        <RelativeLayout
+            android:id="@+id/rl_getlocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/margin_size_10dp">
+
+            <TextView
+                android:id="@+id/tv_inquiry_city"
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="就诊城市"
+                />
+
+            <TextView
+                android:id="@+id/tv_real_city"
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_size_6dp"
+                android:layout_toRightOf="@id/tv_inquiry_city"
+                android:text="点击定位"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_size_10dp"
+                android:layout_toRightOf="@id/tv_real_city"
+                android:src="@drawable/yjgh_dingwei"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+
+        style="@style/tv_font_28px_333"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginLeft="@dimen/margin_size_10dp"
+        android:gravity="center"
+        android:text="按科室查找"
+        />
+
+    <View
+        style="@style/divide_line_horizontal_little_999"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_depmt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <View
+        style="@style/divide_line_horizontal_big_999"/>
+
+    <TextView
+
+        style="@style/tv_font_28px_333"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginLeft="@dimen/margin_size_10dp"
+        android:gravity="center"
+        android:text="推荐医院"/>
+
+    <View
+        style="@style/divide_line_horizontal_little_999"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_recommend_hospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <View
+        style="@style/divide_line_horizontal_little_999">
+
+    </View>
+
+
+</LinearLayout>

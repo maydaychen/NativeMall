@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_fedback"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nativeMall.ui.Activity.FedbackActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_mine_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/search_background">
+
+        <ImageView
+            android:id="@+id/iv_setting_back"
+            style="@style/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+        <TextView
+            style="@style/tv2_white_24_margin8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_my_setting_fedback"/>
+    </RelativeLayout>
+
+    <EditText
+        android:gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_margin="@dimen/margin_size_10dp"
+        android:background="@drawable/white_boder"
+        android:hint="@string/input"/>
+
+    <TextView
+        android:id="@+id/tv_fedback_commit"
+        android:text="@string/tv_my_setting_commit"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="@dimen/margin_size_10dp"
+        android:layout_marginRight="@dimen/margin_size_10dp"
+        android:layout_marginTop="@dimen/margin_size_16dp"
+        android:background="@drawable/bt_blue_boder"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

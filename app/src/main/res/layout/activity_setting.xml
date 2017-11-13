@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrouund"
+    android:orientation="vertical"
+    tools:context="com.example.nativeMall.ui.Activity.SettingActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_mine_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/search_background">
+
+        <ImageView
+            android:contentDescription="@string/back"
+            android:id="@+id/iv_setting_back"
+            style="@style/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+        <TextView
+            style="@style/tv2_white_24_margin8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_my_setting"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tv_setting_change_password"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:background="@color/white">
+
+        <TextView
+            style="@style/tv_center_33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_size_8dp"
+            android:text="@string/tv_my_setting_password"
+            android:layout_marginLeft="@dimen/margin_size_8dp"/>
+
+        <ImageView
+            style="@style/iv_padding_8_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/index_more"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:id="@+id/tv_setting_message"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:background="@color/white">
+
+        <TextView
+            style="@style/tv_center_33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_size_8dp"
+            android:text="@string/tv_my_setting_message"
+            android:layout_marginLeft="@dimen/margin_size_8dp"/>
+
+        <ImageView
+            style="@style/iv_padding_8_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/index_more"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:id="@+id/tv_setting_fedback"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:background="@color/white">
+
+        <TextView
+            style="@style/tv_center_33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_size_8dp"
+            android:text="@string/tv_my_setting_fedback"
+            android:layout_marginLeft="@dimen/margin_size_8dp"/>
+
+        <ImageView
+            style="@style/iv_padding_8_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/index_more"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:id="@+id/tv_setting_about"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:background="@color/white">
+
+        <TextView
+            style="@style/tv_center_33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_size_8dp"
+            android:text="@string/tv_my_setting_about"
+            android:layout_marginLeft="@dimen/margin_size_8dp"/>
+
+        <ImageView
+            style="@style/iv_padding_8_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/index_more"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <TextView
+        android:id="@+id/tv_setting_logout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/margin_size_16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="@string/tv_my_setting_logout"
+        android:textColor="@color/blue"
+        android:visibility="gone"/>
+</LinearLayout>

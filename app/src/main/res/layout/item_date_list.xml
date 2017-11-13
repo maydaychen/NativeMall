@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:padding="@dimen/margin_size_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/iv_doct_img"
+            android:layout_width="@dimen/margin_size_26dp"
+            android:layout_height="@dimen/margin_size_26dp"
+            android:src="@drawable/yuyue_xuanze"
+            android:layout_centerVertical="true"/>
+        <TextView
+            style="@style/tv_font_30px_000"
+            android:id="@+id/tv_doct_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_doct_img"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/tv_depmt"
+            style="@style/tv_font_24px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="@dimen/margin_size_16dp"
+            android:layout_toRightOf="@id/tv_doct_name"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/tv_doct_level"
+            style="@style/tv_font_24px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:layout_toRightOf="@id/tv_depmt"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/tv_font_30px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        style="@style/divide_line_horizontal_little_999">
+
+    </View>
+    <RelativeLayout
+        android:paddingTop="@dimen/margin_size_20dp"
+        android:paddingBottom="@dimen/margin_size_20dp"
+        android:paddingLeft="@dimen/margin_size_10dp"
+        android:paddingRight="@dimen/margin_size_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_hos_name"
+            style="@style/tv_font_28px_333"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            style="@style/tv_font_28px_333"
+            android:id="@+id/temple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/tv_hos_name"
+            android:layout_marginTop="@dimen/margin_size_10dp"/>
+
+        <TextView
+            android:id="@+id/tv_patient_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toRightOf="@id/temple"
+            android:layout_alignBottom="@id/temple"
+            android:layout_marginLeft="@dimen/margin_size_10dp"/>
+
+        <TextView
+            android:id="@+id/tv_is_cancle"
+            style="@style/tv_font_28px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignBottom="@id/temple"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/temple1"
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/temple"
+            android:layout_marginTop="@dimen/margin_size_10dp"/>
+        <TextView
+            style="@style/tv_font_28px_33d54e"
+            android:id="@+id/tv_date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toRightOf="@id/temple1"
+            android:layout_alignBottom="@id/temple1"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            />
+
+    </RelativeLayout>
+    <View
+        style="@style/divide_line_horizontal_big_999"/>
+
+</LinearLayout>

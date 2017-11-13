@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:weightSum="4">
+
+        <TextView
+            android:id="@+id/tv_search_med_zonghe"
+            android:textColor="@color/blue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/zonghe"
+            android:textSize="@dimen/font_size_14sp"/>
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_search_med_sold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sold"
+                android:textSize="@dimen/font_size_14sp"/>
+
+            <ImageView
+                android:layout_marginLeft="@dimen/margin_size_4dp"
+                android:id="@+id/xiaoliang_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/yisheng_more1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_search_med_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:text="@string/price"
+                android:textSize="@dimen/font_size_14sp"/>
+
+            <ImageView
+                android:layout_marginLeft="@dimen/margin_size_4dp"
+                android:id="@+id/jiage_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/yisheng_more1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_width="@dimen/margin_size_0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_search_med_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/comment"
+                android:textSize="@dimen/font_size_14sp"/>
+
+            <ImageView
+                android:id="@+id/pingjia_pic"
+                android:layout_marginLeft="@dimen/margin_size_4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/yisheng_more1"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_colour_ee"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_search_med"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/iv_search_med"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/noproduct"/>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nativeMall.ui.Activity.ActivateCardStep2Act">
+
+    <com.example.nativeMall.ui.widget.CustomTitle
+        android:id="@+id/custom_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp"
+        app:textTitle="健康卡激活">
+
+    </com.example.nativeMall.ui.widget.CustomTitle>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_size_16dp"
+        android:paddingTop="@dimen/margin_size_16dp">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/v2_0_jkkjh_diyiz"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/v2_0_jkkjh_diyiy"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/iv_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/v2_0_jkkjh_diyi"
+                />
+
+            <TextView
+
+                style="@style/tv_font_48px_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="00000 0000000 000 000"/>
+
+            <TextView
+                android:id="@+id/tv_id_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_card"
+                android:layout_marginBottom="@dimen/margin_size_16dp"
+                android:layout_marginLeft="@dimen/margin_size_10dp"
+                android:text="000 000 0000 0000 0000"
+                android:textColor="#ccffffff"
+                android:textSize="@dimen/font_size_10sp"/>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/margin_size_16dp">
+
+        <TextView
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请输入与身份证相匹配的手机号码"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+        <TextView
+            style="@style/tv_font_28px_333"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:inputType="phone"
+            android:text="手机号"/>
+
+        <EditText
+            android:id="@+id/tv_phone"
+            style="@style/et_font_28px_999"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="6"
+            android:background="@null"
+            android:hint="@string/input_phone_number"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:paddingBottom="@dimen/margin_size_10dp"
+            android:paddingTop="@dimen/margin_size_10dp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divide_line_horizontal_little_999"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+        <TextView
+            style="@style/tv_font_28px_333"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:inputType="phone"
+            android:text="验证码"/>
+
+        <EditText
+            android:id="@+id/et_confirm_code"
+            style="@style/et_font_28px_999"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="4"
+            android:background="@null"
+            android:hint="请输入验证码"
+            android:inputType="phone"
+            android:maxLength="6"
+            android:paddingBottom="@dimen/margin_size_10dp"
+            android:paddingTop="@dimen/margin_size_10dp"/>
+
+        <RelativeLayout
+            android:layout_width="@dimen/margin_size_0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            >
+
+            <TextView
+                android:id="@+id/tv_get_code"
+                style="@style/tv_font_20px_white"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/next_step_bg"
+                android:gravity="center"
+                android:text="发送验证码"
+
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin_size_10dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_activate"
+            style="@style/tv_font_28px_white"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/next_step_bg"
+            android:gravity="center"
+            android:text="激活"/>
+
+    </RelativeLayout>
+</LinearLayout>

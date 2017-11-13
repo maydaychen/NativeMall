@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nativeMall.ui.Activity.MyAddressActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_mine_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/search_background">
+
+        <ImageView
+            android:id="@+id/iv_choose_doc_back"
+            style="@style/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/tv_white_24_margin8"
+            android:text="@string/tv_my_address"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_my_address_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_item_address_logo"
+            style="@style/iv_padding_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/v2_0_my_shdizhi"/>
+
+        <TextView
+            style="@style/tv_center_33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_item_address_logo"
+            android:text="@string/tv_add_address"/>
+
+        <ImageView
+            style="@style/iv_padding_8_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/index_more"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_item_address"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

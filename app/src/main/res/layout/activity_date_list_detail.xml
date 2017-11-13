@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical"
+        tools:context="com.example.nativeMall.ui.Activity.DateListDetailAct">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_mine_title"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/blue">
+
+            <ImageView
+                android:id="@+id/iv_choose_doc_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="@dimen/margin_size_10dp"
+                android:paddingRight="@dimen/margin_size_10dp"
+                android:paddingTop="@dimen/margin_size_10dp"
+                android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+            <TextView
+                style="@style/tv_white_24_margin8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="预约单详情"/>
+
+            <TextView
+                android:id="@+id/tv_cancle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/margin_size_10dp"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_16sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_is_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_font_28px_999"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity=""
+                    android:text="订单状态："/>
+
+                <TextView
+                    android:id="@+id/tv_is_cancel"
+                    style="@style/tv_font_28px_999"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已取消"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:layout_marginTop="@dimen/margin_size_8dp"
+            android:background="@drawable/yuyue_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.loopj.android.image.SmartImageView
+                    android:id="@+id/iv_doct_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="@dimen/margin_size_8dp"
+                    android:layout_marginLeft="@dimen/margin_size_10dp"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    android:src="@drawable/fenxiang_qq"/>
+
+                <TextView
+                    android:id="@+id/tv_doct_name"
+                    style="@style/tv_font_32px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_size_20dp"
+
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_depmt"
+                    style="@style/tv_font_24px_666"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_size_6dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_doct_level"
+                    style="@style/tv_font_24px_666"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_size_4dp"
+                    />
+
+            </LinearLayout>
+
+            <View
+                style="@style/divide_line_horizontal_little_999"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_size_16dp"
+                android:layout_marginTop="@dimen/margin_size_16dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_hos_name"
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_size_10dp"
+                    android:text="就诊医院"/>
+
+                <TextView
+                    android:id="@+id/tv_real_hos_name"
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@id/tv_hos_name"
+                    />
+
+                <TextView
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_hos_name"
+                    android:layout_below="@id/tv_hos_name"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    android:text="就诊科室"/>
+
+                <TextView
+                    android:id="@+id/tv_depmt_name1"
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_real_hos_name"
+                    android:layout_below="@id/tv_hos_name"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+
+                    />
+
+                <TextView
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_hos_name"
+                    android:layout_below="@id/tv_depmt_name1"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    android:text="门诊时间"/>
+
+                <TextView
+                    android:id="@+id/tv_date_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_depmt_name1"
+                    android:layout_below="@id/tv_depmt_name1"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+
+                    android:textColor="#33d54e"
+                    android:textSize="@dimen/font_size_14sp"
+                    />
+
+                <TextView
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_hos_name"
+                    android:layout_below="@id/tv_date_time"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    android:text="门诊类型"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_date_type"
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_real_hos_name"
+                    android:layout_below="@id/tv_date_time"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    />
+
+                <TextView
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_hos_name"
+                    android:layout_below="@id/tv_date_type"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    android:text="挂号费用"/>
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_real_hos_name"
+                    android:layout_below="@id/tv_date_type"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    />
+
+                <TextView
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_hos_name"
+                    android:layout_below="@id/tv_price"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    android:text="支付方式"/>
+
+                <TextView
+                    android:id="@+id/tv_pay_method"
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_real_hos_name"
+                    android:layout_below="@id/tv_price"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+
+                    />
+
+                <TextView
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_hos_name"
+                    android:layout_below="@id/tv_pay_method"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    android:text="支付状态"/>
+
+                <TextView
+                    android:id="@+id/tv_is_pay"
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_real_hos_name"
+                    android:layout_below="@id/tv_pay_method"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+
+                    />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:background="@drawable/yuyue_bg"
+            android:paddingBottom="@dimen/margin_size_16dp"
+            android:paddingLeft="@dimen/margin_size_10dp"
+            android:paddingTop="@dimen/margin_size_16dp"
+            >
+
+            <TextView
+                android:id="@+id/temple"
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="就诊人信息"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/temple"
+                android:layout_marginTop="@dimen/margin_size_14dp"
+                android:text="患者姓名"/>
+
+            <TextView
+                android:id="@+id/tv_patient_name"
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_name"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@id/tv_name"
+                />
+
+            <TextView
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_patient_name"
+                android:layout_marginTop="@dimen/margin_size_14dp"
+                android:text="身份证号"
+                />
+
+            <TextView
+                android:id="@+id/tv_patient_id_number"
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_patient_name"
+                android:layout_below="@id/tv_patient_name"
+                android:layout_marginTop="@dimen/margin_size_14dp"
+                />
+
+            <TextView
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_patient_id_number"
+                android:layout_marginTop="@dimen/margin_size_14dp"
+                android:text="手机号"/>
+
+            <TextView
+                android:id="@+id/tv_patient_phone"
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_patient_id_number"
+                android:layout_below="@id/tv_patient_id_number"
+                android:layout_marginTop="@dimen/margin_size_14dp"
+                />
+
+            <TextView
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_patient_phone"
+                android:layout_marginTop="@dimen/margin_size_14dp"
+                android:text="就诊类型"/>
+
+            <TextView
+                android:id="@+id/tv_once_or_twice"
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_patient_name"
+                android:layout_below="@id/tv_patient_phone"
+                android:layout_marginTop="@dimen/margin_size_14dp"
+                />
+
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/bt_pay"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginBottom="@dimen/margin_size_10dp"
+            android:layout_marginLeft="@dimen/margin_size_12dp"
+            android:layout_marginRight="@dimen/margin_size_12dp"
+            android:layout_marginTop="@dimen/margin_size_8dp"
+            android:background="@drawable/next_step_bg"
+            android:text="@string/tv_paynow"
+            android:textColor="@color/white"
+            />
+
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\chenyi\apk\NativeMall\NativeMall\easeUI\src\main\assets"/><source path="C:\chenyi\apk\NativeMall\NativeMall\easeUI\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\chenyi\apk\NativeMall\NativeMall\easeUI\src\debug\assets"/></dataSet></merger>

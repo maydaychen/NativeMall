@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/medicine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/medicine"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/medicineshop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/medicineshop"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
+</LinearLayout>

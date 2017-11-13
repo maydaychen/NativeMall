@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context="com.example.nativeMall.ui.Activity.DateSuccessAct">
+
+    <com.example.nativeMall.ui.widget.CustomTitle
+        android:id="@+id/custom_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp"
+        app:textTitle="预约成功"
+        >
+
+    </com.example.nativeMall.ui.widget.CustomTitle>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/white">
+        <ImageView
+            android:id="@+id/temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/xywy_yjgh"
+            android:layout_centerInParent="true"/>
+
+        <LinearLayout
+            android:layout_below="@id/temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/margin_size_10dp"
+            >
+
+            <TextView
+                style="@style/tv_font_30px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="预约成功"/>
+
+            <TextView
+                style="@style/tv_font_30px_33d54e"
+                android:id="@+id/tv_check_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_size_10dp"
+                android:text="查看预约"
+
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.example.nativeMall.ui.Activity.DoctDateDetailAct">
+
+
+    <com.example.nativeMall.ui.widget.CustomTitle
+        android:id="@+id/custom_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp"
+        app:srcRightIv="@drawable/news"
+        app:textTitle="医生排班详情">
+    </com.example.nativeMall.ui.widget.CustomTitle>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/margin_size_10dp"
+        >
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/iv_doct"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:padding="1dp"
+            android:background="@drawable/doct_img_bg"
+            />
+
+        <TextView
+            android:id="@+id/tv_doct_name"
+            style="@style/tv_font_32px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:layout_marginTop="@dimen/margin_size_10dp"
+            android:layout_toRightOf="@id/iv_doct"
+
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_hos_name"
+            style="@style/tv_font_24px_666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_doct_name"
+            android:layout_below="@id/tv_doct_name"
+            android:layout_marginTop="@dimen/margin_size_8dp"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_hos_level"
+            style="@style/tv_font_24px_666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_hos_name"
+            android:layout_marginLeft="@dimen/margin_size_6dp"
+            android:layout_toRightOf="@id/tv_hos_name"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_depmt"
+            style="@style/tv_font_24px_666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_doct_name"
+            android:layout_below="@id/tv_hos_name"
+            android:layout_marginTop="@dimen/margin_size_8dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_level"
+            style="@style/tv_font_24px_666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_depmt"
+            android:layout_marginLeft="@dimen/margin_size_6dp"
+            android:layout_toRightOf="@id/tv_depmt"
+            />
+
+        <TextView
+            android:id="@+id/tv_patient_num"
+            style="@style/tv_font_24px_white"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/tv_doct_name"
+            android:layout_marginRight="@dimen/margin_size_10dp"
+            android:layout_marginTop="@dimen/margin_size_6dp"
+            android:background="@drawable/top_radius_6px"
+            android:gravity="center"
+
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_patient_num"
+            android:layout_marginRight="@dimen/margin_size_10dp"
+            android:background="@drawable/bottom_radius_6px"
+            android:gravity="center"
+            android:text="预约量"
+            android:textColor="@color/orange1"
+            android:textSize="@dimen/font_size_8sp"
+
+            />
+    </RelativeLayout>
+
+    <View
+        style="@style/divide_line_horizontal_little_999"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_size_16dp">
+
+
+        <TextView
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="擅长："
+            />
+
+        <TextView
+            android:id="@+id/tv_doct_field"
+            style="@style/tv_font_28px_333"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_6dp"
+            android:lineSpacingExtra="@dimen/margin_size_14dp"
+            />
+
+    </LinearLayout>
+
+
+    <View
+        style="@style/divide_line_horizontal_little_999"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white"
+        >
+
+        <TextView
+            style="@style/tv_font_24px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/margin_size_10dp"
+            android:text="展开更多详情"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/divide_line_horizontal_big_999"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_size_16dp"
+            android:src="@drawable/yisheng_keshi"/>
+
+        <TextView
+            android:id="@+id/tv_depmt_hos"
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_size_6dp"
+
+            />
+    </LinearLayout>
+
+    <View style="@style/divide_line_horizontal_little_999">
+
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="182dp"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_schedule_title"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                style="@style/divide_line_horizontal_little_999"/>
+
+            <TextView
+                style="@style/tv_font_24px_666"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="排版"/>
+
+            <View
+                style="@style/divide_line_horizontal_little_999"/>
+
+            <TextView
+                style="@style/tv_font_24px_666"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="上午"/>
+
+            <View
+                style="@style/divide_line_horizontal_little_999"/>
+
+            <TextView
+                style="@style/tv_font_24px_666"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="下午"/>
+
+            <View
+                style="@style/divide_line_horizontal_little_999"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/ll_schedule_title"
+            android:background="@color/divide_line"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_schedule_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0.5dp"
+            android:layout_toRightOf="@id/ll_schedule_title"
+            android:background="@color/white">
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/tv_no_date"
+            style="@style/tv_font_24px_666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="100dp"
+            android:text="暂无排版信息"
+            android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>

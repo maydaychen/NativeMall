@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_confirm_order"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context="com.example.nativeMall.ui.Activity.ConfirmOrderActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_confirm_order_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/search_background">
+
+        <ImageView
+            android:id="@+id/iv_comfirm_back"
+            style="@style/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+        <TextView
+            style="@style/tv_white_24_margin8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_order"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_confirm_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_confirm_order_title"
+        android:background="@color/white">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

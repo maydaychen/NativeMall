@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@+id/tv_gouwuche_inside_name"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingTop="@dimen/margin_size_8dp"
+          android:descendantFocusability="blocksDescendants"
+          android:paddingBottom="@dimen/margin_size_8dp"
+          android:focusable="true"
+          android:clickable="true"
+          android:gravity="center"
+          android:foreground="?android:attr/selectableItemBackground"
+          android:layout_marginRight="@dimen/margin_size_8dp"
+          android:background="@drawable/gouwuche_selecter"
+          android:textColor="@color/font_colour_33">
+
+</TextView>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.Activity.HosListAct">
+
+    <RelativeLayout
+        android:id="@+id/rl_ask_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue">
+
+        <ImageView
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"
+            android:id="@+id/iv_ask_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/iv_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/tv_white_24_margin8"
+            android:text="@string/hot_topic"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_hot_topic_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

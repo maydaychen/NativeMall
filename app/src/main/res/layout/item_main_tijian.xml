@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_margin="@dimen/margin_size_8dp"
+              android:gravity="center"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/iv_tijian_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="12dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/tv_main_tijian_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_main_tijian_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/tv_tijian_price"
+            android:textColor="@color/font_colour_red"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/margin_size_16dp"
+                android:paddingLeft="@dimen/margin_size_10dp"
+                android:paddingRight="@dimen/margin_size_10dp"
+                android:paddingTop="@dimen/margin_size_16dp">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/iv_company"
+        android:layout_width="70dp"
+        android:layout_height="58dp"
+        android:background="@drawable/radius_6px"
+        android:src="@drawable/default_compn"/>
+
+    <TextView
+        android:id="@+id/tv_company_name"
+        style="@style/tv_font_28px_333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_size_10dp"
+        android:layout_toRightOf="@id/iv_company"
+        />
+
+    <TextView
+        android:id="@+id/tv_temple"
+        style="@style/tv_font_24px_333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_company_name"
+        android:layout_below="@id/tv_company_name"
+        android:layout_marginTop="@dimen/margin_size_4dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_company_phone"
+        style="@style/tv_font_24px_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_company_name"
+        android:layout_marginLeft="@dimen/margin_size_4dp"
+        android:layout_marginTop="@dimen/margin_size_4dp"
+        android:layout_toRightOf="@id/tv_temple"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_company_address"
+        style="@style/tv_font_20px_999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_company_name"
+        android:layout_below="@id/tv_company_phone"
+        android:layout_marginTop="@dimen/margin_size_4dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_distance"
+        style="@style/tv_font_20px_999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_company_address"
+        android:layout_marginLeft="@dimen/margin_size_10dp"
+        android:layout_toRightOf="@id/tv_company_address"
+
+        />
+
+
+</RelativeLayout>

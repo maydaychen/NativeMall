@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+        >
+
+    <ListView
+        android:id="@+id/lv_inpop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:cacheColorHint="@color/no_color"
+        android:divider="@color/divide_line"
+        android:dividerHeight="1dp"
+        android:paddingLeft="@dimen/margin_size_4dp"
+        android:paddingRight="@dimen/margin_size_4dp"
+        >
+    </ListView>
+
+</merge>

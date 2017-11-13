@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.Activity.GaMDetailAct">
+
+    <com.example.nativeMall.ui.widget.CustomTitle
+        android:id="@+id/custom_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:textTitle="公司详情"
+        app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp">
+
+
+    </com.example.nativeMall.ui.widget.CustomTitle>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_size_16dp"
+        android:paddingLeft="@dimen/margin_size_10dp"
+        android:paddingRight="@dimen/margin_size_10dp"
+        android:paddingTop="@dimen/margin_size_16dp">
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/iv_company"
+            android:layout_width="70dp"
+            android:layout_height="58dp"
+            android:background="@drawable/radius_6px"
+            android:src="@drawable/default_compn"/>
+
+        <TextView
+            android:id="@+id/tv_company_name"
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:layout_toRightOf="@id/iv_company"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_temple"
+            style="@style/tv_font_24px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_company_name"
+            android:layout_below="@id/tv_company_name"
+            android:layout_marginTop="@dimen/margin_size_4dp"
+            android:text="电话:"
+            />
+
+        <TextView
+            android:id="@+id/tv_company_phone"
+            style="@style/tv_font_24px_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_company_name"
+            android:layout_marginLeft="@dimen/margin_size_4dp"
+            android:layout_marginTop="@dimen/margin_size_4dp"
+            android:layout_toRightOf="@id/tv_temple"
+
+
+            />
+
+        <TextView
+            android:id="@+id/tv_company_address"
+            style="@style/tv_font_20px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_company_phone"
+            android:layout_alignLeft="@id/tv_company_name"
+            android:layout_marginTop="@dimen/margin_size_4dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            style="@style/tv_font_20px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_company_address"
+
+            android:layout_alignTop="@+id/tv_company_address"
+            android:layout_toRightOf="@+id/tv_company_address"
+            android:layout_toEndOf="@+id/tv_company_address"/>
+    </RelativeLayout>
+    <View
+        style="@style/divide_line_horizontal_little_999">
+
+    </View>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/yisheng_jianjie"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            style="@style/tv_font_28px_333"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <TextView
+        style="@style/tv_font_28px_333"
+        android:id="@+id/jianjie_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_size_10dp"
+        android:layout_marginLeft="30dp"
+        android:lineSpacingExtra="@dimen/margin_size_10dp"
+        />
+
+</LinearLayout>

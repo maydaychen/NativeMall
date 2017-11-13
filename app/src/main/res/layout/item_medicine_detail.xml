@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/medicine_pic"
+        android:src="@drawable/default_product"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="@dimen/margin_size_8dp"/>
+
+
+    <TextView
+        android:layout_toRightOf="@id/medicine_pic"
+        android:id="@+id/medicine_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:layout_marginTop="18dp"
+        android:textSize="14sp"/>
+
+    <LinearLayout
+        android:layout_below="@id/medicine_name"
+        android:layout_toRightOf="@id/medicine_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/medicine_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"/>
+
+        <ImageView
+            android:id="@+id/medicine_otc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_toRightOf="@id/medicine_pic"
+        android:id="@+id/medicine_res"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicine_pic"
+        android:textSize="12sp"/>
+
+</RelativeLayout>

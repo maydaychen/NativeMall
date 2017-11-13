@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/margin_size_8dp">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/iv_recommend_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_product"/>
+
+    <TextView
+        android:id="@+id/tv_recommend_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/iv_recommend_logo"
+        android:layout_below="@id/iv_recommend_logo"
+        android:layout_marginTop="4dp"
+        android:lines="2"
+        android:textColor="@color/font_black"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tv_recommend_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/iv_recommend_logo"
+        android:layout_below="@id/tv_recommend_name"
+        android:layout_marginTop="4dp"
+        android:text="@string/tv_mall_price"
+        android:textColor="@color/font_colour_red"
+        android:textSize="14sp"/>
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="@dimen/margin_size_6dp"-->
+    <!--android:layout_alignRight="@id/iv_recommend_logo"-->
+    <!--android:layout_below="@id/tv_recommend_name"-->
+    <!--android:src="@drawable/v2_0_index_tjicon" />-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/tv_recommend_price"
+        android:layout_marginTop="12dp"
+        android:background="@color/line_colour_ee"/>
+
+</RelativeLayout>

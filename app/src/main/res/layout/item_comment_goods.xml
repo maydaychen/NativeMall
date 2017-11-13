@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="8dp"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical">
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/iv_comment_goods_logo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="@dimen/margin_size_8dp"/>
+
+        <TextView
+            android:id="@+id/tv_comment_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_8dp"
+            android:textColor="@color/font_colour_33"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_size_20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/star1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_size_8dp"
+            android:text="*"
+            android:textColor="@color/red"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/star1"
+            android:text="@string/med_miaoshu"/>
+
+        <RatingBar
+            android:id="@+id/rb_comment_miaoshu"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:stepSize="1"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/star2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_size_8dp"
+            android:text="*"
+            android:textColor="@color/red"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/star2"
+            android:text="@string/fuwu"/>
+
+        <RatingBar
+            android:id="@+id/rb_comment_fuwu"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:stepSize="1"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_size_20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/star3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_size_8dp"
+            android:text="*"
+            android:textColor="@color/red"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/star3"
+            android:text="@string/fahuo"/>
+
+        <RatingBar
+            android:id="@+id/rb_comment_fahuo"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:stepSize="1"/>
+    </RelativeLayout>
+</LinearLayout>
+

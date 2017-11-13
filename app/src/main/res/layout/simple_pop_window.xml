@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+    android:paddingBottom="@dimen/margin_size_4dp"
+    android:paddingTop="@dimen/margin_size_4dp">
+
+    <TextView
+        android:id="@+id/tv_first"
+        style="@style/tv_font_28px_25afff"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_margin="@dimen/margin_size_2dp"
+        android:background="@drawable/radius_6px"
+        android:gravity="center"
+        android:text="初诊"
+
+        />
+
+    <Button
+        android:id="@+id/tv_second"
+        style="@style/tv_font_28px_25afff"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_margin="@dimen/margin_size_2dp"
+        android:background="@drawable/radius_6px"
+        android:gravity="center"
+        android:text="复诊"
+        android:layout_gravity="bottom"
+        />
+
+</LinearLayout>

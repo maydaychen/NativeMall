@@ -1,0 +1,409 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.example.nativeMall.ui.widget.CustomTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:textTitle="健康卡">
+    </com.example.nativeMall.ui.widget.CustomTitle>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                tools:context="com.example.nativeMall.ui.Fragment.HealthCardFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <View
+                style="@style/divide_line_horizontal_little_blue"/>
+
+            <LinearLayout
+                android:id="@+id/ll_pay_scan"
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
+                android:background="@color/blue"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="2"
+                >
+
+                <LinearLayout
+                    android:id="@+id/ll_pay_money"
+                    android:layout_width="@dimen/margin_size_0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/v2_0_jkksy_fukuan"/>
+
+                    <TextView
+                        style="@style/tv_font_24px_white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_size_8dp"
+                        android:text="付款"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_scan_code"
+                    android:layout_width="@dimen/margin_size_0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/v2_0_jkksy_saoma"/>
+
+                    <TextView
+                        style="@style/tv_font_24px_white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_size_8dp"
+                        android:text="扫码"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_click_bind_card"
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
+                android:background="@color/blue"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:id="@+id/iv_add_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/v2_0_jkksy_tianjia"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/margin_size_10dp"
+                        android:layout_toRightOf="@id/iv_add_card"
+                        android:orientation="vertical">
+
+                        <TextView
+
+                            style="@style/tv_font_28px_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="您未绑定健康卡,快去绑定吧~"
+                            />
+
+                        <TextView
+                            style="@style/tv_font_20px_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_size_6dp"
+                            android:text="余额可以用来购药、线下支付哦"/>
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/ll_gene_check"
+                    android:layout_width="@dimen/margin_size_0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/v2_0_jkksy_jyjc"
+                        />
+
+                    <TextView
+                        style="@style/tv_font_24px_333"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_size_6dp"
+                        android:gravity="center"
+                        android:text="基因检测"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_menzhen"
+                    android:layout_width="@dimen/margin_size_0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/v2_0_jkksy_menzhen"
+                        />
+
+                    <TextView
+                        style="@style/tv_font_24px_333"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_size_6dp"
+                        android:gravity="center"
+                        android:text="门诊"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_medical_store"
+                    android:layout_width="@dimen/margin_size_0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/v2_0_jkksy_yaodian"
+                        />
+
+                    <TextView
+                        style="@style/tv_font_24px_333"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_size_6dp"
+                        android:gravity="center"
+                        android:text="药店"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/divide_line_horizontal_big_999"/>
+
+
+            <!--暂时注释-->
+            <!--<RelativeLayout
+                android:id="@+id/rl_insurance_company"
+                android:layout_width="match_parent"
+                android:layout_height="44dp">
+
+                <TextView
+                    style="@style/tv_font_30px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_size_10dp"
+                    android:text="保险公司"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/margin_size_10dp"
+                    android:src="@drawable/index_more"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/divide_line_horizontal_little_999">
+            </View>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_insurance_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>-->
+
+
+            <LinearLayout
+                android:id="@+id/ll_to_company_describe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/margin_size_12dp"
+                    android:paddingLeft="@dimen/margin_size_10dp"
+                    android:paddingRight="@dimen/margin_size_10dp"
+                    android:paddingTop="@dimen/margin_size_12dp"
+                    android:weightSum="3">
+
+                    <com.loopj.android.image.SmartImageView
+                        android:id="@+id/iv_company"
+                        android:layout_width="@dimen/margin_size_0dp"
+                        android:layout_height="75dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/fenxiang_qq"/>
+
+                    <TextView
+                        android:id="@+id/tv_company_describ"
+                        style="@style/tv_font_24px_333"
+                        android:layout_width="@dimen/margin_size_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_size_10dp"
+                        android:layout_marginTop="@dimen/margin_size_2dp"
+                        android:layout_weight="2"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="@dimen/margin_size_4dp"
+                        android:maxHeight="10dp"
+                        android:maxLines="4"
+                        />
+                </LinearLayout>
+
+                <View
+                    style="@style/divide_line_horizontal_little_999"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/margin_size_12dp"
+                    android:paddingLeft="@dimen/margin_size_10dp"
+                    android:paddingRight="@dimen/margin_size_20dp"
+                    android:paddingTop="@dimen/margin_size_12dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_item_insurance"
+                        style="@style/tv_font_28px_333"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_sale_sum"
+                        style="@style/tv_font_20px_666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/tv_item_insurance"
+                        android:layout_below="@id/tv_item_insurance"
+                        android:layout_marginTop="@dimen/margin_size_8dp"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_good_rate"
+                        style="@style/tv_font_20px_666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/tv_sale_sum"
+                        android:layout_marginLeft="@dimen/margin_size_10dp"
+
+                        android:layout_toRightOf="@id/tv_sale_sum"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_item_price"
+                        style="@style/tv_font_28px_ff7272"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="20¥"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/divide_line_horizontal_big_999"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_activity"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@color/white">
+
+                <TextView
+                    style="@style/tv_font_30px_333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_size_10dp"
+                    android:text="活动"/>
+
+                <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginRight="@dimen/margin_size_10dp"-->
+                <!--android:src="@drawable/index_more"/>-->
+
+            </RelativeLayout>
+
+            <View
+                style="@style/divide_line_horizontal_little_999">
+
+            </View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
+                >
+
+                <android.support.v7.widget.RecyclerView
+
+                    android:id="@+id/rv_goods_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

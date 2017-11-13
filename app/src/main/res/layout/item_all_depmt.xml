@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+    >
+
+    <TextView
+        android:id="@+id/tv_depmt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        style="@style/tv_font_28px_333"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/margin_size_10dp"
+        />
+
+    <!-- <View
+         style="@style/divide_line_horizontal_little_999"
+         android:layout_below="@id/tv_depmt_name"/>-->
+</RelativeLayout>

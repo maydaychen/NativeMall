@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="@color/blue">
+
+    <!--默认左图片-->
+    <ImageView
+        android:id="@+id/iv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/iv_back" />
+    <!--     android:src="@drawable/ic_keyboard_arrow_left_white_24dp"-->
+
+
+    <!--默认标题内容-->
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/tv_white_24_margin8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="挂号科室" />
+
+    <!--默认右图-->
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingBottom="@dimen/margin_size_10dp"
+        android:paddingLeft="@dimen/margin_size_10dp"
+        android:paddingRight="@dimen/margin_size_10dp"
+        android:paddingTop="@dimen/margin_size_10dp" />
+
+</RelativeLayout>

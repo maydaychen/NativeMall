@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.nativeMall.ui.Activity.MedicalStoreDtlAct">
+
+        <com.example.nativeMall.ui.widget.CustomTitle
+            android:id="@+id/custom_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp"
+            app:textTitle="药店详情">
+
+        </com.example.nativeMall.ui.widget.CustomTitle>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_size_10dp">
+
+            <com.loopj.android.image.SmartImageView
+                android:id="@+id/iv_company"
+                android:layout_width="70dp"
+                android:layout_height="58dp"
+                android:background="@drawable/radius_6px"
+                />
+
+            <TextView
+                android:id="@+id/tv_company_name"
+                style="@style/tv_font_28px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_size_10dp"
+                android:layout_toRightOf="@id/iv_company"
+                />
+
+            <TextView
+                android:id="@+id/tv_temple"
+                style="@style/tv_font_24px_333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_company_name"
+                android:layout_below="@id/tv_company_name"
+                android:layout_marginTop="@dimen/margin_size_4dp"
+                android:text="电话:"
+                />
+
+            <TextView
+                android:id="@+id/tv_company_phone"
+                style="@style/tv_font_24px_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_company_name"
+                android:layout_marginLeft="@dimen/margin_size_4dp"
+                android:layout_marginTop="@dimen/margin_size_4dp"
+                android:layout_toRightOf="@id/tv_temple"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_company_address"
+                style="@style/tv_font_20px_999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_company_name"
+                android:layout_below="@id/tv_company_phone"
+                android:layout_marginTop="@dimen/margin_size_4dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_distance"
+                style="@style/tv_font_20px_999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_company_address"
+                android:layout_marginLeft="@dimen/margin_size_10dp"
+                android:layout_toRightOf="@id/tv_company_address"
+
+                />
+
+        </RelativeLayout>
+
+        <View
+            style="@style/divide_line_horizontal_big_999">
+
+        </View>
+
+        <TextView
+            style="@style/tv_font_24px_blue"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:gravity="center_vertical"
+            android:text="药店商品"
+            />
+
+        <View
+            style="@style/divide_line_horizontal_big_999">
+
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/divide_line"
+            android:paddingLeft="@dimen/margin_size_10dp"
+            android:paddingRight="@dimen/margin_size_10dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_goods_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

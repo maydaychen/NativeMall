@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/iv_shoucang_logo"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/margin_size_8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_size_8dp"
+        android:layout_toRightOf="@id/iv_shoucang_logo"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_shoucang_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_shoucang_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_8dp"
+            android:textColor="@color/red"/>
+
+        <TextView
+            android:id="@+id/tv_shoucang_shopname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_8dp"/>
+    </LinearLayout>
+
+    <TextView
+        style="@style/divide_line_horizontal_little_999"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

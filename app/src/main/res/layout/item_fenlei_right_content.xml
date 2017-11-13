@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:layout_marginTop="@dimen/margin_size_8dp"
+              android:layout_marginRight="@dimen/margin_size_8dp"
+              android:orientation="vertical">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/fenlei_right_content_logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:id="@+id/fenlei_right_content_name"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_size_4dp"
+        android:textColor="@color/font_666"
+        android:textSize="@dimen/font_size_12sp"/>
+
+</LinearLayout>

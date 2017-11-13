@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="com.example.nativeMall.ui.Activity.InsuranceComInfoAct">
+
+    <com.example.nativeMall.ui.widget.CustomTitle
+        android:id="@+id/custom_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp"
+
+        app:textTitle="保险公司介绍">
+
+    </com.example.nativeMall.ui.widget.CustomTitle>
+
+
+
+
+    <TextView
+        android:id="@+id/tv_buy_from"
+        style="@style/tv_font_24px_white"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="官方购买"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/custom_title"
+        android:layout_above="@id/tv_buy_from">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_temple1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_size_10dp">
+
+                <com.loopj.android.image.SmartImageView
+                    android:id="@+id/iv_company"
+                    android:layout_width="92dp"
+                    android:layout_height="58dp"
+                    android:src="@drawable/default_compn"/>
+
+                <TextView
+                    android:id="@+id/tv_official_web"
+                    style="@style/tv_font_24px_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="进入官网"
+                    android:padding="@dimen/margin_size_10dp"/>
+
+
+            </RelativeLayout>
+
+            <View
+                style="@style/divide_line_horizontal_little_999">
+
+            </View>
+
+            <RelativeLayout
+                android:id="@+id/rl_temple2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_temple1"
+                android:paddingBottom="@dimen/margin_size_20dp"
+                android:paddingLeft="@dimen/margin_size_10dp"
+                android:paddingRight="@dimen/margin_size_10dp"
+                android:paddingTop="@dimen/margin_size_14dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_temple"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/yisheng_jianjie"/>
+
+                    <TextView
+                        style="@style/tv_font_28px_333"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_size_4dp"
+                        android:layout_toRightOf="@id/temple"
+                        android:text="简介"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_company_describe"
+                    style="@style/tv_font_28px_333"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/temple1"
+                    android:layout_below="@id/ll_temple"
+                    android:layout_marginLeft="@dimen/margin_size_20dp"
+                    android:layout_marginTop="@dimen/margin_size_14dp"
+                    android:lineSpacingExtra="@dimen/margin_size_10dp"
+                    android:text="nihaoma"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                style="@style/divide_line_horizontal_little_999"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_temple3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_temple2"
+                android:paddingLeft="@dimen/margin_size_10dp"
+                android:paddingRight="@dimen/margin_size_10dp"
+                android:paddingTop="@dimen/margin_size_20dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/ll_temple1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/v2_0_jkkbx_chanpin"/>
+
+                    <TextView
+                        style="@style/tv_font_28px_333"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_size_4dp"
+                        android:layout_toRightOf="@id/temple2"
+                        android:text="产品"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_production"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/ll_temple1"
+                    android:layout_marginLeft="@dimen/margin_size_20dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>
+
+

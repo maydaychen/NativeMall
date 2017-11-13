@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.Activity.FreeAskAct">
+
+    <RelativeLayout
+        android:id="@+id/rl_mine_title"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/blue">
+
+        <ImageView
+            android:id="@+id/iv_choose_doc_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingTop="@dimen/margin_size_10dp"
+            android:paddingLeft="8dp"
+            android:paddingBottom="@dimen/margin_size_10dp"
+            android:paddingRight="@dimen/margin_size_10dp"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="免费咨询"
+            style="@style/tv_white_24_margin8"/>
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:textSize="@dimen/font_size_16sp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="提交"
+            android:padding="@dimen/margin_size_10dp"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/iv_assistant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_size_20dp"
+            android:layout_marginLeft="@dimen/margin_size_30dp"
+            android:layout_marginTop="@dimen/margin_size_16dp"
+            android:src="@drawable/zxys_mfzx_yszl"/>
+
+        <TextView
+            android:id="@+id/tv_assistant"
+            style="@style/tv_font_32px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_assistant"
+            android:layout_marginLeft="@dimen/margin_size_18dp"
+            android:layout_marginTop="@dimen/margin_size_8dp"
+            android:layout_toRightOf="@id/iv_assistant"
+            android:text="医生助理"
+            android:textStyle="bold"/>
+
+        <TextView
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_assistant"
+            android:layout_marginBottom="@dimen/margin_size_8dp"
+            android:layout_marginLeft="@dimen/margin_size_18dp"
+            android:layout_toRightOf="@id/iv_assistant"
+            android:text="你好，你想咨询什么问题呢？"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/divide_line_horizontal_little_999"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_chose_patient"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_temple1"
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:text="@string/huanzhe"/>
+
+        <TextView
+            android:id="@+id/tv_chose_patient"
+            style="@style/tv_font_28px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_size_6dp"
+            android:layout_toRightOf="@id/tv_temple1"
+            android:text="请选择"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_size_10dp"
+            android:src="@drawable/index_more"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/divide_line_horizontal_little_999"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:text="病症描述 :"/>
+
+        <EditText
+            android:id="@+id/et_question_bref"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_size_6dp"
+            android:background="@null"
+            android:hint="请描述病症名称"
+            android:textColorHint="@color/font_gray"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divide_line_horizontal_little_999"
+        />
+
+    <TextView
+        style="@style/tv_font_24px_999"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/line_colour_e5"
+        android:lineSpacingExtra="@dimen/margin_size_12dp"
+        android:padding="@dimen/margin_size_10dp"
+        android:text="@string/shili"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:text="咨询标题 :"/>
+
+        <EditText
+            android:id="@+id/et_title"
+            style="@style/et_font_28px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_size_6dp"
+            android:background="@null"
+            android:hint="为您的咨询写一个醒目的标题"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_size_10dp">
+
+        <TextView
+            android:id="@+id/tv_temple2"
+            style="@style/tv_font_28px_333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="病情描述 :"/>
+
+        <EditText
+            android:id="@+id/et_disease_describe"
+            style="@style/et_font_28px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="@dimen/margin_size_6dp"
+            android:layout_marginRight="@dimen/margin_size_10dp"
+            android:layout_toRightOf="@id/tv_temple2"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="@string/miaoshu"
+            android:maxLength="100"
+            android:textSize="@dimen/font_size_14sp"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/divide_line_horizontal_little_999"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_add_picture"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_up_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:src="@drawable/zxys_mfzx_uppic"
+            />
+
+        <TextView
+            style="@style/tv_font_24px_999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_size_10dp"
+            android:layout_toRightOf="@id/iv_up_img"
+            android:text="病例图片或检查图片，方便医生确认"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f7f7f7"/>
+
+</LinearLayout>

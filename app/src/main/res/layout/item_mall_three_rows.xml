@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="8dp"
+    >
+
+
+    <com.loopj.android.image.SmartImageView
+        android:src="@drawable/default_product"
+        android:id="@+id/gridimage"
+        android:layout_width="80dp"
+        android:layout_marginTop="@dimen/margin_size_8dp"
+        android:layout_height="60dp"
+        />
+
+    <TextView
+        android:id="@+id/gridtext"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:singleLine="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_three_row_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingTop="4dp"
+        android:textColor="@color/font_colour_5d"/>
+</LinearLayout>

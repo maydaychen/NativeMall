@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_size_16dp"
+                android:layout_marginTop="@dimen/margin_size_16dp"
+    >
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/iv_recommend_doct"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/fenxiang_qq"
+        android:padding="1dp"
+        android:background="@drawable/doct_img_bg"/>
+
+    <TextView
+        android:id="@+id/tv_recommend_name"
+        style="@style/tv_font_24px_333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_recommend_doct"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tv_recommend_depmt"
+        style="@style/tv_font_20px_999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_recommend_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"/>
+
+
+</RelativeLayout>

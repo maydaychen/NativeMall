@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/backgrouund"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/margin_size_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_order_shopname"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/font_size_12sp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin_size_10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_12sp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/margin_size_12dp"
+            android:text="@string/tv_yiquxiao"
+            android:textColor="@color/font_colour_99"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_order_detail"
+        android:descendantFocusability="blocksDescendants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_item_order_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/daishouhuo_jiantou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:src="@drawable/index_more"/>
+
+        <TextView
+            android:id="@+id/tv_order_total_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_10sp"
+            android:layout_toLeftOf="@id/daishouhuo_jiantou"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:layout_centerVertical="true"
+            android:text="@string/tv_order_num"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_order_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_size_12dp"
+            android:textSize="@dimen/font_size_10sp"
+            android:text="@string/tv_order_total_price"
+            android:textColor="@color/font_666"/>
+
+        <Button
+            android:id="@+id/bt_yiquxiao_shanchu"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/font_size_10sp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bt_order_grey"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:text="@string/tv_config_delete"
+            android:textColor="@color/font_colour_99"/>
+    </RelativeLayout>
+</LinearLayout>

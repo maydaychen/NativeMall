@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/backgrouund"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_size_10dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_order_shopname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin_size_10dp"
+            android:textSize="@dimen/font_size_12sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/margin_size_12dp"
+            android:text="@string/tv_daifahuo"
+            android:textColor="@color/font_colour_22"
+            android:textSize="@dimen/font_size_12sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_order_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_item_order_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/daishouhuo_jiantou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:src="@drawable/index_more"/>
+
+        <TextView
+            android:id="@+id/tv_order_total_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:layout_toLeftOf="@id/daishouhuo_jiantou"
+            android:clickable="false"
+            android:text="@string/tv_order_num"
+            android:textSize="@dimen/font_size_10sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_order_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_size_12dp"
+            android:text="@string/tv_order_total_price"
+            android:textColor="@color/font_666"
+            android:textSize="@dimen/font_size_10sp"/>
+
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="@dimen/margin_size_8dp"-->
+        <!--android:textSize="@dimen/font_size_10sp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:background="@drawable/br_order_green"-->
+        <!--android:text="@string/tv_daifahuo_tuikuan"-->
+        <!--android:textColor="@color/font_colour_22"/>-->
+    </RelativeLayout>
+</LinearLayout>

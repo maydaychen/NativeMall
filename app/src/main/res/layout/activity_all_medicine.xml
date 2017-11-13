@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/backgrouund"
+              android:orientation="vertical"
+              tools:context="com.example.nativeMall.ui.Activity.GridDownActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_grid_down_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/search_background">
+
+        <ImageView
+            android:id="@+id/iv_supplier_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/iv_back"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+        <TextView
+            android:text="@string/allmed"
+            android:id="@+id/tv_supplier_title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/tv2_white_24_margin8" />
+
+        <ImageView
+            android:id="@+id/iv_grid_down_kind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:src="@drawable/v2_0_list_datu" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/backgrouund"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="4dp"
+        android:weightSum="7">
+
+        <EditText
+            android:id="@+id/et_grid_down_search"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_weight="6"
+            android:drawablePadding="@dimen/margin_size_8dp"
+            android:padding="@dimen/margin_size_4dp"
+            android:textSize="@dimen/font_size_14sp"
+            android:background="@drawable/search_white_8px"
+            android:drawableLeft="@drawable/v2_0_search_hui"
+            android:hint="@string/et_enter_medicine_name" />
+
+        <TextView
+            android:id="@+id/tv_grid_down_search"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/textview_boder_blue"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/search"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <TextView
+        android:background="@color/line_colour_ee"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_grid_down_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
