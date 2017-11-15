@@ -145,7 +145,6 @@
     <string name="tv_my_zhifu">支付密码设置</string>
     <string name="tv_my_date">我的预约单</string>
     <string name="tv_my_message">消息中心</string>
-    <string name="tv_my_order">我的订单</string>
     <string name="tv_my_address">收货地址管理</string>
     <string name="tv_my_address_detail">新增、修改、删除</string>
     <string name="tv_my_youhui">我的优惠券</string>
@@ -213,5 +212,6 @@
     <string name="choose_size">请选择尺寸</string>
     <string name="buy_num">购买数量</string>
     <string name="input_phone_number">请输入手机号</string>
+    <string name="tv_my_order">我的订单</string>
 
 </resources>

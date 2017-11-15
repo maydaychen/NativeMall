@@ -244,13 +244,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-//        logoutOnNext = resultBean -> {
-//            if (resultBean.getInt("statusCode") == 1) {
-//                Toast.makeText(this, "登出成功！", Toast.LENGTH_SHORT).show();
-//                editor.putString("sessionkey", "");
-//                editor.apply();
-//            }
-//        };
 
         RxTextView.textChanges(mEditText).subscribe(charSequence -> {
             if (charSequence.length() == 11) {

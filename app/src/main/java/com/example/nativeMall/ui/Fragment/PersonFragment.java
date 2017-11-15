@@ -13,12 +13,7 @@ import android.widget.TextView;
 import com.example.nativeMall.Config;
 import com.example.nativeMall.R;
 import com.example.nativeMall.Util;
-import com.example.nativeMall.ui.Activity.DateListAct;
 import com.example.nativeMall.ui.Activity.LoginActivity;
-import com.example.nativeMall.ui.Activity.MessageCenterActivity;
-import com.example.nativeMall.ui.Activity.MyAddressActivity;
-import com.example.nativeMall.ui.Activity.MyOrderActivity;
-import com.example.nativeMall.ui.Activity.MyShoucangActivity;
 import com.example.nativeMall.ui.Activity.SettingActivity;
 import com.loopj.android.image.SmartImageView;
 
@@ -78,29 +73,11 @@ public class PersonFragment extends Fragment {
         mTvPersonUsername.setText(Config.IS_LOG ? Config.userBean.getData().getUsername() : "请登录");
     }
 
-    @OnClick({R.id.rl_person_jiankangka, R.id.rl_person_zhifu, R.id.rl_person_date, R.id
-            .rl_person_message, R.id.rl_person_order, R.id.rl_person_address, R.id.rl_person_shoucang, R.id.iv_my_logo})
+    @OnClick({R.id.rl_person_jiankangka, R.id.iv_my_logo})
     public void onClick(View view) {
         if (Config.IS_LOG) {
             switch (view.getId()) {
                 case R.id.rl_person_jiankangka:
-                    break;
-                case R.id.rl_person_zhifu:
-                    break;
-                case R.id.rl_person_date:
-                    Util.startIntent(getActivity(), DateListAct.class);
-                    break;
-                case R.id.rl_person_message:
-                    Util.startIntent(getActivity(), MessageCenterActivity.class);
-                    break;
-                case R.id.rl_person_order:
-                    Util.startIntent(getActivity(), MyOrderActivity.class);
-                    break;
-                case R.id.rl_person_address:
-                    Util.startIntent(getActivity(), MyAddressActivity.class);
-                    break;
-                case R.id.rl_person_shoucang:
-                    Util.startIntent(getActivity(), MyShoucangActivity.class);
                     break;
             }
         } else {
