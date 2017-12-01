@@ -13,8 +13,7 @@
         android:id="@+id/rl_mine_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp"
-        app:textTitle="@string/tv_my_setting_about"/>
+        app:srcLeftIv="@drawable/ic_keyboard_arrow_left_white_24dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -33,7 +32,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin_size_10dp"
-            android:text="@string/current_version"
             android:textColor="@color/font_colour_33"/>
     </LinearLayout>
 

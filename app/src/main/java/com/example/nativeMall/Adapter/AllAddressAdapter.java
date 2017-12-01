@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.nativeMall.Bean.AddressBean;
 import com.example.nativeMall.R;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 作者：JTR on 2016/9/23 15:43
@@ -17,17 +17,21 @@ import java.util.Map;
  */
 public class AllAddressAdapter extends RecyclerView.Adapter<AllAddressAdapter.ViewHolder> implements View.OnClickListener {
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;
-    private List<Map<String, Object>> mData;
+    private List<AddressBean.ResultBean.ListBean> mData;
+    private EditInterface mEditInterface;
 
     //define interface
     public interface OnRecyclerViewItemClickListener {
         void onItemClick(View view, int data);
     }
 
-    public AllAddressAdapter(List<Map<String, Object>> mData) {
+    public AllAddressAdapter(List<AddressBean.ResultBean.ListBean> mData) {
         this.mData = mData;
     }
 
+    public void setCheckInterface(EditInterface editInterface) {
+        this.mEditInterface = editInterface;
+    }
 
     //创建新View，被LayoutManager所调用
     @Override
@@ -42,12 +46,15 @@ public class AllAddressAdapter extends RecyclerView.Adapter<AllAddressAdapter.Vi
     //将数据与界面进行绑定的操作
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        viewHolder.name.setText((String) mData.get(position).get("name"));
-        viewHolder.mobile.setText((String) mData.get(position).get("mobile"));
-        viewHolder.address.setText((String) mData.get(position).get("address"));
-        if ( !mData.get(position).get("default").equals("11")){
+        viewHolder.name.setText(mData.get(position).getRealname());
+        viewHolder.mobile.setText(mData.get(position).getMobile());
+        viewHolder.address.setText(mData.get(position).getProvince() + mData.get(position).getCity() +
+                mData.get(position).getArea() + mData.get(position).getAddress());
+        if (!mData.get(position).getIsdefault().equals("1")) {
             viewHolder.IS_DEFAULT.setVisibility(View.INVISIBLE);
         }
+        viewHolder.change.setOnClickListener(view -> mEditInterface.changeAddress(position));
+        viewHolder.delete.setOnClickListener(view -> mEditInterface.deleteAddress(position));
         viewHolder.itemView.setTag(position);
     }
 
@@ -76,14 +83,35 @@ public class AllAddressAdapter extends RecyclerView.Adapter<AllAddressAdapter.Vi
         public TextView mobile;
         public TextView address;
         public TextView IS_DEFAULT;
+        public TextView change;
+        public TextView delete;
 
 
         public ViewHolder(View view) {
             super(view);
-            name = (TextView) view.findViewById(R.id.tv_address_name);
-            mobile = (TextView) view.findViewById(R.id.tv_address_mobile);
-            address = (TextView) view.findViewById(R.id.tv_address_detail);
-            IS_DEFAULT = (TextView) view.findViewById(R.id.tv_address_default);
+            name = view.findViewById(R.id.tv_address_name);
+            mobile = view.findViewById(R.id.tv_address_mobile);
+            address = view.findViewById(R.id.tv_address_detail);
+            IS_DEFAULT = view.findViewById(R.id.tv_address_default);
+            change = view.findViewById(R.id.tv_address_change);
+            delete = view.findViewById(R.id.tv_address_delete);
         }
     }
+
+    public interface EditInterface {
+        /**
+         * 组选框状态改变触发的事件
+         *
+         * @param positon 组元素位置
+         */
+        void changeAddress(int positon);
+
+        /**
+         * 子选框状态改变时触发的事件
+         *
+         * @param positon 组元素位置
+         */
+        void deleteAddress(int positon);
+    }
+
 }

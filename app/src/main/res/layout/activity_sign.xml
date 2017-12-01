@@ -43,7 +43,7 @@
             android:background="@null"
             android:drawableLeft="@drawable/v2_0_login_yhm"
             android:drawablePadding="8dp"
-            android:hint="@string/sign_username"
+
             android:inputType="phone"
             android:paddingLeft="@dimen/margin_size_8dp"/>
     </LinearLayout>
@@ -71,7 +71,6 @@
                 android:background="@null"
                 android:drawableLeft="@drawable/v2_0_login_yanzm"
                 android:drawablePadding="8dp"
-                android:hint="@string/yanzhengma"
                 android:paddingLeft="@dimen/margin_size_8dp"/>
         </LinearLayout>
 
@@ -82,9 +81,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/margin_size_10dp"
             android:layout_weight="1"
-            android:background="@drawable/next_step_bg"
-            android:text="@string/send_yanzhengma"
-            />
+            android:background="@drawable/next_step_bg"            />
     </LinearLayout>
 
     <RelativeLayout
@@ -128,7 +125,7 @@
         android:layout_below="@id/rl_password"
         android:layout_margin="@dimen/margin_size_14dp"
         android:background="@drawable/next_step_bg"
-        android:text="@string/bt_sign"
+
         android:textColor="#ffffff"/>
 
     <TextView
@@ -138,6 +135,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginRight="@dimen/margin_size_10dp"
-        android:padding="@dimen/margin_size_10dp"
-        android:text="@string/bt_sign_log"/>
+        android:padding="@dimen/margin_size_10dp"/>
 </LinearLayout>

@@ -22,8 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/tv_white_24_margin8"
-            android:text="@string/qingsong"/>
+            style="@style/tv_white_24_margin8"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -55,13 +54,13 @@
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chakan" />
+            />
 
             <TextView
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chakan2" />
+        />
         </LinearLayout>
 
     </RelativeLayout>
@@ -95,13 +94,12 @@
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/paizhao" />
+ />
 
             <TextView
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/paizhao2" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -12,12 +13,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white">
 
             <TextView
+                android:id="@+id/tv_main_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -32,15 +35,34 @@
                 android:text="@string/tv_main_search"/>
         </RelativeLayout>
 
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:image_scale_type="fit_xy"/>
+
+        <com.example.nativeMall.ui.widget.GrideViewScroll
+            android:id="@+id/gv_mall_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:columnWidth="80dp"
+            android:numColumns="4"
+            android:paddingBottom="@dimen/margin_size_8dp"
+            android:paddingTop="@dimen/margin_size_8dp"
+            android:stretchMode="columnWidth"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="@color/white"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_8dp"
+            android:background="@color/white">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:padding="@dimen/margin_size_8dp"
                 android:text="热销产品"
                 android:textColor="@color/red"/>
 
@@ -54,14 +76,131 @@
                 android:src="@drawable/index_more"/>
 
             <TextView
+                android:id="@+id/tv_main_hot_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:padding="@dimen/margin_size_8dp"
                 android:layout_toLeftOf="@id/iv_hot_more"
-                android:text="查看更多"/>
+                android:text="查看更多"
+                android:textColor="@color/red"/>
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_colour_ee"/>
 
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_size_8dp"
+            android:background="@color/white"
+            android:scrollbars="none">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_mall_hot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_size_8dp"/>
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/margin_size_8dp"
+                android:text="最新产品"
+                android:textColor="@color/red"/>
+
+            <ImageView
+                android:id="@+id/iv_hot_latest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/margin_size_8dp"
+                android:src="@drawable/index_more"/>
+
+            <TextView
+                android:id="@+id/tv_main_latest_more"
+                android:padding="@dimen/margin_size_8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/iv_hot_latest"
+                android:text="查看更多"
+                android:textColor="@color/red"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_colour_ee"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_size_8dp"
+            android:background="@color/white"
+            android:scrollbars="none">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_mall_latest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_size_8dp"/>
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/margin_size_8dp"
+                android:text="推荐产品"
+                android:textColor="@color/red"/>
+
+            <ImageView
+                android:id="@+id/iv_hot_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/margin_size_8dp"
+                android:src="@drawable/index_more"/>
+
+            <TextView
+                android:id="@+id/tv_main_recommend_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_size_8dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/iv_hot_recommend"
+                android:text="查看更多"
+                android:textColor="@color/red"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_colour_ee"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_mall_recomment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/margin_size_8dp"/>
     </LinearLayout>
 
 </ScrollView>

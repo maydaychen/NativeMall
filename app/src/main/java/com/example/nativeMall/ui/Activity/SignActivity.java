@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.nativeMall.Config;
-import com.example.nativeMall.Http;
 import com.example.nativeMall.R;
+import com.example.nativeMall.http.Http;
 import com.example.nativeMall.ui.widget.CustomTitle;
 import com.google.gson.Gson;
 import com.hyphenate.chat.EMClient;

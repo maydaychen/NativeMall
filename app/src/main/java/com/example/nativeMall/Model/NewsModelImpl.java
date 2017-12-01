@@ -3,9 +3,8 @@ package com.example.nativeMall.Model;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-
-import com.example.nativeMall.Http;
 import com.example.nativeMall.Listener.AddAddressListener;
+import com.example.nativeMall.http.Http;
 
 import org.json.JSONException;
 import org.json.JSONObject;

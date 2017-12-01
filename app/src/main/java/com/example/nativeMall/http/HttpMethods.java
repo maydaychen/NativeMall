@@ -13,7 +13,7 @@ import rx.functions.Func1;
  * 邮箱：2091320109@qq.com
  */
 public class HttpMethods {
-    public static final String BASE_URL = "http://qiaoqiaochi.wshoto.com";
+    public static final String BASE_URL = "https://ganglong.wshoto.com/";
     private static final int DEFAULT_TIMEOUT = 5;
 
     private Retrofit retrofit;

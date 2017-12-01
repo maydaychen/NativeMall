@@ -8,181 +8,154 @@ import java.util.List;
  * 邮箱：2091320109@qq.com
  */
 public class PreOrderBean implements Serializable {
-
     /**
-     * data : {"allPrice":5997,"address":{"said":189,"regionid":1188,"provinceid":10,"cityid":116,"isdefault":"11","alias":"","consignee":"啦啦啦啦啦啦","mobile":"15145960288","phone":"","address":"还是我","provincename":"江苏省","cityname":"盐城市","rename":"滨海县"},"allFair":0,"cutPrice":300,"products":[{"product":{"pid":"239","storeid":"116","storecid":"184","storestid":"112","state":"0","isbest":"0","isnew":"0","name":"华为麦芒4  3G  黑色  ","shopprice":"1999.00","marketprice":"2399.00","displayorder":"0","weight":"0","showimg":"/userfiles/c00fefde-a470-46ac-bf6d-17457a9f6424.jpg","sname":"华为专卖","buycount":"1","fare":"0.00"},"attrs":[],"buycount":"1","fare":"0.00","carid":"604","totalMoney":"1999.0"},{"product":{"pid":"238","storeid":"116","storecid":"184","storestid":"112","state":"0","isbest":"0","isnew":"0","name":"华为麦芒4  3G  白色","shopprice":"1999.00","marketprice":"2399.00","displayorder":"0","weight":"0","showimg":null,"sname":"华为专卖","buycount":"2","fare":"0.00"},"attrs":[{"attrid":"54","attname":"联通","attrvalueid":"2285","attrvalue":"3G"},{"attrid":"64","attname":"颜色","attrvalueid":"2287","attrvalue":"白色"}],"buycount":"2","fare":"0.00","carid":"603","totalMoney":"3998.0"}]}
-     * msg : ok
-     * success : T
+     * statusCode : 1
+     * result : {"orderGoods":[{"goodsid":"146","title":"Apple 苹果 iPhone X 限量预售 发售当天按订单顺序发货","weight":"0.00","issendfree":"1","isnodiscount":"0","thumb":"https://ganglong.wshoto.com/attachment/images/2/2017/10/Fagf8a88PwDuGA8Lg50LfG5gTGB11l.jpg","marketprice":"8988.00","storeids":"","isverify":"1","deduct":"0.00","total":1,"optionid":847,"optiontitle":"灰色+64G"}],"addressLists":[{"id":"3","uniacid":"2","openid":"oNSO9wHBr-KbfKt0sNybs2wByWHY","realname":"汤正刚","mobile":"18915787525","province":"江苏省","city":"苏州市","area":"张家港市","address":"清水湾29-604","isdefault":"1","zipcode":"","deleted":"0"}],"defaultAddress":{"id":"3","uniacid":"2","openid":"oNSO9wHBr-KbfKt0sNybs2wByWHY","realname":"汤正刚","mobile":"18915787525","province":"江苏省","city":"苏州市","area":"张家港市","address":"清水湾29-604","isdefault":"1","zipcode":"","deleted":"0"},"dispatches":[{"id":"1","uniacid":"2","dispatchname":"包邮","dispatchtype":"0","displayorder":"0","firstprice":"0.00","secondprice":"0.00","firstweight":"1000","secondweight":"1000","express":"","areas":"a:0:{}","carriers":"a:0:{}","enabled":"1","price":0}],"memberDiscount":{"total":1,"goodsprice":8988,"realprice":8988,"deductprice":0,"discountprice":0,"couponcount":0,"deductmoney":0,"deductcredit":0},"shopSet":{"name":"江苏岗隆数码科技有限公司","img":"","logo":"images/2/2017/07/yTtEitwZziqoupMw3BoMQuQhhuPuqu.png","signimg":"","qq":"","address":"江苏省宜兴市经济开发区文庄路8号创意软件大厦A座3楼","phone":"400-187-6188","description":"江苏岗隆数码科技有限公司，成立于2011年11月14日，2016年9月进行业务重组，注册资本5000万元，公司围绕移动通讯终端产品、数码电子消费产品等领域，形成了分销、电商零售、移动转售、供应链金融业务四大业务板块。岗隆数码现已覆盖长三角、珠三角、京津冀、成渝商圈等多省（市）的近300多家批发商及线上各大B2C运营平台、各大银行商城。岗隆数码致力于向广大消费者提供手机数码产品销售、配件以及售后等综合专业化的服务。公司几大运营商形成了共创共赢的战略合作关系。同时与苹果、华为、三星、小米、联想、酷派、乐视、魅族、中兴、OPPO、vivo等上游资源及代理商上构建了以分销、零售为核心业务的格局。","catlevel":"2","catshow":0,"catadvimg":"","catadvurl":"","levelname":"尊享会员","levelurl":""}}
      */
 
-    private DataBean data;
-    private String msg;
-    private String success;
+    private int statusCode;
+    private ResultBean result;
 
-    public DataBean getData() {
-        return data;
+    public int getStatusCode() {
+        return statusCode;
     }
 
-    public void setData(DataBean data) {
-        this.data = data;
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
-    public String getMsg() {
-        return msg;
+    public ResultBean getResult() {
+        return result;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setResult(ResultBean result) {
+        this.result = result;
     }
 
-    public String getSuccess() {
-        return success;
-    }
-
-    public void setSuccess(String success) {
-        this.success = success;
-    }
-
-    public static class DataBean implements Serializable {
+    public static class ResultBean {
         /**
-         * allPrice : 5997
-         * address : {"said":189,"regionid":1188,"provinceid":10,"cityid":116,"isdefault":"11","alias":"","consignee":"啦啦啦啦啦啦","mobile":"15145960288","phone":"","address":"还是我","provincename":"江苏省","cityname":"盐城市","rename":"滨海县"}
-         * allFair : 0
-         * cutPrice : 300
-         * products : [{"product":{"pid":"239","storeid":"116","storecid":"184","storestid":"112","state":"0","isbest":"0","isnew":"0","name":"华为麦芒4  3G  黑色  ","shopprice":"1999.00","marketprice":"2399.00","displayorder":"0","weight":"0","showimg":"/userfiles/c00fefde-a470-46ac-bf6d-17457a9f6424.jpg","sname":"华为专卖","buycount":"1","fare":"0.00"},"attrs":[],"buycount":"1","fare":"0.00","carid":"604","totalMoney":"1999.0"},{"product":{"pid":"238","storeid":"116","storecid":"184","storestid":"112","state":"0","isbest":"0","isnew":"0","name":"华为麦芒4  3G  白色","shopprice":"1999.00","marketprice":"2399.00","displayorder":"0","weight":"0","showimg":null,"sname":"华为专卖","buycount":"2","fare":"0.00"},"attrs":[{"attrid":"54","attname":"联通","attrvalueid":"2285","attrvalue":"3G"},{"attrid":"64","attname":"颜色","attrvalueid":"2287","attrvalue":"白色"}],"buycount":"2","fare":"0.00","carid":"603","totalMoney":"3998.0"}]
+         * orderGoods : [{"goodsid":"146","title":"Apple 苹果 iPhone X 限量预售 发售当天按订单顺序发货","weight":"0.00","issendfree":"1","isnodiscount":"0","thumb":"https://ganglong.wshoto.com/attachment/images/2/2017/10/Fagf8a88PwDuGA8Lg50LfG5gTGB11l.jpg","marketprice":"8988.00","storeids":"","isverify":"1","deduct":"0.00","total":1,"optionid":847,"optiontitle":"灰色+64G"}]
+         * addressLists : [{"id":"3","uniacid":"2","openid":"oNSO9wHBr-KbfKt0sNybs2wByWHY","realname":"汤正刚","mobile":"18915787525","province":"江苏省","city":"苏州市","area":"张家港市","address":"清水湾29-604","isdefault":"1","zipcode":"","deleted":"0"}]
+         * defaultAddress : {"id":"3","uniacid":"2","openid":"oNSO9wHBr-KbfKt0sNybs2wByWHY","realname":"汤正刚","mobile":"18915787525","province":"江苏省","city":"苏州市","area":"张家港市","address":"清水湾29-604","isdefault":"1","zipcode":"","deleted":"0"}
+         * dispatches : [{"id":"1","uniacid":"2","dispatchname":"包邮","dispatchtype":"0","displayorder":"0","firstprice":"0.00","secondprice":"0.00","firstweight":"1000","secondweight":"1000","express":"","areas":"a:0:{}","carriers":"a:0:{}","enabled":"1","price":0}]
+         * memberDiscount : {"total":1,"goodsprice":8988,"realprice":8988,"deductprice":0,"discountprice":0,"couponcount":0,"deductmoney":0,"deductcredit":0}
+         * shopSet : {"name":"江苏岗隆数码科技有限公司","img":"","logo":"images/2/2017/07/yTtEitwZziqoupMw3BoMQuQhhuPuqu.png","signimg":"","qq":"","address":"江苏省宜兴市经济开发区文庄路8号创意软件大厦A座3楼","phone":"400-187-6188","description":"江苏岗隆数码科技有限公司，成立于2011年11月14日，2016年9月进行业务重组，注册资本5000万元，公司围绕移动通讯终端产品、数码电子消费产品等领域，形成了分销、电商零售、移动转售、供应链金融业务四大业务板块。岗隆数码现已覆盖长三角、珠三角、京津冀、成渝商圈等多省（市）的近300多家批发商及线上各大B2C运营平台、各大银行商城。岗隆数码致力于向广大消费者提供手机数码产品销售、配件以及售后等综合专业化的服务。公司几大运营商形成了共创共赢的战略合作关系。同时与苹果、华为、三星、小米、联想、酷派、乐视、魅族、中兴、OPPO、vivo等上游资源及代理商上构建了以分销、零售为核心业务的格局。","catlevel":"2","catshow":0,"catadvimg":"","catadvurl":"","levelname":"尊享会员","levelurl":""}
          */
 
-        private double allPrice;
-        private AddressBean address;
-        private double allFair;
-        private double cutPrice;
-        private List<ProductsBean> products;
+        private DefaultAddressBean defaultAddress;
+        private MemberDiscountBean memberDiscount;
+        private ShopSetBean shopSet;
+        private List<OrderGoodsBean> orderGoods;
+        private List<AddressListsBean> addressLists;
+        private List<DispatchesBean> dispatches;
 
-        public double getAllPrice() {
-            return allPrice;
+        public DefaultAddressBean getDefaultAddress() {
+            return defaultAddress;
         }
 
-        public void setAllPrice(int allPrice) {
-            this.allPrice = allPrice;
+        public void setDefaultAddress(DefaultAddressBean defaultAddress) {
+            this.defaultAddress = defaultAddress;
         }
 
-        public AddressBean getAddress() {
-            return address;
+        public MemberDiscountBean getMemberDiscount() {
+            return memberDiscount;
         }
 
-        public void setAddress(AddressBean address) {
-            this.address = address;
+        public void setMemberDiscount(MemberDiscountBean memberDiscount) {
+            this.memberDiscount = memberDiscount;
         }
 
-        public double getAllFair() {
-            return allFair;
+        public ShopSetBean getShopSet() {
+            return shopSet;
         }
 
-        public void setAllFair(int allFair) {
-            this.allFair = allFair;
+        public void setShopSet(ShopSetBean shopSet) {
+            this.shopSet = shopSet;
         }
 
-        public double getCutPrice() {
-            return cutPrice;
+        public List<OrderGoodsBean> getOrderGoods() {
+            return orderGoods;
         }
 
-        public void setCutPrice(int cutPrice) {
-            this.cutPrice = cutPrice;
+        public void setOrderGoods(List<OrderGoodsBean> orderGoods) {
+            this.orderGoods = orderGoods;
         }
 
-        public List<ProductsBean> getProducts() {
-            return products;
+        public List<AddressListsBean> getAddressLists() {
+            return addressLists;
         }
 
-        public void setProducts(List<ProductsBean> products) {
-            this.products = products;
+        public void setAddressLists(List<AddressListsBean> addressLists) {
+            this.addressLists = addressLists;
         }
 
-        public static class AddressBean implements Serializable {
+        public List<DispatchesBean> getDispatches() {
+            return dispatches;
+        }
+
+        public void setDispatches(List<DispatchesBean> dispatches) {
+            this.dispatches = dispatches;
+        }
+
+        public static class DefaultAddressBean {
             /**
-             * said : 189
-             * regionid : 1188
-             * provinceid : 10
-             * cityid : 116
-             * isdefault : 11
-             * alias :
-             * consignee : 啦啦啦啦啦啦
-             * mobile : 15145960288
-             * phone :
-             * address : 还是我
-             * provincename : 江苏省
-             * cityname : 盐城市
-             * rename : 滨海县
+             * id : 3
+             * uniacid : 2
+             * openid : oNSO9wHBr-KbfKt0sNybs2wByWHY
+             * realname : 汤正刚
+             * mobile : 18915787525
+             * province : 江苏省
+             * city : 苏州市
+             * area : 张家港市
+             * address : 清水湾29-604
+             * isdefault : 1
+             * zipcode :
+             * deleted : 0
              */
 
-            private int said;
-            private int regionid;
-            private int provinceid;
-            private int cityid;
-            private String isdefault;
-            private String alias;
-            private String consignee;
+            private String id;
+            private String uniacid;
+            private String openid;
+            private String realname;
             private String mobile;
-            private String phone;
+            private String province;
+            private String city;
+            private String area;
             private String address;
-            private String provincename;
-            private String cityname;
-            private String rename;
+            private String isdefault;
+            private String zipcode;
+            private String deleted;
 
-            public int getSaid() {
-                return said;
+            public String getId() {
+                return id;
             }
 
-            public void setSaid(int said) {
-                this.said = said;
+            public void setId(String id) {
+                this.id = id;
             }
 
-            public int getRegionid() {
-                return regionid;
+            public String getUniacid() {
+                return uniacid;
             }
 
-            public void setRegionid(int regionid) {
-                this.regionid = regionid;
+            public void setUniacid(String uniacid) {
+                this.uniacid = uniacid;
             }
 
-            public int getProvinceid() {
-                return provinceid;
+            public String getOpenid() {
+                return openid;
             }
 
-            public void setProvinceid(int provinceid) {
-                this.provinceid = provinceid;
+            public void setOpenid(String openid) {
+                this.openid = openid;
             }
 
-            public int getCityid() {
-                return cityid;
+            public String getRealname() {
+                return realname;
             }
 
-            public void setCityid(int cityid) {
-                this.cityid = cityid;
-            }
-
-            public String getIsdefault() {
-                return isdefault;
-            }
-
-            public void setIsdefault(String isdefault) {
-                this.isdefault = isdefault;
-            }
-
-            public String getAlias() {
-                return alias;
-            }
-
-            public void setAlias(String alias) {
-                this.alias = alias;
-            }
-
-            public String getConsignee() {
-                return consignee;
-            }
-
-            public void setConsignee(String consignee) {
-                this.consignee = consignee;
+            public void setRealname(String realname) {
+                this.realname = realname;
             }
 
             public String getMobile() {
@@ -193,12 +166,28 @@ public class PreOrderBean implements Serializable {
                 this.mobile = mobile;
             }
 
-            public String getPhone() {
-                return phone;
+            public String getProvince() {
+                return province;
             }
 
-            public void setPhone(String phone) {
-                this.phone = phone;
+            public void setProvince(String province) {
+                this.province = province;
+            }
+
+            public String getCity() {
+                return city;
+            }
+
+            public void setCity(String city) {
+                this.city = city;
+            }
+
+            public String getArea() {
+                return area;
+            }
+
+            public void setArea(String area) {
+                this.area = area;
             }
 
             public String getAddress() {
@@ -209,260 +198,668 @@ public class PreOrderBean implements Serializable {
                 this.address = address;
             }
 
-            public String getProvincename() {
-                return provincename;
+            public String getIsdefault() {
+                return isdefault;
             }
 
-            public void setProvincename(String provincename) {
-                this.provincename = provincename;
+            public void setIsdefault(String isdefault) {
+                this.isdefault = isdefault;
             }
 
-            public String getCityname() {
-                return cityname;
+            public String getZipcode() {
+                return zipcode;
             }
 
-            public void setCityname(String cityname) {
-                this.cityname = cityname;
+            public void setZipcode(String zipcode) {
+                this.zipcode = zipcode;
             }
 
-            public String getRename() {
-                return rename;
+            public String getDeleted() {
+                return deleted;
             }
 
-            public void setRename(String rename) {
-                this.rename = rename;
+            public void setDeleted(String deleted) {
+                this.deleted = deleted;
             }
         }
 
-        public static class ProductsBean implements Serializable {
+        public static class MemberDiscountBean {
             /**
-             * product : {"pid":"239","storeid":"116","storecid":"184","storestid":"112","state":"0","isbest":"0","isnew":"0","name":"华为麦芒4  3G  黑色  ","shopprice":"1999.00","marketprice":"2399.00","displayorder":"0","weight":"0","showimg":"/userfiles/c00fefde-a470-46ac-bf6d-17457a9f6424.jpg","sname":"华为专卖","buycount":"1","fare":"0.00"}
-             * attrs : []
-             * buycount : 1
-             * fare : 0.00
-             * carid : 604
-             * totalMoney : 1999.0
+             * total : 1
+             * goodsprice : 8988
+             * realprice : 8988
+             * deductprice : 0
+             * discountprice : 0
+             * couponcount : 0
+             * deductmoney : 0
+             * deductcredit : 0
              */
 
-            private ProductBean product;
-            private String buycount;
-            private String fare;
-            private String carid;
-            private String totalMoney;
-            private List<?> attrs;
+            private int total;
+            private int goodsprice;
+            private int realprice;
+            private int deductprice;
+            private int discountprice;
+            private int couponcount;
+            private int deductmoney;
+            private int deductcredit;
 
-            public ProductBean getProduct() {
-                return product;
+            public int getTotal() {
+                return total;
             }
 
-            public void setProduct(ProductBean product) {
-                this.product = product;
+            public void setTotal(int total) {
+                this.total = total;
             }
 
-            public String getBuycount() {
-                return buycount;
+            public int getGoodsprice() {
+                return goodsprice;
             }
 
-            public void setBuycount(String buycount) {
-                this.buycount = buycount;
+            public void setGoodsprice(int goodsprice) {
+                this.goodsprice = goodsprice;
             }
 
-            public String getFare() {
-                return fare;
+            public int getRealprice() {
+                return realprice;
             }
 
-            public void setFare(String fare) {
-                this.fare = fare;
+            public void setRealprice(int realprice) {
+                this.realprice = realprice;
             }
 
-            public String getCarid() {
-                return carid;
+            public int getDeductprice() {
+                return deductprice;
             }
 
-            public void setCarid(String carid) {
-                this.carid = carid;
+            public void setDeductprice(int deductprice) {
+                this.deductprice = deductprice;
             }
 
-            public String getTotalMoney() {
-                return totalMoney;
+            public int getDiscountprice() {
+                return discountprice;
             }
 
-            public void setTotalMoney(String totalMoney) {
-                this.totalMoney = totalMoney;
+            public void setDiscountprice(int discountprice) {
+                this.discountprice = discountprice;
             }
 
-            public List<?> getAttrs() {
-                return attrs;
+            public int getCouponcount() {
+                return couponcount;
             }
 
-            public void setAttrs(List<?> attrs) {
-                this.attrs = attrs;
+            public void setCouponcount(int couponcount) {
+                this.couponcount = couponcount;
             }
 
-            public static class ProductBean implements Serializable {
-                /**
-                 * pid : 239
-                 * storeid : 116
-                 * storecid : 184
-                 * storestid : 112
-                 * state : 0
-                 * isbest : 0
-                 * isnew : 0
-                 * name : 华为麦芒4  3G  黑色
-                 * shopprice : 1999.00
-                 * marketprice : 2399.00
-                 * displayorder : 0
-                 * weight : 0
-                 * showimg : /userfiles/c00fefde-a470-46ac-bf6d-17457a9f6424.jpg
-                 * sname : 华为专卖
-                 * buycount : 1
-                 * fare : 0.00
-                 */
+            public int getDeductmoney() {
+                return deductmoney;
+            }
 
-                private String pid;
-                private String storeid;
-                private String storecid;
-                private String storestid;
-                private String state;
-                private String isbest;
-                private String isnew;
-                private String name;
-                private String shopprice;
-                private String marketprice;
-                private String displayorder;
-                private String weight;
-                private String showimg;
-                private String sname;
-                private String buycount;
-                private String fare;
+            public void setDeductmoney(int deductmoney) {
+                this.deductmoney = deductmoney;
+            }
 
-                public String getPid() {
-                    return pid;
-                }
+            public int getDeductcredit() {
+                return deductcredit;
+            }
 
-                public void setPid(String pid) {
-                    this.pid = pid;
-                }
+            public void setDeductcredit(int deductcredit) {
+                this.deductcredit = deductcredit;
+            }
+        }
 
-                public String getStoreid() {
-                    return storeid;
-                }
+        public static class ShopSetBean {
+            /**
+             * name : 江苏岗隆数码科技有限公司
+             * img :
+             * logo : images/2/2017/07/yTtEitwZziqoupMw3BoMQuQhhuPuqu.png
+             * signimg :
+             * qq :
+             * address : 江苏省宜兴市经济开发区文庄路8号创意软件大厦A座3楼
+             * phone : 400-187-6188
+             * description : 江苏岗隆数码科技有限公司，成立于2011年11月14日，2016年9月进行业务重组，注册资本5000万元，公司围绕移动通讯终端产品、数码电子消费产品等领域，形成了分销、电商零售、移动转售、供应链金融业务四大业务板块。岗隆数码现已覆盖长三角、珠三角、京津冀、成渝商圈等多省（市）的近300多家批发商及线上各大B2C运营平台、各大银行商城。岗隆数码致力于向广大消费者提供手机数码产品销售、配件以及售后等综合专业化的服务。公司几大运营商形成了共创共赢的战略合作关系。同时与苹果、华为、三星、小米、联想、酷派、乐视、魅族、中兴、OPPO、vivo等上游资源及代理商上构建了以分销、零售为核心业务的格局。
+             * catlevel : 2
+             * catshow : 0
+             * catadvimg :
+             * catadvurl :
+             * levelname : 尊享会员
+             * levelurl :
+             */
 
-                public void setStoreid(String storeid) {
-                    this.storeid = storeid;
-                }
+            private String name;
+            private String img;
+            private String logo;
+            private String signimg;
+            private String qq;
+            private String address;
+            private String phone;
+            private String description;
+            private String catlevel;
+            private int catshow;
+            private String catadvimg;
+            private String catadvurl;
+            private String levelname;
+            private String levelurl;
 
-                public String getStorecid() {
-                    return storecid;
-                }
+            public String getName() {
+                return name;
+            }
 
-                public void setStorecid(String storecid) {
-                    this.storecid = storecid;
-                }
+            public void setName(String name) {
+                this.name = name;
+            }
 
-                public String getStorestid() {
-                    return storestid;
-                }
+            public String getImg() {
+                return img;
+            }
 
-                public void setStorestid(String storestid) {
-                    this.storestid = storestid;
-                }
+            public void setImg(String img) {
+                this.img = img;
+            }
 
-                public String getState() {
-                    return state;
-                }
+            public String getLogo() {
+                return logo;
+            }
 
-                public void setState(String state) {
-                    this.state = state;
-                }
+            public void setLogo(String logo) {
+                this.logo = logo;
+            }
 
-                public String getIsbest() {
-                    return isbest;
-                }
+            public String getSignimg() {
+                return signimg;
+            }
 
-                public void setIsbest(String isbest) {
-                    this.isbest = isbest;
-                }
+            public void setSignimg(String signimg) {
+                this.signimg = signimg;
+            }
 
-                public String getIsnew() {
-                    return isnew;
-                }
+            public String getQq() {
+                return qq;
+            }
 
-                public void setIsnew(String isnew) {
-                    this.isnew = isnew;
-                }
+            public void setQq(String qq) {
+                this.qq = qq;
+            }
 
-                public String getName() {
-                    return name;
-                }
+            public String getAddress() {
+                return address;
+            }
 
-                public void setName(String name) {
-                    this.name = name;
-                }
+            public void setAddress(String address) {
+                this.address = address;
+            }
 
-                public String getShopprice() {
-                    return shopprice;
-                }
+            public String getPhone() {
+                return phone;
+            }
 
-                public void setShopprice(String shopprice) {
-                    this.shopprice = shopprice;
-                }
+            public void setPhone(String phone) {
+                this.phone = phone;
+            }
 
-                public String getMarketprice() {
-                    return marketprice;
-                }
+            public String getDescription() {
+                return description;
+            }
 
-                public void setMarketprice(String marketprice) {
-                    this.marketprice = marketprice;
-                }
+            public void setDescription(String description) {
+                this.description = description;
+            }
 
-                public String getDisplayorder() {
-                    return displayorder;
-                }
+            public String getCatlevel() {
+                return catlevel;
+            }
 
-                public void setDisplayorder(String displayorder) {
-                    this.displayorder = displayorder;
-                }
+            public void setCatlevel(String catlevel) {
+                this.catlevel = catlevel;
+            }
 
-                public String getWeight() {
-                    return weight;
-                }
+            public int getCatshow() {
+                return catshow;
+            }
 
-                public void setWeight(String weight) {
-                    this.weight = weight;
-                }
+            public void setCatshow(int catshow) {
+                this.catshow = catshow;
+            }
 
-                public String getShowimg() {
-                    return showimg;
-                }
+            public String getCatadvimg() {
+                return catadvimg;
+            }
 
-                public void setShowimg(String showimg) {
-                    this.showimg = showimg;
-                }
+            public void setCatadvimg(String catadvimg) {
+                this.catadvimg = catadvimg;
+            }
 
-                public String getSname() {
-                    return sname;
-                }
+            public String getCatadvurl() {
+                return catadvurl;
+            }
 
-                public void setSname(String sname) {
-                    this.sname = sname;
-                }
+            public void setCatadvurl(String catadvurl) {
+                this.catadvurl = catadvurl;
+            }
 
-                public String getBuycount() {
-                    return buycount;
-                }
+            public String getLevelname() {
+                return levelname;
+            }
 
-                public void setBuycount(String buycount) {
-                    this.buycount = buycount;
-                }
+            public void setLevelname(String levelname) {
+                this.levelname = levelname;
+            }
 
-                public String getFare() {
-                    return fare;
-                }
+            public String getLevelurl() {
+                return levelurl;
+            }
 
-                public void setFare(String fare) {
-                    this.fare = fare;
-                }
+            public void setLevelurl(String levelurl) {
+                this.levelurl = levelurl;
+            }
+        }
+
+        public static class OrderGoodsBean {
+            /**
+             * goodsid : 146
+             * title : Apple 苹果 iPhone X 限量预售 发售当天按订单顺序发货
+             * weight : 0.00
+             * issendfree : 1
+             * isnodiscount : 0
+             * thumb : https://ganglong.wshoto.com/attachment/images/2/2017/10/Fagf8a88PwDuGA8Lg50LfG5gTGB11l.jpg
+             * marketprice : 8988.00
+             * storeids :
+             * isverify : 1
+             * deduct : 0.00
+             * total : 1
+             * optionid : 847
+             * optiontitle : 灰色+64G
+             */
+
+            private String goodsid;
+            private String title;
+            private String weight;
+            private String issendfree;
+            private String isnodiscount;
+            private String thumb;
+            private String marketprice;
+            private String storeids;
+            private String isverify;
+            private String deduct;
+            private int total;
+            private int optionid;
+            private String optiontitle;
+
+            public String getGoodsid() {
+                return goodsid;
+            }
+
+            public void setGoodsid(String goodsid) {
+                this.goodsid = goodsid;
+            }
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getWeight() {
+                return weight;
+            }
+
+            public void setWeight(String weight) {
+                this.weight = weight;
+            }
+
+            public String getIssendfree() {
+                return issendfree;
+            }
+
+            public void setIssendfree(String issendfree) {
+                this.issendfree = issendfree;
+            }
+
+            public String getIsnodiscount() {
+                return isnodiscount;
+            }
+
+            public void setIsnodiscount(String isnodiscount) {
+                this.isnodiscount = isnodiscount;
+            }
+
+            public String getThumb() {
+                return thumb;
+            }
+
+            public void setThumb(String thumb) {
+                this.thumb = thumb;
+            }
+
+            public String getMarketprice() {
+                return marketprice;
+            }
+
+            public void setMarketprice(String marketprice) {
+                this.marketprice = marketprice;
+            }
+
+            public String getStoreids() {
+                return storeids;
+            }
+
+            public void setStoreids(String storeids) {
+                this.storeids = storeids;
+            }
+
+            public String getIsverify() {
+                return isverify;
+            }
+
+            public void setIsverify(String isverify) {
+                this.isverify = isverify;
+            }
+
+            public String getDeduct() {
+                return deduct;
+            }
+
+            public void setDeduct(String deduct) {
+                this.deduct = deduct;
+            }
+
+            public int getTotal() {
+                return total;
+            }
+
+            public void setTotal(int total) {
+                this.total = total;
+            }
+
+            public int getOptionid() {
+                return optionid;
+            }
+
+            public void setOptionid(int optionid) {
+                this.optionid = optionid;
+            }
+
+            public String getOptiontitle() {
+                return optiontitle;
+            }
+
+            public void setOptiontitle(String optiontitle) {
+                this.optiontitle = optiontitle;
+            }
+        }
+
+        public static class AddressListsBean {
+            /**
+             * id : 3
+             * uniacid : 2
+             * openid : oNSO9wHBr-KbfKt0sNybs2wByWHY
+             * realname : 汤正刚
+             * mobile : 18915787525
+             * province : 江苏省
+             * city : 苏州市
+             * area : 张家港市
+             * address : 清水湾29-604
+             * isdefault : 1
+             * zipcode :
+             * deleted : 0
+             */
+
+            private String id;
+            private String uniacid;
+            private String openid;
+            private String realname;
+            private String mobile;
+            private String province;
+            private String city;
+            private String area;
+            private String address;
+            private String isdefault;
+            private String zipcode;
+            private String deleted;
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+
+            public String getUniacid() {
+                return uniacid;
+            }
+
+            public void setUniacid(String uniacid) {
+                this.uniacid = uniacid;
+            }
+
+            public String getOpenid() {
+                return openid;
+            }
+
+            public void setOpenid(String openid) {
+                this.openid = openid;
+            }
+
+            public String getRealname() {
+                return realname;
+            }
+
+            public void setRealname(String realname) {
+                this.realname = realname;
+            }
+
+            public String getMobile() {
+                return mobile;
+            }
+
+            public void setMobile(String mobile) {
+                this.mobile = mobile;
+            }
+
+            public String getProvince() {
+                return province;
+            }
+
+            public void setProvince(String province) {
+                this.province = province;
+            }
+
+            public String getCity() {
+                return city;
+            }
+
+            public void setCity(String city) {
+                this.city = city;
+            }
+
+            public String getArea() {
+                return area;
+            }
+
+            public void setArea(String area) {
+                this.area = area;
+            }
+
+            public String getAddress() {
+                return address;
+            }
+
+            public void setAddress(String address) {
+                this.address = address;
+            }
+
+            public String getIsdefault() {
+                return isdefault;
+            }
+
+            public void setIsdefault(String isdefault) {
+                this.isdefault = isdefault;
+            }
+
+            public String getZipcode() {
+                return zipcode;
+            }
+
+            public void setZipcode(String zipcode) {
+                this.zipcode = zipcode;
+            }
+
+            public String getDeleted() {
+                return deleted;
+            }
+
+            public void setDeleted(String deleted) {
+                this.deleted = deleted;
+            }
+        }
+
+        public static class DispatchesBean {
+            /**
+             * id : 1
+             * uniacid : 2
+             * dispatchname : 包邮
+             * dispatchtype : 0
+             * displayorder : 0
+             * firstprice : 0.00
+             * secondprice : 0.00
+             * firstweight : 1000
+             * secondweight : 1000
+             * express :
+             * areas : a:0:{}
+             * carriers : a:0:{}
+             * enabled : 1
+             * price : 0
+             */
+
+            private String id;
+            private String uniacid;
+            private String dispatchname;
+            private String dispatchtype;
+            private String displayorder;
+            private String firstprice;
+            private String secondprice;
+            private String firstweight;
+            private String secondweight;
+            private String express;
+            private String areas;
+            private String carriers;
+            private String enabled;
+            private int price;
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+
+            public String getUniacid() {
+                return uniacid;
+            }
+
+            public void setUniacid(String uniacid) {
+                this.uniacid = uniacid;
+            }
+
+            public String getDispatchname() {
+                return dispatchname;
+            }
+
+            public void setDispatchname(String dispatchname) {
+                this.dispatchname = dispatchname;
+            }
+
+            public String getDispatchtype() {
+                return dispatchtype;
+            }
+
+            public void setDispatchtype(String dispatchtype) {
+                this.dispatchtype = dispatchtype;
+            }
+
+            public String getDisplayorder() {
+                return displayorder;
+            }
+
+            public void setDisplayorder(String displayorder) {
+                this.displayorder = displayorder;
+            }
+
+            public String getFirstprice() {
+                return firstprice;
+            }
+
+            public void setFirstprice(String firstprice) {
+                this.firstprice = firstprice;
+            }
+
+            public String getSecondprice() {
+                return secondprice;
+            }
+
+            public void setSecondprice(String secondprice) {
+                this.secondprice = secondprice;
+            }
+
+            public String getFirstweight() {
+                return firstweight;
+            }
+
+            public void setFirstweight(String firstweight) {
+                this.firstweight = firstweight;
+            }
+
+            public String getSecondweight() {
+                return secondweight;
+            }
+
+            public void setSecondweight(String secondweight) {
+                this.secondweight = secondweight;
+            }
+
+            public String getExpress() {
+                return express;
+            }
+
+            public void setExpress(String express) {
+                this.express = express;
+            }
+
+            public String getAreas() {
+                return areas;
+            }
+
+            public void setAreas(String areas) {
+                this.areas = areas;
+            }
+
+            public String getCarriers() {
+                return carriers;
+            }
+
+            public void setCarriers(String carriers) {
+                this.carriers = carriers;
+            }
+
+            public String getEnabled() {
+                return enabled;
+            }
+
+            public void setEnabled(String enabled) {
+                this.enabled = enabled;
+            }
+
+            public int getPrice() {
+                return price;
+            }
+
+            public void setPrice(int price) {
+                this.price = price;
             }
         }
     }

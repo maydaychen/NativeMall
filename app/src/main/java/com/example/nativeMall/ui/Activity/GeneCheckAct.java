@@ -1,6 +1,5 @@
 package com.example.nativeMall.ui.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -87,12 +86,12 @@ public class GeneCheckAct extends AppCompatActivity {
 
                     @Override
                     public void onItemClick(View view, int position) {
-                        StoreBean storeBean = listStoreBeen.get(position);
-                        Intent intent = new Intent(GeneCheckAct.this,GaMDetailAct.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("storeBean",storeBean);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
+//                        StoreBean storeBean = listStoreBeen.get(position);
+//                        Intent intent = new Intent(GeneCheckAct.this,GaMDetailAct.class);
+//                        Bundle bundle = new Bundle();
+//                        bundle.putSerializable("storeBean",storeBean);
+//                        intent.putExtras(bundle);
+//                        startActivity(intent);
 
                     }
                 });

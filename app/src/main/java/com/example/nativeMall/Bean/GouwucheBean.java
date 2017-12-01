@@ -7,191 +7,208 @@ import java.util.List;
  * 邮箱：2091320109@qq.com
  */
 public class GouwucheBean {
-    private DataBean data;
     /**
-     * data : {"attrs":[{"attval":[{"inputvalue":null,"attrvalueid":2286,"attrvalue":"2G"},{"inputvalue":null,"attrvalueid":2285,"attrvalue":"3G"},{"inputvalue":null,"attrvalueid":2284,"attrvalue":"4G"}],"attname":"联通"},{"attval":[{"inputvalue":null,"attrvalueid":2287,"attrvalue":"白色"},{"inputvalue":null,"attrvalueid":2288,"attrvalue":"黑色"}],"attname":"颜色"}],"products":[{"pid":"253","pinfo":[{"attrvalueid":2285,"attrvalue":"3G","number":49,"showing":null},{"attrvalueid":2287,"attrvalue":"白色","number":49,"showing":null}]},{"pid":"254","pinfo":[{"attrvalueid":2285,"attrvalue":"3G","number":49,"showing":null},{"attrvalueid":2288,"attrvalue":"黑色","number":49,"showing":null}]},{"pid":"255","pinfo":[{"attrvalueid":2286,"attrvalue":"2G","number":0,"showing":null},{"attrvalueid":2287,"attrvalue":"白色","number":0,"showing":null}]},{"pid":"256","pinfo":[{"attrvalueid":2286,"attrvalue":"2G","number":0,"showing":null},{"attrvalueid":2288,"attrvalue":"黑色","number":0,"showing":null}]},{"pid":"257","pinfo":[{"attrvalueid":2284,"attrvalue":"4G","number":0,"showing":null},{"attrvalueid":2287,"attrvalue":"白色","number":0,"showing":null}]},{"pid":"258","pinfo":[{"attrvalueid":2284,"attrvalue":"4G","number":0,"showing":null},{"attrvalueid":2288,"attrvalue":"黑色","number":0,"showing":null}]}]}
-     * msg : ok
-     * success : T
+     * statusCode : 1
+     * result : {"list":[{"id":"136","total":"1","goodsid":"128","optionid":"670","createtime":"2017-11-25 11:34:45","stock":"153","maxbuy":"0","title":"苹果 Apple iPhone 8 plus 热销中","thumb":"https://ganglong.wshoto.com/attachment/images/2/2017/09/tjDyjqD4Z3J5JYF4Q7jjj74DYMXy6J.jpg","optionstock":"153","optiontitle":"64G公开版+银色","specs":"433_431","marketprice":"6028.00","productprice":"0.00"},{"id":"135","total":"1","goodsid":"146","optionid":"848","createtime":"2017-11-25 11:34:37","stock":"14","maxbuy":"1","title":"Apple 苹果 iPhone X 限量预售 发售当天按订单顺序发货","thumb":"https://ganglong.wshoto.com/attachment/images/2/2017/10/Fagf8a88PwDuGA8Lg50LfG5gTGB11l.jpg","optionstock":"14","optiontitle":"灰色+256G","specs":"525_528","marketprice":"10618.00","productprice":"0.00"}],"total":2,"totalprice":"16,646.00"}
      */
 
-    private String msg;
-    private String success;
+    private int statusCode;
+    private ResultBean result;
 
-    public DataBean getData() {
-        return data;
+    public int getStatusCode() {
+        return statusCode;
     }
 
-    public void setData(DataBean data) {
-        this.data = data;
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
-    public String getMsg() {
-        return msg;
+    public ResultBean getResult() {
+        return result;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setResult(ResultBean result) {
+        this.result = result;
     }
 
-    public String getSuccess() {
-        return success;
-    }
-
-    public void setSuccess(String success) {
-        this.success = success;
-    }
-
-    public static class DataBean {
+    public static class ResultBean {
         /**
-         * attval : [{"inputvalue":null,"attrvalueid":2286,"attrvalue":"2G"},{"inputvalue":null,"attrvalueid":2285,"attrvalue":"3G"},{"inputvalue":null,"attrvalueid":2284,"attrvalue":"4G"}]
-         * attname : 联通
+         * list : [{"id":"136","total":"1","goodsid":"128","optionid":"670","createtime":"2017-11-25 11:34:45","stock":"153","maxbuy":"0","title":"苹果 Apple iPhone 8 plus 热销中","thumb":"https://ganglong.wshoto.com/attachment/images/2/2017/09/tjDyjqD4Z3J5JYF4Q7jjj74DYMXy6J.jpg","optionstock":"153","optiontitle":"64G公开版+银色","specs":"433_431","marketprice":"6028.00","productprice":"0.00"},{"id":"135","total":"1","goodsid":"146","optionid":"848","createtime":"2017-11-25 11:34:37","stock":"14","maxbuy":"1","title":"Apple 苹果 iPhone X 限量预售 发售当天按订单顺序发货","thumb":"https://ganglong.wshoto.com/attachment/images/2/2017/10/Fagf8a88PwDuGA8Lg50LfG5gTGB11l.jpg","optionstock":"14","optiontitle":"灰色+256G","specs":"525_528","marketprice":"10618.00","productprice":"0.00"}]
+         * total : 2
+         * totalprice : 16,646.00
          */
 
-        private List<AttrsBean> attrs;
-        /**
-         * pid : 253
-         * pinfo : [{"attrvalueid":2285,"attrvalue":"3G","number":49,"showing":null},{"attrvalueid":2287,"attrvalue":"白色","number":49,"showing":null}]
-         */
+        private int total;
+        private String totalprice;
+        private List<ListBean> list;
 
-        private List<ProductsBean> products;
-
-        public List<AttrsBean> getAttrs() {
-            return attrs;
+        public int getTotal() {
+            return total;
         }
 
-        public void setAttrs(List<AttrsBean> attrs) {
-            this.attrs = attrs;
+        public void setTotal(int total) {
+            this.total = total;
         }
 
-        public List<ProductsBean> getProducts() {
-            return products;
+        public String getTotalprice() {
+            return totalprice;
         }
 
-        public void setProducts(List<ProductsBean> products) {
-            this.products = products;
+        public void setTotalprice(String totalprice) {
+            this.totalprice = totalprice;
         }
 
-        public static class AttrsBean {
-            private String attname;
+        public List<ListBean> getList() {
+            return list;
+        }
+
+        public void setList(List<ListBean> list) {
+            this.list = list;
+        }
+
+        public static class ListBean {
             /**
-             * inputvalue : null
-             * attrvalueid : 2286
-             * attrvalue : 2G
+             * id : 136
+             * total : 1
+             * goodsid : 128
+             * optionid : 670
+             * createtime : 2017-11-25 11:34:45
+             * stock : 153
+             * maxbuy : 0
+             * title : 苹果 Apple iPhone 8 plus 热销中
+             * thumb : https://ganglong.wshoto.com/attachment/images/2/2017/09/tjDyjqD4Z3J5JYF4Q7jjj74DYMXy6J.jpg
+             * optionstock : 153
+             * optiontitle : 64G公开版+银色
+             * specs : 433_431
+             * marketprice : 6028.00
+             * productprice : 0.00
              */
 
-            private List<AttvalBean> attval;
+            private String id;
+            private String total;
+            private String goodsid;
+            private String optionid;
+            private String createtime;
+            private String stock;
+            private String maxbuy;
+            private String title;
+            private String thumb;
+            private String optionstock;
+            private String optiontitle;
+            private String specs;
+            private String marketprice;
+            private String productprice;
 
-            public String getAttname() {
-                return attname;
+            public String getId() {
+                return id;
             }
 
-            public void setAttname(String attname) {
-                this.attname = attname;
+            public void setId(String id) {
+                this.id = id;
             }
 
-            public List<AttvalBean> getAttval() {
-                return attval;
+            public String getTotal() {
+                return total;
             }
 
-            public void setAttval(List<AttvalBean> attval) {
-                this.attval = attval;
+            public void setTotal(String total) {
+                this.total = total;
             }
 
-            public static class AttvalBean {
-                private Object inputvalue;
-                private int attrvalueid;
-                private String attrvalue;
-
-                public Object getInputvalue() {
-                    return inputvalue;
-                }
-
-                public void setInputvalue(Object inputvalue) {
-                    this.inputvalue = inputvalue;
-                }
-
-                public int getAttrvalueid() {
-                    return attrvalueid;
-                }
-
-                public void setAttrvalueid(int attrvalueid) {
-                    this.attrvalueid = attrvalueid;
-                }
-
-                public String getAttrvalue() {
-                    return attrvalue;
-                }
-
-                public void setAttrvalue(String attrvalue) {
-                    this.attrvalue = attrvalue;
-                }
-            }
-        }
-
-        public static class ProductsBean {
-            private String pid;
-            /**
-             * attrvalueid : 2285
-             * attrvalue : 3G
-             * number : 49
-             * showing : null
-             */
-
-            private List<PinfoBean> pinfo;
-
-            public String getPid() {
-                return pid;
+            public String getGoodsid() {
+                return goodsid;
             }
 
-            public void setPid(String pid) {
-                this.pid = pid;
+            public void setGoodsid(String goodsid) {
+                this.goodsid = goodsid;
             }
 
-            public List<PinfoBean> getPinfo() {
-                return pinfo;
+            public String getOptionid() {
+                return optionid;
             }
 
-            public void setPinfo(List<PinfoBean> pinfo) {
-                this.pinfo = pinfo;
+            public void setOptionid(String optionid) {
+                this.optionid = optionid;
             }
 
-            public static class PinfoBean {
-                private int attrvalueid;
-                private String attrvalue;
-                private int number;
-                private Object showing;
+            public String getCreatetime() {
+                return createtime;
+            }
 
-                public int getAttrvalueid() {
-                    return attrvalueid;
-                }
+            public void setCreatetime(String createtime) {
+                this.createtime = createtime;
+            }
 
-                public void setAttrvalueid(int attrvalueid) {
-                    this.attrvalueid = attrvalueid;
-                }
+            public String getStock() {
+                return stock;
+            }
 
-                public String getAttrvalue() {
-                    return attrvalue;
-                }
+            public void setStock(String stock) {
+                this.stock = stock;
+            }
 
-                public void setAttrvalue(String attrvalue) {
-                    this.attrvalue = attrvalue;
-                }
+            public String getMaxbuy() {
+                return maxbuy;
+            }
 
-                public int getNumber() {
-                    return number;
-                }
+            public void setMaxbuy(String maxbuy) {
+                this.maxbuy = maxbuy;
+            }
 
-                public void setNumber(int number) {
-                    this.number = number;
-                }
+            public String getTitle() {
+                return title;
+            }
 
-                public Object getShowing() {
-                    return showing;
-                }
+            public void setTitle(String title) {
+                this.title = title;
+            }
 
-                public void setShowing(Object showing) {
-                    this.showing = showing;
-                }
+            public String getThumb() {
+                return thumb;
+            }
+
+            public void setThumb(String thumb) {
+                this.thumb = thumb;
+            }
+
+            public String getOptionstock() {
+                return optionstock;
+            }
+
+            public void setOptionstock(String optionstock) {
+                this.optionstock = optionstock;
+            }
+
+            public String getOptiontitle() {
+                return optiontitle;
+            }
+
+            public void setOptiontitle(String optiontitle) {
+                this.optiontitle = optiontitle;
+            }
+
+            public String getSpecs() {
+                return specs;
+            }
+
+            public void setSpecs(String specs) {
+                this.specs = specs;
+            }
+
+            public String getMarketprice() {
+                return marketprice;
+            }
+
+            public void setMarketprice(String marketprice) {
+                this.marketprice = marketprice;
+            }
+
+            public String getProductprice() {
+                return productprice;
+            }
+
+            public void setProductprice(String productprice) {
+                this.productprice = productprice;
             }
         }
     }

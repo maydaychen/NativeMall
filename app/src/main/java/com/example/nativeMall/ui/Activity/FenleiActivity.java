@@ -15,10 +15,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.nativeMall.Adapter.FenleiAdapter;
-import com.example.nativeMall.Bean.FenleiBean;
-import com.example.nativeMall.Http;
-import com.example.nativeMall.R;
+import com.example.nativeMall.Bean.FenleiBean;import com.example.nativeMall.R;
 import com.example.nativeMall.Util;
+import com.example.nativeMall.http.Http;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -116,17 +115,9 @@ public class FenleiActivity extends InitActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_fenlei);
         ButterKnife.bind(this);
-        getSupportActionBar().hide();
-        initData();
-        initView();
-    }
-
-    @Override
-    public void initView() {
     }
 
     @Override

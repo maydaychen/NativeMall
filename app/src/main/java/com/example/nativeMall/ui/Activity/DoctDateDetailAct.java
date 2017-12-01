@@ -110,8 +110,8 @@ public class DoctDateDetailAct extends AppCompatActivity {
 
             @Override
             public void rightClick(Boolean click) {
-                Intent intent = new Intent(DoctDateDetailAct.this, MessageCenterActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(DoctDateDetailAct.this, MessageCenterActivity.class);
+//                startActivity(intent);
             }
         });
 

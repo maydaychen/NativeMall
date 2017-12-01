@@ -1,6 +1,5 @@
 package com.example.nativeMall.ui.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,12 +12,10 @@ import android.view.ViewGroup;
 
 import com.example.nativeMall.Adapter.RecyclerViewAdapter;
 import com.example.nativeMall.Bean.OrderBean;
-import com.example.nativeMall.Bean.OrderDetailBean;
 import com.example.nativeMall.Config;
-import com.example.nativeMall.Http;
 import com.example.nativeMall.R;
 import com.example.nativeMall.Util;
-import com.example.nativeMall.ui.Activity.CommentGoodsActivity;
+import com.example.nativeMall.http.Http;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -95,12 +92,12 @@ public class AllOrderFragment extends Fragment {
                     initData();
                     break;
                 case 1:
-                    OrderDetailBean orderDetailBean = mGson.fromJson(data, OrderDetailBean.class);
-                    Intent intent2 = new Intent(getActivity(), CommentGoodsActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("order", orderDetailBean.getData());
-                    intent2.putExtras(bundle);
-                    getActivity().startActivity(intent2);
+//                    OrderDetailBean orderDetailBean = mGson.fromJson(data, OrderDetailBean.class);
+//                    Intent intent2 = new Intent(getActivity(), CommentGoodsActivity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("order", orderDetailBean.getData());
+//                    intent2.putExtras(bundle);
+//                    getActivity().startActivity(intent2);
                     break;
             }
         }
@@ -112,7 +109,7 @@ public class AllOrderFragment extends Fragment {
         Http.getInstance().init(getActivity(), handler, mGson.toJson(param2), "order/findOrderlist", 0).sendMsg();
     }
 
-
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View root = inflater.inflate(R.layout.fragment_all_order, container, false);

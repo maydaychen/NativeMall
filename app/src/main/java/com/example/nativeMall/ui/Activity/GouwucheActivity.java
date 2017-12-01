@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ExpandableListView;
@@ -17,11 +18,11 @@ import android.widget.Toast;
 import com.example.nativeMall.Adapter.ShopcartExpandableListViewAdapter;
 import com.example.nativeMall.Bean.PreOrderBean;
 import com.example.nativeMall.Config;
-import com.example.nativeMall.Http;
 import com.example.nativeMall.R;
 import com.example.nativeMall.Util;
 import com.example.nativeMall.entity.GroupInfo;
 import com.example.nativeMall.entity.ProductInfo;
+import com.example.nativeMall.http.Http;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -47,7 +48,7 @@ public class GouwucheActivity extends InitActivity implements ShopcartExpandable
     private ShopcartExpandableListViewAdapter selva;
     private List<GroupInfo> groups = new ArrayList<>();// 组元素数据列表
     private Map<String, List<ProductInfo>> children = new HashMap<>();// 子元素数据列表
-
+    Gson mGson = new Gson();
     private ExpandableListView exListView;
     private CheckBox cb_check_all;
     private TextView tv_total_price;
@@ -117,7 +118,7 @@ public class GouwucheActivity extends InitActivity implements ShopcartExpandable
                             } else {
                                 PreOrderBean preOrderBean = mGson.fromJson(data, PreOrderBean.class);
                                 Intent intent = new Intent(GouwucheActivity.this, ConfirmActivity.class);
-                                intent.putExtra("array",array.toString());
+                                intent.putExtra("array", array.toString());
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable("preorder", preOrderBean);
                                 intent.putExtras(bundle);
@@ -134,27 +135,17 @@ public class GouwucheActivity extends InitActivity implements ShopcartExpandable
         }
     };
 
-    Gson mGson = new Gson();
-
     @Override
     protected void onResume() {
         super.onResume();
         initData();
-        initView();
+        initView(null);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_gouwuche);
         ButterKnife.bind(this);
-        getSupportActionBar().hide();
-//        initData();
-//        initView();
-    }
-
-    @Override
-    public void initView() {
         context = this;
         exListView = (ExpandableListView) findViewById(R.id.exListView);
         cb_check_all = (CheckBox) findViewById(R.id.all_chekbox);
@@ -164,7 +155,7 @@ public class GouwucheActivity extends InitActivity implements ShopcartExpandable
         ImageView back = (ImageView) findViewById(R.id.iv_choose_doc_back);
         back.setOnClickListener(view -> finish());
         mTvGouwucheBianji.setOnClickListener(view -> {
-            if (PAYOREDIT .equals("pay") ) {
+            if (PAYOREDIT.equals("pay")) {
                 mTvGoToPay.setText("删除");
                 mTvGouwucheBianji.setText("保存");
                 PAYOREDIT = "delete";
@@ -199,7 +190,7 @@ public class GouwucheActivity extends InitActivity implements ShopcartExpandable
                 doCheckAll();
                 break;
             case R.id.tv_go_to_pay:
-                if (PAYOREDIT .equals("pay") ) {
+                if (PAYOREDIT.equals("pay")) {
                     if (totalCount == 0) {
                         Toast.makeText(context, "请选择要支付的商品", Toast.LENGTH_LONG).show();
                         return;
@@ -304,7 +295,7 @@ public class GouwucheActivity extends InitActivity implements ShopcartExpandable
             Http.getInstance().init(this.getApplicationContext(), handler, outJson.toString(), "order/submitPreOrder", 2).sendMsg();
             totalCount = 0;
         } else {
-            Util.startIntent(GouwucheActivity.this,LoginActivity.class);
+            Util.startIntent(GouwucheActivity.this, LoginActivity.class);
         }
 
     }

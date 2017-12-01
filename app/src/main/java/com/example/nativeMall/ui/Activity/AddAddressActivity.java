@@ -1,22 +1,21 @@
 package com.example.nativeMall.ui.Activity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nativeMall.Config;
-import com.example.nativeMall.Listener.AddAddressListener;
-import com.example.nativeMall.Model.NewsModel;
-import com.example.nativeMall.Model.NewsModelImpl;
 import com.example.nativeMall.R;
+import com.example.nativeMall.Utils;
+import com.example.nativeMall.http.HttpJsonMethod;
+import com.example.nativeMall.http.ProgressSubscriber;
+import com.example.nativeMall.http.SubscriberOnNextListener;
 import com.example.nativeMall.ui.widget.MallTitle;
 import com.google.gson.Gson;
 
@@ -37,17 +36,13 @@ import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.ArrayWheelAdapter;
 
 
-public class AddAddressActivity extends AppCompatActivity implements OnWheelChangedListener, AddAddressListener {
+public class AddAddressActivity extends InitActivity implements OnWheelChangedListener {
     @BindView(R.id.et_add_address_name)
     EditText mEtAddAddressName;
     @BindView(R.id.et_add_address_telephone)
     EditText mEtAddAddressTelephone;
     @BindView(R.id.et_add_address_address)
     EditText mEtAddAddressAddress;
-    @BindView(R.id.et_add_address_code)
-    EditText mEtAddAddressCode;
-    @BindView(R.id.cb_add_address_default)
-    CheckBox mCbAddAddressDefault;
     @BindView(R.id.wheel_add_address)
     RelativeLayout mWheelAddAddress;
     @BindView(R.id.tv_add_address_address)
@@ -55,6 +50,8 @@ public class AddAddressActivity extends AppCompatActivity implements OnWheelChan
     @BindView(R.id.title_add_address)
     MallTitle mTitleAddAddress;
     private Gson mGson = new Gson();
+    private SubscriberOnNextListener<JSONObject> addAddressListOnNext;
+    private SharedPreferences preferences;
     /**
      * 把全国的省市区的信息以json的格式保存，解析完成后赋值为null
      */
@@ -106,18 +103,31 @@ public class AddAddressActivity extends AppCompatActivity implements OnWheelChan
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_add_address);
         ButterKnife.bind(this);
-        getSupportActionBar().hide();
+        mTitleAddAddress.setLeftRightImgClickListener(new MallTitle.LeftRightImgClickListener() {
+            @Override
+            public void leftClick(Boolean click) {
+                finish();
+            }
 
+            @Override
+            public void rightClick(Boolean click) {
+
+            }
+        });
+        mProvince = findViewById(R.id.id_province);
+        mCity = findViewById(R.id.id_city);
+        mArea = findViewById(R.id.id_area);
+
+
+    }
+
+    @Override
+    public void initData() {
+        preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
         initJsonData();
-
-        mProvince = (WheelView) findViewById(R.id.id_province);
-        mCity = (WheelView) findViewById(R.id.id_city);
-        mArea = (WheelView) findViewById(R.id.id_area);
-
         initDatas();
         mProvince.setViewAdapter(new ArrayWheelAdapter<>(this, mProvinceDatas));
         // 添加change事件
@@ -133,17 +143,14 @@ public class AddAddressActivity extends AppCompatActivity implements OnWheelChan
         updateCities();
         updateAreas();
         mTvAddAddressAddress.setText(mCurrentProviceName + mCurrentCityName + mCurrentAreaName);
-        mTitleAddAddress.setLeftRightImgClickListener(new MallTitle.LeftRightImgClickListener() {
-            @Override
-            public void leftClick(Boolean click) {
+        addAddressListOnNext = jsonObject -> {
+            if (jsonObject.getInt("statusCode") == 1) {
+                Toast.makeText(AddAddressActivity.this, "添加成功！", Toast.LENGTH_SHORT).show();
                 finish();
+            } else {
+                Toast.makeText(AddAddressActivity.this, jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
             }
-
-            @Override
-            public void rightClick(Boolean click) {
-
-            }
-        });
+        };
     }
 
     /**
@@ -172,7 +179,6 @@ public class AddAddressActivity extends AppCompatActivity implements OnWheelChan
         mCurrentProviceName = mProvinceDatas[pCurrent];
         mCurrentProviceId = mProvinceIds[pCurrent];
         String[] cities = mCitisDatasMap.get(mCurrentProviceName);
-//        String[] citieIds = mCitisDatasMap.get(mCurrentProviceName);
         if (cities == null) {
             cities = new String[]{""};
         }
@@ -292,6 +298,8 @@ public class AddAddressActivity extends AppCompatActivity implements OnWheelChan
                 imm.hideSoftInputFromWindow(AddAddressActivity.this.getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
                 break;
+            default:
+                break;
         }
     }
 
@@ -300,31 +308,27 @@ public class AddAddressActivity extends AppCompatActivity implements OnWheelChan
             Toast.makeText(this, "手机号输入有误！", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (mEtAddAddressAddress.getText().toString().equals("")
-                || mEtAddAddressName.getText().toString().equals("")
-                || mEtAddAddressCode.getText().toString().equals("")) {
+        if ("".equals(mEtAddAddressAddress.getText().toString())
+                || "".equals(mEtAddAddressName.getText().toString())) {
             Toast.makeText(this, "请填写详细信息！", Toast.LENGTH_SHORT).show();
             return;
         }
-        Map<String, String> param = new HashMap<>();
-        param.put("type", "ADD");
-        param.put("uid", Config.userBean.getData().getUid());
-        param.put("consignee", mEtAddAddressName.getText().toString());
-        param.put("mobile", mEtAddAddressTelephone.getText().toString());
-        param.put("email", "abc123@qq.com");
-        param.put("provinceid", mCurrentProviceId);
-        param.put("cityid", mCurrentCityId);
-        param.put("regionid", mCurrentAreaId);
-        param.put("alias", "wonders");
-        param.put("address", mEtAddAddressAddress.getText().toString());
-        param.put("zipcode", mEtAddAddressCode.getText().toString());
-        if (mCbAddAddressDefault.isChecked()) {
-            param.put("isdefault", "11");
-        } else {
-            param.put("isdefault", "00");
-        }
-        NewsModel addAddress = new NewsModelImpl();
-        addAddress.addAddress(AddAddressActivity.this, this, "address/shopAddressUpdate", mGson.toJson(param));
+        String sign = "";
+        int time = (int) (System.currentTimeMillis() / 1000);
+        sign = sign + "address=" + mEtAddAddressAddress.getText().toString() + "&";
+        sign = sign + "area=" + mCurrentAreaName + "&";
+        sign = sign + "city=" + mCurrentCityName + "&";
+        sign = sign + "mobile=" + mEtAddAddressTelephone.getText().toString() + "&";
+        sign = sign + "province=" + mCurrentProviceName + "&";
+        sign = sign + "realname=" + mEtAddAddressName.getText().toString() + "&";
+        sign = sign + "sessionkey=" + preferences.getString("sessionkey", "") + "&";
+        sign = sign + "timestamp=" + time + "&";
+        sign = sign + "key=" + preferences.getString("auth_key", "");
+        sign = Utils.md5(sign);
+        HttpJsonMethod.getInstance().addAddress(
+                new ProgressSubscriber(addAddressListOnNext, AddAddressActivity.this),
+                preferences.getString("access_token", ""), preferences.getString("sessionkey", ""), mEtAddAddressName.getText().toString(),
+                mEtAddAddressTelephone.getText().toString(), mCurrentProviceName, mCurrentCityName, mCurrentAreaName, mEtAddAddressAddress.getText().toString(), sign, time);
     }
 
     @Override
@@ -340,16 +344,5 @@ public class AddAddressActivity extends AppCompatActivity implements OnWheelChan
             }
         }
         return super.onTouchEvent(event);
-    }
-
-    @Override
-    public void onSuccess(String data) {
-        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
-        finish();
-    }
-
-    @Override
-    public void onFaile(String data) {
-        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
     }
 }

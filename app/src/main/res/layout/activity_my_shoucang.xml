@@ -11,25 +11,26 @@
         android:id="@+id/rl_mine_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/search_background">
+        android:background="@color/font_blue">
 
         <ImageView
             android:id="@+id/iv_choose_doc_back"
+            style="@style/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/iv_back"
-            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
 
         <TextView
+            style="@style/tv_white_24_margin8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/tv_white_24_margin8"
             android:text="@string/tv_my_shoucang"/>
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
         android:id="@+id/rv_my_shoucang"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin_size_8dp"/>
 
 </LinearLayout>

@@ -8,142 +8,92 @@ import java.util.List;
  */
 public class ShoucangBean {
     /**
-     * data : [{"uid":57,"storeid":"94","shopprice":54,"name":"京都念慈菴蜜炼川贝枇杷膏150ml感冒咳嗽化痰止咳利咽止咳药品","pid":203,"salecount":"0","sname":"国大药房","showimg":"/userfiles/500aaa0b-e1c7-4de5-9917-1a34014113e1.jpg","reviewcount":"0","recordid":26},{"uid":57,"storeid":"94","shopprice":23,"name":"同仁堂 银翘解毒片 40片风热感冒发热头痛咽喉痛感冒药咳嗽","pid":201,"salecount":"0","sname":"国大药房","showimg":"/userfiles/c9b970d6-a2f6-4d41-b466-71932242f2a0.jpg","reviewcount":"0","recordid":27}]
-     * msg : ok
-     * success : T
+     * statusCode : 1
+     * result : [{"favoritetime":"2017-11-24 10:40:41","id":"146","thumb":"https://ganglong.wshoto.com/attachment/images/2/2017/10/Fagf8a88PwDuGA8Lg50LfG5gTGB11l.jpg","title":"Apple 苹果 iPhone X 限量预售 发售当天按订单顺序发货","productprice":"0.00","marketprice":"8728.00"}]
      */
 
-    private String msg;
-    private String success;
-    /**
-     * uid : 57
-     * storeid : 94
-     * shopprice : 54
-     * name : 京都念慈菴蜜炼川贝枇杷膏150ml感冒咳嗽化痰止咳利咽止咳药品
-     * pid : 203
-     * salecount : 0
-     * sname : 国大药房
-     * showimg : /userfiles/500aaa0b-e1c7-4de5-9917-1a34014113e1.jpg
-     * reviewcount : 0
-     * recordid : 26
-     */
+    private int statusCode;
+    private List<ResultBean> result;
 
-    private List<DataBean> data;
-
-    public String getMsg() {
-        return msg;
+    public int getStatusCode() {
+        return statusCode;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
-    public String getSuccess() {
-        return success;
+    public List<ResultBean> getResult() {
+        return result;
     }
 
-    public void setSuccess(String success) {
-        this.success = success;
+    public void setResult(List<ResultBean> result) {
+        this.result = result;
     }
 
-    public List<DataBean> getData() {
-        return data;
-    }
+    public static class ResultBean {
+        /**
+         * favoritetime : 2017-11-24 10:40:41
+         * id : 146
+         * thumb : https://ganglong.wshoto.com/attachment/images/2/2017/10/Fagf8a88PwDuGA8Lg50LfG5gTGB11l.jpg
+         * title : Apple 苹果 iPhone X 限量预售 发售当天按订单顺序发货
+         * productprice : 0.00
+         * marketprice : 8728.00
+         */
 
-    public void setData(List<DataBean> data) {
-        this.data = data;
-    }
+        private String favoritetime;
+        private String id;
+        private String thumb;
+        private String title;
+        private String productprice;
+        private String marketprice;
 
-    public static class DataBean {
-        private int uid;
-        private String storeid;
-        private String shopprice;
-        private String name;
-        private int pid;
-        private String salecount;
-        private String sname;
-        private String showimg;
-        private String reviewcount;
-        private int recordid;
-
-        public int getUid() {
-            return uid;
+        public String getFavoritetime() {
+            return favoritetime;
         }
 
-        public void setUid(int uid) {
-            this.uid = uid;
+        public void setFavoritetime(String favoritetime) {
+            this.favoritetime = favoritetime;
         }
 
-        public String getStoreid() {
-            return storeid;
+        public String getId() {
+            return id;
         }
 
-        public void setStoreid(String storeid) {
-            this.storeid = storeid;
+        public void setId(String id) {
+            this.id = id;
         }
 
-        public String getShopprice() {
-            return shopprice;
+        public String getThumb() {
+            return thumb;
         }
 
-        public void setShopprice(String shopprice) {
-            this.shopprice = shopprice;
+        public void setThumb(String thumb) {
+            this.thumb = thumb;
         }
 
-        public String getName() {
-            return name;
+        public String getTitle() {
+            return title;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setTitle(String title) {
+            this.title = title;
         }
 
-        public int getPid() {
-            return pid;
+        public String getProductprice() {
+            return productprice;
         }
 
-        public void setPid(int pid) {
-            this.pid = pid;
+        public void setProductprice(String productprice) {
+            this.productprice = productprice;
         }
 
-        public String getSalecount() {
-            return salecount;
+        public String getMarketprice() {
+            return marketprice;
         }
 
-        public void setSalecount(String salecount) {
-            this.salecount = salecount;
-        }
-
-        public String getSname() {
-            return sname;
-        }
-
-        public void setSname(String sname) {
-            this.sname = sname;
-        }
-
-        public String getShowimg() {
-            return showimg;
-        }
-
-        public void setShowimg(String showimg) {
-            this.showimg = showimg;
-        }
-
-        public String getReviewcount() {
-            return reviewcount;
-        }
-
-        public void setReviewcount(String reviewcount) {
-            this.reviewcount = reviewcount;
-        }
-
-        public int getRecordid() {
-            return recordid;
-        }
-
-        public void setRecordid(int recordid) {
-            this.recordid = recordid;
+        public void setMarketprice(String marketprice) {
+            this.marketprice = marketprice;
         }
     }
 }

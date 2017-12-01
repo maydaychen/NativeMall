@@ -22,9 +22,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.nativeMall.Config;
-import com.example.nativeMall.Http;
 import com.example.nativeMall.R;
 import com.example.nativeMall.View.BaseHolder;
+import com.example.nativeMall.http.Http;
 import com.example.nativeMall.ui.Activity.OrderDetailActivity;
 import com.example.nativeMall.ui.Activity.PayActivity;
 import com.google.gson.Gson;

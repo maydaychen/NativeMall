@@ -1,7 +1,5 @@
 package com.example.nativeMall.Bean;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,163 +9,164 @@ import java.util.List;
  */
 public class AddressBean {
     /**
-     * data : [{"uid":50,"provincename":"北京市","default":"11","said":78,"regionid":375,"address":"阿鲁巴","consignee":"阿鲁","name":"东城区","provinceid":1,"cityname":"北京市","cityid":35,"mobile":"18301721508"},{"uid":50,"provincename":"北京市","default":"0","said":79,"regionid":375,"address":"力量航路","consignee":"搜索","name":"东城区","provinceid":1,"cityname":"北京市","cityid":35,"mobile":"13412312312"}]
-     * msg : success
-     * success : T
+     * statusCode : 1
+     * result : {"list":[{"id":"1","uniacid":"2","openid":"ucb1cc5ac6c42c0f1e5dfe4c17d6f687f","realname":"chenyi","mobile":"13665137658","province":"北京市","city":"北京市","area":"东城区","address":"1518","isdefault":"1","zipcode":"","deleted":"0"}]}
      */
 
-    private String msg;
-    private String success;
-    /**
-     * uid : 50
-     * provincename : 北京市
-     * default : 11
-     * said : 78
-     * regionid : 375
-     * address : 阿鲁巴
-     * consignee : 阿鲁
-     * name : 东城区
-     * provinceid : 1
-     * cityname : 北京市
-     * cityid : 35
-     * mobile : 18301721508
-     */
+    private int statusCode;
+    private ResultBean result;
 
-    private List<DataBean> data;
-
-    public String getMsg() {
-        return msg;
+    public int getStatusCode() {
+        return statusCode;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
-    public String getSuccess() {
-        return success;
+    public ResultBean getResult() {
+        return result;
     }
 
-    public void setSuccess(String success) {
-        this.success = success;
+    public void setResult(ResultBean result) {
+        this.result = result;
     }
 
-    public List<DataBean> getData() {
-        return data;
-    }
+    public static class ResultBean {
+        private List<ListBean> list;
 
-    public void setData(List<DataBean> data) {
-        this.data = data;
-    }
-
-    public static class DataBean implements Serializable{
-        private int uid;
-        private String provincename;
-        @SerializedName("default")
-        private String defaultX;
-        private int said;
-        private int regionid;
-        private String address;
-        private String consignee;
-        private String name;
-        private int provinceid;
-        private String cityname;
-        private int cityid;
-        private String mobile;
-
-        public int getUid() {
-            return uid;
+        public List<ListBean> getList() {
+            return list;
         }
 
-        public void setUid(int uid) {
-            this.uid = uid;
+        public void setList(List<ListBean> list) {
+            this.list = list;
         }
 
-        public String getProvincename() {
-            return provincename;
-        }
+        public static class ListBean implements Serializable{
+            /**
+             * id : 1
+             * uniacid : 2
+             * openid : ucb1cc5ac6c42c0f1e5dfe4c17d6f687f
+             * realname : chenyi
+             * mobile : 13665137658
+             * province : 北京市
+             * city : 北京市
+             * area : 东城区
+             * address : 1518
+             * isdefault : 1
+             * zipcode :
+             * deleted : 0
+             */
 
-        public void setProvincename(String provincename) {
-            this.provincename = provincename;
-        }
+            private String id;
+            private String uniacid;
+            private String openid;
+            private String realname;
+            private String mobile;
+            private String province;
+            private String city;
+            private String area;
+            private String address;
+            private String isdefault;
+            private String zipcode;
+            private String deleted;
 
-        public String getDefaultX() {
-            return defaultX;
-        }
+            public String getId() {
+                return id;
+            }
 
-        public void setDefaultX(String defaultX) {
-            this.defaultX = defaultX;
-        }
+            public void setId(String id) {
+                this.id = id;
+            }
 
-        public int getSaid() {
-            return said;
-        }
+            public String getUniacid() {
+                return uniacid;
+            }
 
-        public void setSaid(int said) {
-            this.said = said;
-        }
+            public void setUniacid(String uniacid) {
+                this.uniacid = uniacid;
+            }
 
-        public int getRegionid() {
-            return regionid;
-        }
+            public String getOpenid() {
+                return openid;
+            }
 
-        public void setRegionid(int regionid) {
-            this.regionid = regionid;
-        }
+            public void setOpenid(String openid) {
+                this.openid = openid;
+            }
 
-        public String getAddress() {
-            return address;
-        }
+            public String getRealname() {
+                return realname;
+            }
 
-        public void setAddress(String address) {
-            this.address = address;
-        }
+            public void setRealname(String realname) {
+                this.realname = realname;
+            }
 
-        public String getConsignee() {
-            return consignee;
-        }
+            public String getMobile() {
+                return mobile;
+            }
 
-        public void setConsignee(String consignee) {
-            this.consignee = consignee;
-        }
+            public void setMobile(String mobile) {
+                this.mobile = mobile;
+            }
 
-        public String getName() {
-            return name;
-        }
+            public String getProvince() {
+                return province;
+            }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+            public void setProvince(String province) {
+                this.province = province;
+            }
 
-        public int getProvinceid() {
-            return provinceid;
-        }
+            public String getCity() {
+                return city;
+            }
 
-        public void setProvinceid(int provinceid) {
-            this.provinceid = provinceid;
-        }
+            public void setCity(String city) {
+                this.city = city;
+            }
 
-        public String getCityname() {
-            return cityname;
-        }
+            public String getArea() {
+                return area;
+            }
 
-        public void setCityname(String cityname) {
-            this.cityname = cityname;
-        }
+            public void setArea(String area) {
+                this.area = area;
+            }
 
-        public int getCityid() {
-            return cityid;
-        }
+            public String getAddress() {
+                return address;
+            }
 
-        public void setCityid(int cityid) {
-            this.cityid = cityid;
-        }
+            public void setAddress(String address) {
+                this.address = address;
+            }
 
-        public String getMobile() {
-            return mobile;
-        }
+            public String getIsdefault() {
+                return isdefault;
+            }
 
-        public void setMobile(String mobile) {
-            this.mobile = mobile;
+            public void setIsdefault(String isdefault) {
+                this.isdefault = isdefault;
+            }
+
+            public String getZipcode() {
+                return zipcode;
+            }
+
+            public void setZipcode(String zipcode) {
+                this.zipcode = zipcode;
+            }
+
+            public String getDeleted() {
+                return deleted;
+            }
+
+            public void setDeleted(String deleted) {
+                this.deleted = deleted;
+            }
         }
     }
 }

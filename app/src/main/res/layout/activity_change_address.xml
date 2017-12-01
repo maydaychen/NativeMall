@@ -112,52 +112,6 @@
             android:hint="@string/tv_address_detail"/>
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/line_colour_ee"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/white">
-
-        <TextView
-            style="@style/tv_14_left_marginleft8_33"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_postcode"/>
-
-        <EditText
-            android:id="@+id/et_change_address_code"
-            style="@style/et_14_right_marginright8_99"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:hint="@string/tv_postcode_detail"
-            android:inputType="number"
-            android:maxLength="6"/>
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="@dimen/margin_size_10dp"
-        android:background="@color/white">
-
-        <TextView
-            style="@style/tv_14_left_marginleft8_33"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_set_default"/>
-
-        <CheckBox
-            android:id="@+id/cb_change_address_default"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
-            android:padding="@dimen/margin_size_8dp"/>
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -166,7 +120,7 @@
         <Button
             android:id="@+id/bt_change_address_delete"
             android:layout_width="@dimen/margin_size_0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_margin="@dimen/margin_size_8dp"
             android:layout_weight="1"
             android:background="@drawable/bt_red_boder"
@@ -176,7 +130,7 @@
         <Button
             android:id="@+id/bt_change_address_save"
             android:layout_width="@dimen/margin_size_0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_margin="@dimen/margin_size_8dp"
             android:layout_weight="1"
             android:background="@drawable/bt_blue_boder"
@@ -193,8 +147,7 @@
         android:background="@color/white"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
         <RelativeLayout
             android:id="@+id/tv_choice_city"

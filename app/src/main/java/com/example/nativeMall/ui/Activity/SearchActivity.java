@@ -1,161 +1,82 @@
 package com.example.nativeMall.ui.Activity;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.nativeMall.Config;
+import com.example.nativeMall.Adapter.SearchAdapter;
+import com.example.nativeMall.Bean.SearchBean;
 import com.example.nativeMall.R;
-import com.example.nativeMall.Util;
-import com.example.nativeMall.ui.Fragment.MedicineKindFragment;
-import com.example.nativeMall.ui.Fragment.MedicineShopFragment;
-import com.example.nativeMall.ui.Fragment.SearchMedFragment;
-import com.example.nativeMall.ui.Fragment.SearchShopFragment;
+import com.example.nativeMall.Utils;
+import com.example.nativeMall.http.HttpJsonMethod;
+import com.example.nativeMall.http.ProgressSubscriber;
+import com.example.nativeMall.http.SubscriberOnNextListener;
+import com.google.gson.Gson;
+import com.jakewharton.rxbinding.widget.RxTextView;
+
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends InitActivity {
 
     @BindView(R.id.searchBack)
     ImageView searchBack;
-    @BindView(R.id.searchButton)
-    TextView searchButton;
-    @BindView(R.id.searchKind)
-    TextView searchKind;
-    @BindView(R.id.frame)
-    FrameLayout frame;
-
-    //标识为，判断药品搜索或者药店搜索
-    //0为药品，1为药店
-    private int FLAG = 0;
-    public static EditText searchName;
+    @BindView(R.id.searchName)
+    EditText mSearchName;
+    @BindView(R.id.rv_search)
+    RecyclerView mRvSearch;
+    private SharedPreferences preferences;
+    private SubscriberOnNextListener<JSONObject> searchOnNext;
+    private Gson mGson = new Gson();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_search);
         getSupportActionBar().hide();
         ButterKnife.bind(this);
-
-        setDefaultFragment();
-
-        searchName = (EditText) this.findViewById(R.id.searchName);
-        searchButton.setOnClickListener(view -> search());
-
-        searchName.setOnKeyListener((v, keyCode, event) -> {
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                // do some your things
-                search();
-            }
-            return false;
-        });
-
-        searchKind.setOnClickListener(this::showPopupWindow);
         searchBack.setOnClickListener(view -> finish());
-    }
 
-    private void changeFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        Bundle bundle = new Bundle();
-        bundle.putString("name", searchName.getText().toString());
-        fragment.setArguments(bundle);
-        ft.replace(R.id.frame, fragment);
-        ft.commit();
-    }
-
-    private void showPopupWindow(View view) {
-
-        // 一个自定义的布局，作为显示的内容
-        View contentView = LayoutInflater.from(this).inflate(
-                R.layout.layout_popup, null);
-        // 设置按钮的点击事件
-
-        TextView medicine = (TextView) contentView.findViewById(R.id.medicine);
-        TextView medicine_shop = (TextView) contentView.findViewById(R.id.medicineshop);
-
-
-        final PopupWindow popupWindow = new PopupWindow(contentView,
-                Util.dip2px(80, SearchActivity.this), Util.dip2px(70, SearchActivity.this), true);
-
-        popupWindow.setTouchable(true);
-
-        popupWindow.setTouchInterceptor((v, event) -> {
-            Log.i("mengdd", "onTouch : ");
-            return false;
-            // 这里如果返回true的话，touch事件将被拦截
-            // 拦截后 PopupWindow的onTouchEvent不被调用，这样点击外部区域无法dismiss
-        });
-
-        // 如果不设置PopupWindow的背景，无论是点击外部区域还是Back键都无法dismiss弹框
-        popupWindow.setBackgroundDrawable(getResources().getDrawable(
-                R.drawable.v2_0_searchbg));
-        WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        //xoff,yoff基于anchor的左下角进行偏移。
-        popupWindow.showAsDropDown(view, -16, 30);
-        // 设置好参数之后再show
-//        popupWindow.showAsDropDown(view);
-
-        medicine.setOnClickListener(view1 -> {
-            searchKind.setText("药品");
-            FLAG = 0;
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame, new MedicineKindFragment()).commit();
-            popupWindow.dismiss();
-        });
-
-        medicine_shop.setOnClickListener(view12 -> {
-            searchKind.setText("药店");
-            FLAG = 1;
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame, new MedicineShopFragment()).commit();
-            popupWindow.dismiss();
-        });
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        // TODO Auto-generated method stub
-//                super.onSaveInstanceState(outState);
-    }
-
-    private void setDefaultFragment() {
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        MedicineKindFragment medicineKindFragment = new MedicineKindFragment();
-        transaction.replace(R.id.frame, medicineKindFragment);
-        transaction.commit();
-    }
-
-    private void search() {
-        if (searchName.getText().toString().equals("")) {
-            Toast.makeText(SearchActivity.this, "您没有搜索任何商品，请输入商品名！", Toast.LENGTH_SHORT).show();
-        } else {
-            if (FLAG == 0) {
-                SearchMedFragment searchMedFragment = new SearchMedFragment();
-                Config.shistory.add(searchName.getText().toString());
-                changeFragment(searchMedFragment);
-            } else {
-                SearchShopFragment searchShopFragment = new SearchShopFragment();
-                changeFragment(searchShopFragment);
-                Config.supplier_history.add(searchName.getText().toString());
+    public void initData() {
+        preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+        searchOnNext = jsonObject -> {
+            if (jsonObject.getInt("statusCode") == 1) {
+                SearchBean indexBean = mGson.fromJson(jsonObject.toString(), SearchBean.class);
+                SearchAdapter searchAdapter = new SearchAdapter(SearchActivity.this, indexBean.getResult());
+                mRvSearch.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+                mRvSearch.setAdapter(searchAdapter);
+                searchAdapter.setOnItemClickListener((view, data) -> {
+                    Intent intent = new Intent(SearchActivity.this, GoodsDetailActivity.class);
+                    intent.putExtra("id", indexBean.getResult().get(data).getId());
+                    startActivity(intent);
+                });
             }
-        }
+        };
+        RxTextView.textChanges(mSearchName)
+                .subscribe(charSequence -> search(charSequence.toString()));
     }
 
+    private void search(String name) {
+        String sign = "";
+        int time = (int) (System.currentTimeMillis() / 1000);
+        if (!"".equals(name)) {
+            sign = sign + "keywords=" + name + "&";
+        }
+        sign = sign + "sessionkey=" + preferences.getString("sessionkey", "") + "&";
+        sign = sign + "timestamp=" + time + "&";
+        sign = sign + "key=" + preferences.getString("auth_key", "");
+        sign = Utils.md5(sign);
+        HttpJsonMethod.getInstance().search_goods(
+                new ProgressSubscriber(searchOnNext, SearchActivity.this),
+                preferences.getString("access_token", ""), name, preferences.getString("sessionkey", ""), sign, time);
+    }
 }

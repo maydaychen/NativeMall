@@ -12,10 +12,9 @@ import android.view.ViewGroup;
 
 import com.example.nativeMall.Adapter.RecyclerViewAdapter;
 import com.example.nativeMall.Bean.OrderBean;
-import com.example.nativeMall.Config;
-import com.example.nativeMall.Http;
-import com.example.nativeMall.R;
+import com.example.nativeMall.Config;import com.example.nativeMall.R;
 import com.example.nativeMall.Util;
+import com.example.nativeMall.http.Http;
 import com.google.gson.Gson;
 
 import org.json.JSONException;

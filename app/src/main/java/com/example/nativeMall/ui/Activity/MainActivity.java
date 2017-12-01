@@ -18,17 +18,21 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.nativeMall.Bean.PatientBean;
+import com.example.nativeMall.Bean.ResultBean;
 import com.example.nativeMall.Bean.UserBean;
 import com.example.nativeMall.Config;
 import com.example.nativeMall.R;
 import com.example.nativeMall.Util;
-import com.example.nativeMall.ui.Fragment.HealthCardFragment;
+import com.example.nativeMall.ui.Fragment.FenleiFragment;
+import com.example.nativeMall.ui.Fragment.GouwucheFragment;
 import com.example.nativeMall.ui.Fragment.MainFragment;
-import com.example.nativeMall.ui.Fragment.MallFragment;
 import com.example.nativeMall.ui.Fragment.PersonFragment;
-import com.example.nativeMall.ui.Fragment.RegFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -54,16 +58,8 @@ public class MainActivity extends InitActivity {
     private static final String TAG = "MainActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
-        ButterKnife.bind(this);
-        testCall();
-    }
-
-    @Override
     protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
         Intent intent = new Intent();
         intent.setAction("FreeAskResponse.service");
         Intent intent1 = new Intent(Util.createExplicitFromImplicitIntent(MainActivity.this, intent));
@@ -131,20 +127,25 @@ public class MainActivity extends InitActivity {
     private void initContent() {
         tabIndicators = new ArrayList<>();
         tabIndicators.add("首页");
+        tabIndicators.add("分类");
         tabIndicators.add("购物车");
-        tabIndicators.add("店铺");
         tabIndicators.add("个人中心");
         tabFragments = new ArrayList<>();
         tabFragments.add(MainFragment.newInstance(tabIndicators.get(0)));
-        tabFragments.add(HealthCardFragment.newInstance(tabIndicators.get(1)));
-        tabFragments.add(MallFragment.newInstance(tabIndicators.get(2)));
+        tabFragments.add(FenleiFragment.newInstance(tabIndicators.get(1)));
+        tabFragments.add(GouwucheFragment.newInstance(tabIndicators.get(2)));
         tabFragments.add(PersonFragment.newInstance(tabIndicators.get(3)));
         ContentPagerAdapter contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
         mContentVp.setAdapter(contentAdapter);
+        mContentVp.setOffscreenPageLimit(4);
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
+        testCall();
         mTabTl = findViewById(R.id.tl_tab);
         mContentVp = findViewById(R.id.vp_content);
         initContent();
@@ -214,9 +215,14 @@ public class MainActivity extends InitActivity {
         } else callPhone();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMoonEvent(ResultBean resultBean) {
+        if (resultBean.getCode() == 1) {
+            mContentVp.setCurrentItem(1);
+        }
+    }
+
     public void callPhone() {
-        initData();
-        initView();
         if (Config.IS_LOG) {
             initService();
         }

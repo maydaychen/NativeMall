@@ -3,6 +3,8 @@ package com.example.nativeMall.http;
 import android.content.Context;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import rx.Subscriber;
 
 /**
@@ -42,6 +44,10 @@ public class ProgressErrorSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onNext(T t) {
-        mSubscriberOnNextAndErrorListener.onNext(t);
+        try {
+            mSubscriberOnNextAndErrorListener.onNext(t);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

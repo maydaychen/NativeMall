@@ -1,112 +1,43 @@
 <resources>
     <string name="hello_world">Hello world!</string>
     <string name="app_name">纯生商城</string>
-    <string name="tv_healthy_card">健康卡</string>
-    <string name="tv_my_pay_code">我的付款码</string>
-    <string name="tv_jiyin">基因检测</string>
-    <string name="tv_menzhen">门诊</string>
-    <string name="tv_yaodian">药店</string>
-    <string name="tv_healthy_mall">健康商城</string>
-    <string name="tv_inquiry">问诊</string>
-    <string name="tv_physical_examination">体检</string>
-    <string name="tv_hot_topic">热门话题</string>
-    <string name="tv_data">预约挂号</string>
-    <string name="tv_data_description">足不出户 三甲名医快速约</string>
-    <string name="tv_chinese_medicine">中医</string>
-    <string name="tv_chinese_medicine_description">以药养心</string>
-    <string name="tv_western_medicine">西医</string>
-    <string name="tv_western_medicine_description">健康带回家</string>
-    <string name="tv_hot_topic_time">%1$s前</string>
-    <string name="tv_topic_detail_good">赞 %1$s</string>
-    <string name="tv_hot_topic_read">阅读 %1$s</string>
-    <string name="tv_tijian_price">￥ %1$s</string>
-    <string name="tv_main_search">全球优质供应商直供</string>
-    <string name="tv_mall_search">慢咽舒宁清咽利喉颗粒</string>
-    <string name="hot_topic">热门话题</string>
-    <string name="topic_detail">话题详情</string>
-    <string name="topic_detail_fedback">请输入你的看法…</string>
-
+    <string name="alipay_result_success">支付成功</string>
+    <string name="alipay_result_fail">支付失败</string>
+    <string name="alipay_result_delay">支付结果确认中</string>
     <string name="search">搜索</string>
+    <string name="tv_main_search">全球优质供应商直供</string>
     <string name="medicine">药品</string>
     <string name="medicineshop">药店</string>
     <string name="zonghe">综合排序</string>
-    <string name="sold">销量</string>
+    <string name="sold">销量：%1$s</string>
     <string name="price">价格</string>
+    <string name="price_detail">价格:￥%1$s</string>
     <string name="comment">评价</string>
     <string name="goods_detail">商品详情</string>
     <string name="goods_detail_sold">月销：%1$s</string>
     <string name="goods_detail_inventory">库存：%1$s</string>
-    <string name="goods_detail_zhengpin">正品保证</string>
-    <string name="goods_detail_tuihuo">支持退货</string>
-    <string name="goods_detail_yinsi">隐私配送</string>
     <string name="goods_detail_taocan">选择：套餐类型</string>
     <string name="goods_detail_comment">用户评价</string>
     <string name="gouwuche">购物车</string>
-    <string name="shoucang">收藏</string>
-    <string name="allmed">全部药品</string>
-    <string name="jinru">进入药店</string>
-    <string name="zizhi">资质证明</string>
-    <string name="fuwu">服务态度</string>
-    <string name="fahuo">发货速度</string>
-    <string name="med_miaoshu">药品描述</string>
-    <string name="et_enter_medicine_name">请输入药品名</string>
-
-    <string name="list">商品列表</string>
-    <string name="check_list">查看药店全部药品</string>
-    <string name="Zizhi">资质证书</string>
-
-
-    <string name="tv_mall_daily">每日一款</string>
-    <string name="tv_mall_daily_description">每日10点开抢</string>
-    <string name="tv_mall_famous">名店抢购</string>
-    <string name="tv_mall_famous_description">距离结束：</string>
-    <string name="tv_mall_recommend">为你推荐</string>
-    <string name="tv_mall_price">￥ %1$s</string>
-    <string name="bt_mall_daily">立即抢购</string>
-
+    <string name="tv_mall_price">￥%1$s</string>
     <string name="fenlei">分类</string>
     <string name="myOrder">我的订单</string>
     <string name="main">首页</string>
     <string name="person">个人中心</string>
-
-    <string name="username">手机号\\用户名</string>
-    <string name="sign_username">请输入手机号</string>
-    <string name="password">密码</string>
-    <string name="sign">立即注册</string>
-    <string name="sign_title">注册</string>
-    <string name="no_signed">未登录</string>
-    <string name="login">马上登录</string>
-    <string name="login_title">登录</string>
-    <string name="forgetpass">忘记密码?</string>
-    <string name="yanzhengma">请输入验证码</string>
-    <string name="send_yanzhengma">发送验证码</string>
-    <string name="bt_sign">注册</string>
-    <string name="bt_sign_log">已有账号 立即登录</string>
-
+    <string name="person_id">ID:%1$s</string>
+    <string name="person_price">%1$s元</string>
     <string name="select">%1$s/%2$s</string>
-
-    <string name="qingsong">轻松购药</string>
-    <string name="chakan">查看药店</string>
-    <string name="chakan2">搜索附近所有药店，进入最近药店，选择所需要的药品，下单，支付，完成购药</string>
-    <string name="paizhao">拍照购药</string>
-    <string name="paizhao2">上传清晰处方图片，输入处方药品名称及备注信息。审方通过后即可下单，完成购药</string>
-    <string name="paizhao3">我们正在努力建设中，感谢您的到访！</string>
-
     <string name="confirm">确认购买</string>
     <string name="buynow">立即购买</string>
     <string name="add_address">还没有添加地址？快来添加吧~</string>
-    <string name="pay_kind">支付方式:</string>
-    <string name="online_pay">在线支付</string>
     <string name="tv_confirm_price">实付款：</string>
     <string name="tv_confirm_order_price">商品金额：</string>
     <string name="tv_confirm_ship_price">运费金额：</string>
     <string name="bt_confirm">提交订单</string>
     <string name="tv_pay_title">支付订单</string>
-    <string name="tv_solder">收款方:</string>
     <string name="tv_money">订单总额:</string>
     <string name="tv_peisong">配送方式:</string>
-    <string name="tv_fapiao">发票抬头</string>
-    <string name="tv_fapiao_detail">该药店不支持开发票</string>
+
     <string name="tv_pay_kind">支付方式：</string>
     <string name="tv_alipay">支付宝</string>
     <string name="tv_weixinpay">微信支付</string>
@@ -125,93 +56,44 @@
     <string name="tv_postcode_detail">请填写邮编</string>
     <string name="tv_set_default">设为默认</string>
     <string name="tv_save">保存</string>
-
-    <string name="huanzhe">患&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;者&#160;:</string>
-    <string name="shili">实例：高血压或头痛\n如不清楚疾病可填写症状，如：头晕、腹泻等</string>
-    <string name="miaoshu">主要症状、发病时间、治疗经过、病情变化，想得到怎样的帮助(不少于25个字)</string>
-    <string name="no_data">没有找到符合条件的房源</string>
     <string name="mall_daily_pnum">限量%1$s</string>
     <string name="mall_daily_nowprice">￥%1$s</string>
+    <string name="mall_daily_nowprice_plus">+￥%1$s</string>
+    <string name="mall_daily_nowprice_minus">-￥%1$s</string>
     <string name="tv_daifukuan">等待买家付款</string>
     <string name="tv_daishouhuo">待收货</string>
     <string name="tv_config_daishouhuo">确认收货</string>
     <string name="tv_daifahuo">待发货</string>
     <string name="tv_order_num">共%1$s件</string>
     <string name="tv_order_total_price">合计：%1$s元</string>
-
-
-    <!--我-->
-    <string name="tv_my_jiankangka">我的健康卡</string>
-    <string name="tv_my_zhifu">支付密码设置</string>
-    <string name="tv_my_date">我的预约单</string>
     <string name="tv_my_message">消息中心</string>
     <string name="tv_my_address">收货地址管理</string>
     <string name="tv_my_address_detail">新增、修改、删除</string>
     <string name="tv_my_youhui">我的优惠券</string>
     <string name="tv_my_youhui_detail">已用、未用优惠券</string>
     <string name="tv_my_shoucang">我的收藏</string>
+    <string name="tv_my_zuji">我的足迹</string>
     <string name="tv_my_setting">设置</string>
-    <string name="tv_my_setting_password">密码修改</string>
-    <string name="tv_my_setting_message">消息通知</string>
-    <string name="tv_my_setting_fedback">意见反馈</string>
-    <string name="tv_my_setting_about">关于医药云</string>
-    <string name="tv_my_setting_version">当前版本号</string>
-    <string name="tv_my_setting_logout">退出登录</string>
-    <string name="tv_my_setting_mobile">手机号</string>
-    <string name="tv_my_setting_yanzhengma">验证码</string>
-    <string name="tv_my_setting_old_password">旧密码</string>
-    <string name="tv_my_setting_new_password">新密码</string>
-    <string name="tv_my_setting_new_password_again">重复密码</string>
-    <string name="tv_my_setting_new_password_again_detail">请重复新的密码</string>
-    <string name="tv_my_setting_new_password_detail">请输入8位以上新密码</string>
-    <string name="tv_my_setting_old_password_detail">请输入旧密码</string>
-    <string name="tv_my_setting_yanzhengma_detail">请输入验证码</string>
-    <string name="tv_my_setting_commit">提交</string>
-    <string name="tv_my_setting_system_message">系统消息通知</string>
-    <string name="tv_my_setting_order_message">订单消息通知</string>
-    <string name="tv_my_setting_zixun_message">咨询通知</string>
-    <string name="tv_my_setting_article_message">文章推送</string>
-    <string name="tv_my_message_system">系统消息</string>
-    <string name="tv_my_message_tiezi">帖子回复</string>
-    <string name="tv_my_message_question">我的问诊</string>
-    <string name="tv_my_message_huodong">活动消息</string>
-    <string name="tv_default">默认</string>
     <string name="tv_change_address">编辑地址</string>
     <string name="delete">删除</string>
     <string name="save">保存</string>
-
     <string name="tv_tijian_price1">￥+ %1$s</string>
-
     <string name="confirm_order">确认订单</string>
-
     <string name="tv_order_number">订单号：%1$s</string>
     <string name="tv_order_time">下单时间：%1$s</string>
     <string name="tv_confirm_order_num">数量：%1$s</string>
-    <string name="tv_ems">快递：%1$s</string>
-    <string name="tv_tuikuan">申请退款</string>
-
     <string name="tv_config_delete">删除订单</string>
     <string name="tv_daifahuo_tuikuan">退款</string>
     <string name="tv_daipingjia">待评价</string>
     <string name="tv_daipingjia_now">立即评价</string>
     <string name="tv_yiwancheng">已完成</string>
     <string name="tv_yiquxiao">已取消</string>
-
-
-    <!--我-->
-
     <string name="tv_my_order_detail">订单详情</string>
     <string name="comment_goods_commit">发表评价</string>
     <string name="goods_comment">商品评价</string>
-    <string name="current_version">当前版本：%1$s</string>
-    <string name="input">请输入…</string>
-    <string name="back">返回</string>
-    <string name="clear_history">清空所有记录</string>
-    <string name="add_patient">新增就诊人</string>
-    <string name="cancel">取消</string>
     <string name="choose_size">请选择尺寸</string>
     <string name="buy_num">购买数量</string>
     <string name="input_phone_number">请输入手机号</string>
     <string name="tv_my_order">我的订单</string>
-
+    <string name="change">修改</string>
 </resources>

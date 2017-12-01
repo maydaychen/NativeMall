@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.example.nativeMall.R;
-import com.example.nativeMall.Util;
 import com.example.nativeMall.ui.widget.MallTitle;
 
 import butterknife.BindView;
@@ -26,7 +25,7 @@ public class AboutActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().hide();
 
-        mTvVersion.setText(String.format(getResources().getString(R.string.current_version), Util.getVersionCode(this)));
+//        mTvVersion.setText(String.format(getResources().getString(R.string.current_version), Util.getVersionCode(this)));
         mRlMineTitle.setLeftRightImgClickListener(new MallTitle.LeftRightImgClickListener() {
             @Override
             public void leftClick(Boolean click) {

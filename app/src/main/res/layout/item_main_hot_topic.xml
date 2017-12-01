@@ -58,7 +58,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/tv_hot_topic_time"
                         android:textColor="@color/font_colour_99" />
 
                     <TextView
@@ -68,7 +67,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="8dp"
                         android:layout_toRightOf="@id/tv_hot_topic_time"
-                        android:text="@string/tv_hot_topic_read"
+
                         android:textColor="@color/font_colour_99" />
 
                     <TextView

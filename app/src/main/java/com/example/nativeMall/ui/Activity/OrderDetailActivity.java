@@ -17,9 +17,9 @@ import android.widget.TextView;
 
 import com.example.nativeMall.Adapter.ConfirmPicAdapter;
 import com.example.nativeMall.Bean.OrderDetailBean;
-import com.example.nativeMall.Http;
 import com.example.nativeMall.R;
 import com.example.nativeMall.Util;
+import com.example.nativeMall.http.Http;
 import com.example.nativeMall.ui.widget.TimeTextView;
 import com.google.gson.Gson;
 
@@ -73,19 +73,11 @@ public class OrderDetailActivity extends InitActivity {
     private int num = 0;
     private int orderstate;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_order_detail);
         ButterKnife.bind(this);
-        getSupportActionBar().hide();
-        initData();
-        initView();
-    }
-
-    @Override
-    public void initView() {
-
     }
 
     @Override
@@ -156,7 +148,7 @@ public class OrderDetailActivity extends InitActivity {
                         }
                         mTvOrderDetailOrdernum.setText("订单号：" + dataJson.getString("osn"));
                         if (!(dataJson.getString("shipsn").equals("null"))) {
-                            mTvOrderDetailEms.setText((String.format(getResources().getString(R.string.tv_ems), dataJson.optString("shipsn"))));
+//                            mTvOrderDetailEms.setText((String.format(getResources().getString(R.string.tv_ems), dataJson.optString("shipsn"))));
                         }
                         mTvConfirmName.setText(dataJson.getString("consignee"));
                         mTvConfirmSname.setText(dataJson.getString("storename"));
@@ -192,7 +184,7 @@ public class OrderDetailActivity extends InitActivity {
         }
     };
 
-
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -227,12 +219,12 @@ public class OrderDetailActivity extends InitActivity {
                         Http.getInstance().init(OrderDetailActivity.this, mHandler, mGson.toJson(comment), "order/handleOrder", 0).sendMsg();
                         break;
                     case 140:
-                        Intent intent2 = new Intent(OrderDetailActivity.this, CommentGoodsActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("order", mOrderDetailBean.getData());
-                        intent2.putExtras(bundle);
-                        startActivity(intent2);
-                        break;
+//                        Intent intent2 = new Intent(OrderDetailActivity.this, CommentGoodsActivity.class);
+//                        Bundle bundle = new Bundle();
+//                        bundle.putSerializable("order", mOrderDetailBean.getData());
+//                        intent2.putExtras(bundle);
+//                        startActivity(intent2);
+//                        break;
                 }
                 break;
             case R.id.bt_order_detail_bt_left:

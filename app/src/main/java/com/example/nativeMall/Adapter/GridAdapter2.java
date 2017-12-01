@@ -7,23 +7,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.nativeMall.Config;
 import com.example.nativeMall.R;
 import com.loopj.android.image.SmartImageView;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2016/6/21.
  */
 public class GridAdapter2 extends BaseAdapter {
     private LayoutInflater flater;
-    private List<Map<String, Object>> mData;
-
+    private List<HashMap<String, String>> mData;
+    private Context mContext;
     private HolderView holder;
 
-    public GridAdapter2(Context context, List<Map<String, Object>> mdata) {
+    public GridAdapter2(Context context, List<HashMap<String, String>> mdata) {
+        mContext = context;
         flater = LayoutInflater.from(context);
         holder = new HolderView();
         mData = mdata;
@@ -31,7 +31,7 @@ public class GridAdapter2 extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mData.size();
+        return mData.size() + 1;
     }
 
     @Override
@@ -46,18 +46,21 @@ public class GridAdapter2 extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (null == convertView){
+        if (null == convertView) {
             convertView = flater.inflate(R.layout.item_grid, null);
-            holder.image = (SmartImageView) convertView.findViewById(R.id.gridimage);
-            holder.text = (TextView) convertView.findViewById(R.id.gridtext);
+            holder.image = convertView.findViewById(R.id.gridimage);
+            holder.text = convertView.findViewById(R.id.gridtext);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (HolderView) convertView.getTag();
         }
-
-        holder.image.setImageUrl(Config.PIC_URL + mData.get(position).get("img_url"));
-        holder.text.setText((String) mData.get(position).get("name"));
-
+        if (position == mData.size()) {
+            holder.image.setImageDrawable(mContext.getResources().getDrawable(R.drawable.yuyue_chenggong));
+            holder.text.setText("全部");
+        } else {
+            holder.image.setImageUrl(mData.get(position).get("img_url"));
+            holder.text.setText(mData.get(position).get("name"));
+        }
         return convertView;
     }
 

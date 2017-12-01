@@ -12,7 +12,6 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-
         multiDexEnabled true
 
     }
@@ -31,11 +30,11 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:recyclerview-v7:26.+'
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support:design:26.+'
-    compile 'com.android.support:support-v4:26.+'
-    compile 'com.android.support:design:26.+'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:design:26.1.0'
     compile 'com.android.support:multidex:1.0.1'
     //黄油刀注解
     compile 'com.jakewharton:butterknife:8.2.1'
@@ -62,6 +61,10 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.youth.banner:banner:1.4.9'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     implementation project(':easeUI')
     implementation project(':wheel')
+    compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.1'
 }

@@ -25,11 +25,11 @@ import android.widget.Toast;
 
 import com.example.nativeMall.Bean.AccessTokenBean;
 import com.example.nativeMall.Bean.LoginBean;
-import com.example.nativeMall.ProgressSubscriber;
 import com.example.nativeMall.R;
-import com.example.nativeMall.SubscriberOnNextListener;
 import com.example.nativeMall.Utils;
 import com.example.nativeMall.http.HttpJsonMethod;
+import com.example.nativeMall.http.ProgressSubscriber;
+import com.example.nativeMall.http.SubscriberOnNextListener;
 import com.example.nativeMall.ui.widget.Loading_view;
 import com.google.gson.Gson;
 import com.jakewharton.rxbinding.widget.RxTextView;
@@ -254,7 +254,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     HttpJsonMethod.getInstance().get_token(
                             new ProgressSubscriber(getTokenOnNext, LoginActivity.this),
-                            "qiaoqiaochi", "xxx4b32ab51f8cb802720d30fedbxxx");
+                            "ganglong", "69534b32ab51f8cb802720d30fedbxxx");
                 }
             }
         });

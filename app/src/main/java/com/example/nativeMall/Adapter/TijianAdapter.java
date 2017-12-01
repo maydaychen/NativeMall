@@ -47,7 +47,7 @@ public class TijianAdapter extends RecyclerView.Adapter<TijianAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         viewHolder.name.setText((String) mData.get(position).get("name"));
-        viewHolder.price.setText(String.format(mContext.getResources().getString(R.string.tv_tijian_price),(String) mData.get(position).get("price")));
+        viewHolder.price.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price),(String) mData.get(position).get("price")));
         viewHolder.logo.setImageResource(R.drawable.index_tj_pic1);
         viewHolder.itemView.setTag(position);
     }

@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_size_18dp"
             android:background="@color/blue"
-            android:text="@string/tv_default"
             android:textColor="@color/white"
             android:textSize="@dimen/font_size_10sp"/>
     </LinearLayout>

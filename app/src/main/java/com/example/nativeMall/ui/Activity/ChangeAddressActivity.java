@@ -1,21 +1,16 @@
 package com.example.nativeMall.ui.Activity;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nativeMall.Bean.AddressBean;
-import com.example.nativeMall.Config;
 import com.example.nativeMall.Listener.AddAddressListener;
-import com.example.nativeMall.Model.NewsModel;
-import com.example.nativeMall.Model.NewsModelImpl;
 import com.example.nativeMall.R;
 import com.example.nativeMall.ui.widget.MallTitle;
 import com.google.gson.Gson;
@@ -41,10 +36,6 @@ public class ChangeAddressActivity extends InitActivity implements OnWheelChange
     EditText mEtChangeAddressName;
     @BindView(R.id.et_change_address_telephone)
     EditText mEtChangeAddressTelephone;
-    @BindView(R.id.et_change_address_code)
-    EditText mEtChangeAddressCode;
-    @BindView(R.id.cb_change_address_default)
-    CheckBox mCbChangeAddressDefault;
     @BindView(R.id.wheel_add_address)
     RelativeLayout mWheelAddAddress;
     @BindView(R.id.et_change_address_address1)
@@ -53,7 +44,7 @@ public class ChangeAddressActivity extends InitActivity implements OnWheelChange
     EditText mEtChangeAddressAddress1;
     @BindView(R.id.rl_mine_title)
     MallTitle mRlMineTitle;
-    private AddressBean.DataBean mDataBean;
+    private AddressBean.ResultBean.ListBean mDataBean;
     private Gson mGson = new Gson();
     /**
      * 把全国的省市区的信息以json的格式保存，解析完成后赋值为null
@@ -105,24 +96,15 @@ public class ChangeAddressActivity extends InitActivity implements OnWheelChange
     private String mCurrentAreaName;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_change_address);
         ButterKnife.bind(this);
-        getSupportActionBar().hide();
-        initData();
-        initView();
-    }
+        mDataBean = (AddressBean.ResultBean.ListBean) getIntent().getSerializableExtra("address");
 
-    @Override
-    public void initView() {
-        mEtChangeAddressName.setText(mDataBean.getConsignee());
+        mEtChangeAddressName.setText(mDataBean.getAddress());
         mEtChangeAddressTelephone.setText(mDataBean.getMobile());
         mEtChangeAddressAddress1.setText(mDataBean.getAddress());
-        if (mDataBean.getDefaultX().equals("11")) {
-            mCbChangeAddressDefault.setChecked(true);
-        }
-        mEtChangeAddressAddress.setText(mDataBean.getProvincename() + mDataBean.getCityname() + mDataBean.getName());
+        mEtChangeAddressAddress.setText(mDataBean.getProvince() + mDataBean.getCity() + mDataBean.getAddress());
         mRlMineTitle.setLeftRightImgClickListener(new MallTitle.LeftRightImgClickListener() {
             @Override
             public void leftClick(Boolean click) {
@@ -138,10 +120,9 @@ public class ChangeAddressActivity extends InitActivity implements OnWheelChange
 
     @Override
     public void initData() {
-        mDataBean = (AddressBean.DataBean) getIntent().getSerializableExtra("address");
-        mCurrentProviceId = mDataBean.getProvinceid() + "";
-        mCurrentCityId = mDataBean.getCityid() + "";
-        mCurrentAreaId = mDataBean.getRegionid() + "";
+//        mCurrentProviceId = mDataBean.getProvince() + "";
+//        mCurrentCityId = mDataBean.getCityid() + "";
+//        mCurrentAreaId = mDataBean.getRegionid() + "";
         initJsonData();
 
         mProvince = (WheelView) findViewById(R.id.id_province);
@@ -165,43 +146,19 @@ public class ChangeAddressActivity extends InitActivity implements OnWheelChange
         updateAreas();
     }
 
-    @OnClick({R.id.bt_change_address_delete, R.id.bt_change_address_save, R.id.rl_change_address})
+    @OnClick({R.id.bt_change_address_save, R.id.rl_change_address})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.bt_change_address_delete:
-                showDialog();
-                break;
             case R.id.bt_change_address_save:
                 if (mEtChangeAddressTelephone.getText().length() != 11) {
                     Toast.makeText(this, "手机号输入有误！", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (mEtChangeAddressName.getText().toString().equals("")
-                        || mEtChangeAddressCode.getText().toString().equals("")
+                if ("".equals(mEtChangeAddressName.getText().toString())
                         || mEtChangeAddressAddress1.getText().toString().equals("")) {
                     Toast.makeText(this, "请填写详细信息！", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Map<String, String> param = new HashMap<>();
-                param.put("type", "UPDATE");
-                param.put("uid", Config.userBean.getData().getUid());
-                param.put("consignee", mEtChangeAddressName.getText().toString());
-                param.put("mobile", mEtChangeAddressTelephone.getText().toString());
-                param.put("email", "abc123@qq.com");
-                param.put("provinceid", mCurrentProviceId);
-                param.put("cityid", mCurrentCityId);
-                param.put("regionid", mCurrentAreaId);
-                param.put("alias", "wonders");
-                param.put("said", mDataBean.getSaid() + "");
-                param.put("address", mEtChangeAddressAddress1.getText().toString());
-                param.put("zipcode", mEtChangeAddressCode.getText().toString());
-                if (mCbChangeAddressDefault.isChecked()) {
-                    param.put("isdefault", "11");
-                } else {
-                    param.put("isdefault", "00");
-                }
-                NewsModel addAddress = new NewsModelImpl();
-                addAddress.addAddress(ChangeAddressActivity.this, this, "address/shopAddressUpdate", mGson.toJson(param));
                 break;
             case R.id.rl_change_address: {
                 mWheelAddAddress.setVisibility(View.VISIBLE);
@@ -213,25 +170,6 @@ public class ChangeAddressActivity extends InitActivity implements OnWheelChange
 
     }
 
-    private void doDelete() {
-        Map<String, String> param = new HashMap<>();
-        param.put("type", "DELETE");
-        param.put("said", mDataBean.getSaid() + "");
-        NewsModel addAddress = new NewsModelImpl();
-        addAddress.addAddress(ChangeAddressActivity.this, this, "address/shopAddressUpdate", mGson.toJson(param));
-//        Http.getInstance().init(ChangeAddressActivity.this, handler, mGson.toJson(param), "address/shopAddressUpdate", 0).sendMsg();
-    }
-
-    private void showDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(ChangeAddressActivity.this);
-        builder.setMessage("确定要删除此地址么？");
-        builder.setTitle("健康商城");
-
-        builder.setPositiveButton("确认", (dialog, which) -> doDelete());
-
-        builder.setNegativeButton("取消", (dialog, which) -> dialog.dismiss());
-        builder.create().show();
-    }
 
     /**
      * 根据当前的市，更新区WheelView的信息
@@ -369,8 +307,6 @@ public class ChangeAddressActivity extends InitActivity implements OnWheelChange
 
     public void showChoose(View view) {
         mWheelAddAddress.setVisibility(View.GONE);
-        Toast.makeText(this, mCurrentProviceName + mCurrentCityName + mCurrentAreaName,
-                Toast.LENGTH_SHORT).show();
         mEtChangeAddressAddress.setText(mCurrentProviceName + mCurrentCityName + mCurrentAreaName);
     }
 

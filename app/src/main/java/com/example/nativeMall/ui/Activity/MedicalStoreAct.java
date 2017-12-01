@@ -1,6 +1,5 @@
 package com.example.nativeMall.ui.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -94,9 +93,9 @@ public class MedicalStoreAct extends AppCompatActivity {
                             StoreBean storeBean = storeBeanList.get(position);
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("storeBean",storeBean);
-                            Intent intent = new Intent(MedicalStoreAct.this,MedicalStoreDtlAct.class);
-                            intent.putExtras(bundle);
-                            startActivity(intent);
+//                            Intent intent = new Intent(MedicalStoreAct.this,MedicalStoreDtlAct.class);
+//                            intent.putExtras(bundle);
+//                            startActivity(intent);
 
 
                         }

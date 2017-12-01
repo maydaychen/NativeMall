@@ -7,74 +7,77 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.nativeMall.Config;
+import com.example.nativeMall.Bean.ShoucangBean;
 import com.example.nativeMall.R;
 import com.loopj.android.image.SmartImageView;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 作者：JTR on 2016/9/29 15:43
  * 邮箱：2091320109@qq.com
  */
-public class MyShoucangAdapter extends RecyclerView.Adapter<MyShoucangAdapter.ViewHolder> implements
-        View.OnClickListener {
+public class MyShoucangAdapter extends RecyclerView.Adapter<MyShoucangAdapter.ViewHolder> implements View.OnClickListener {
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;
-    private List<Map<String, Object>> mData;
+    private Context mContext;
+    private List<ShoucangBean.ResultBean> mData = new ArrayList<>();
+
+    public void addAllData(List<ShoucangBean.ResultBean> dataList) {
+        this.mData.addAll(dataList);
+        notifyDataSetChanged();
+    }
 
     //define interface
     public interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view, int position);
+        void onItemClick(View view, int data);
     }
 
-    public MyShoucangAdapter(List<Map<String, Object>> mData, Context context) {
-        this.mData = mData;
+    public void clearData() {
+        this.mData.clear();
     }
 
-
-    //创建新View，被LayoutManager所调用
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_my_shoucang,
-                viewGroup, false);
-        ViewHolder vh = new ViewHolder(view);
-        view.setOnClickListener(this);
-        return vh;
+    public MyShoucangAdapter(Context context) {
+        mContext = context;
     }
-
-
-    //将数据与界面进行绑定的操作
-    @Override
-    public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
-
-        viewHolder.ivMedImg.setImageUrl(Config.PIC_URL + mData.get(position).get("url"));
-        viewHolder.name.setText((String) mData.get(position).get("name"));
-        viewHolder.price.setText("￥" + mData.get(position).get("price"));
-        viewHolder.shopname.setText((String) mData.get(position).get("shopname"));
-
-        viewHolder.itemView.setTag(position);
-    }
-
-    //获取数据的数量
-    @Override
-    public int getItemCount() {
-        return mData.size();
-    }
-
 
     @Override
     public void onClick(View v) {
         if (mOnItemClickListener != null) {
             //注意这里使用getTag方法获取数据
-            mOnItemClickListener.onItemClick(v, (int) v.getTag());
+            mOnItemClickListener.onItemClick(v, (Integer) v.getTag());
+        }
+    }
+
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_shoucang, parent, false);
+        v.setOnClickListener(this);
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.ivMedImg.setImageUrl(mData.get(position).getThumb());
+        holder.name.setText(mData.get(position).getTitle());
+        holder.price.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price), mData.get(position).getMarketprice() + ""));
+//        holder.mOrderPrice.setText(String.format(mContext.getResources().getString(R.string.order_price), mData.get(position).getFee() + ""));
+        holder.itemView.setTag(position);
+    }
+
+    @Override
+    public int getItemCount() {
+        if (mData != null) {
+            return mData.size();
+        } else {
+            return 0;
         }
     }
 
     public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
         this.mOnItemClickListener = listener;
     }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 

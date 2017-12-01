@@ -39,12 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
-import cn.wd.checkout.api.CheckOut;
-import cn.wd.checkout.api.WDCallBack;
-import cn.wd.checkout.api.WDPay;
-import cn.wd.checkout.api.WDReqParams;
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.ByteArrayEntity;
 import cz.msebera.android.httpclient.message.BasicHeader;
@@ -201,41 +196,6 @@ public class Util {
 
     }
 
-
-    /**
-     * 汇到支付自封装再使用：
-     * context : 上下文
-     * SHH：商户号
-     * PayKey: 付款码
-     * PayPath: 支付路径  (支付宝 = alipay，微信 = weixin，其他。。)
-     * SubMerNo : 子商户号
-     * OrderTitle : 订单标题
-     * GoodsDsc ：商品描述
-     * Price: 商品价格
-     * OrderId: 订单号
-     * OrderDsc ：订单描述  // 可为空
-     * ExdParams : 扩展参数 //可为空 ，没有传 null
-     * wdCallBack:  万达支付回掉
-     */
-    public static void PayByHuiDao(Context context, String SHH, String PayKey, String PayPath,
-                                   String SubMerNo, String OrderTitle, String GoodsDsc, Long
-                                           Price, String
-                                           OrderId, String OrderDsc, Map<String, String>
-                                           ExdParams, WDCallBack wdCallBack) {
-        CheckOut.setAppIdAndSecret(SHH, PayKey);
-        CheckOut.setIsPrint(true);
-
-        if (PayPath == "alipay") {
-            WDPay.getInstance(context).reqPayAsync(WDReqParams.WDChannelTypes.alipay, SubMerNo,
-                    OrderTitle, GoodsDsc, Price, OrderId, OrderDsc, ExdParams, wdCallBack);
-        } else if (PayPath == "weixin") {
-
-        }
-
-
-    }
-
-
     public static Intent createExplicitFromImplicitIntent(Context context, Intent implicitIntent) {
         // Retrieve all services that can match the given intent
         PackageManager pm = context.getPackageManager();
@@ -245,7 +205,6 @@ public class Util {
         if (resolveInfo == null || resolveInfo.size() != 1) {
             return null;
         }
-
         // Get component info and create ComponentName
         ResolveInfo serviceInfo = resolveInfo.get(0);
         String packageName = serviceInfo.serviceInfo.packageName;

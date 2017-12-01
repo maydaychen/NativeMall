@@ -116,51 +116,10 @@
         android:layout_height="1dp"
         android:background="@color/line_colour_ee"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/white">
-
-        <TextView
-            style="@style/tv_14_left_marginleft8_33"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_postcode"/>
-
-        <EditText
-            android:id="@+id/et_add_address_code"
-            style="@style/et_14_right_marginright8_99"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:hint="@string/tv_postcode_detail"
-            android:inputType="number"
-            android:maxLength="6"/>
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="@dimen/margin_size_10dp"
-        android:background="@color/white">
-
-        <TextView
-            style="@style/tv_14_left_marginleft8_33"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_set_default"/>
-
-        <CheckBox
-            android:id="@+id/cb_add_address_default"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
-            android:padding="@dimen/margin_size_8dp"/>
-    </RelativeLayout>
-
     <Button
         android:id="@+id/bt_add_address_save"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginLeft="@dimen/margin_size_10dp"
         android:layout_marginRight="@dimen/margin_size_10dp"
         android:layout_marginTop="@dimen/margin_size_20dp"

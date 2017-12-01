@@ -1,6 +1,5 @@
 package com.example.nativeMall.ui.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,10 +14,9 @@ import com.example.nativeMall.Adapter.RecyclerViewAdapter;
 import com.example.nativeMall.Bean.OrderBean;
 import com.example.nativeMall.Bean.OrderDetailBean;
 import com.example.nativeMall.Config;
-import com.example.nativeMall.Http;
 import com.example.nativeMall.R;
 import com.example.nativeMall.Util;
-import com.example.nativeMall.ui.Activity.CommentGoodsActivity;
+import com.example.nativeMall.http.Http;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -98,12 +96,12 @@ public class DaipingjiaFragment extends Fragment {
                     initData();
                     break;
                 case 1:
-                    mOrderDetailBean = mGson.fromJson(data, OrderDetailBean.class);
-                    Intent intent2 = new Intent(getActivity(), CommentGoodsActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("order", mOrderDetailBean.getData());
-                    intent2.putExtras(bundle);
-                    getActivity().startActivity(intent2);
+//                    mOrderDetailBean = mGson.fromJson(data, OrderDetailBean.class);
+//                    Intent intent2 = new Intent(getActivity(), CommentGoodsActivity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("order", mOrderDetailBean.getData());
+//                    intent2.putExtras(bundle);
+//                    getActivity().startActivity(intent2);
                     break;
             }
         }

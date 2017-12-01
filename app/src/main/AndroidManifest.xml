@@ -56,8 +56,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Activity.MainActivity"
-                  android:launchMode="singleTask"/>
+        <activity
+            android:name=".ui.Activity.MainActivity"
+            android:launchMode="singleTask"/>
         <activity android:name=".ui.Activity.SearchActivity"/>
         <activity android:name=".ui.Activity.GoodsDetailActivity"/>
         <activity android:name=".ui.Activity.ZizhiActivity"/>
@@ -78,8 +79,6 @@
         <activity android:name=".ui.Activity.DateMsgAct"/>
         <activity android:name=".ui.Activity.AddPatientAct"/>
         <activity android:name=".ui.Activity.ConfirmSickMsgAct"/>
-
-
         <activity android:name=".ui.Activity.HotTopicDetailAct"/>
         <activity android:name=".ui.Activity.QualityAskDetailAct"/>
         <activity android:name=".ui.Activity.PayActivity"/>
@@ -163,7 +162,6 @@
             android:name=".ui.Activity.MyOrderActivity"
             android:launchMode="singleTask">
         </activity>
-
         <activity
             android:name=".ui.Activity.AllMedicineActivity"
             android:launchMode="singleTask">
@@ -213,6 +211,8 @@
 
         <activity android:name=".ui.Activity.MyChat"/>
         <activity android:name=".ui.Activity.ImagePreviewActivity"/>
+        <activity android:name=".ui.Activity.MyHistoryActivity">
+        </activity>
     </application>
 
 </manifest>

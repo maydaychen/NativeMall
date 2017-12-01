@@ -8,37 +8,62 @@
         android:id="@+id/iv_item_grid_down_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/default_product"
-        android:layout_margin="8dp"/>
+        android:layout_margin="8dp"
+        android:src="@drawable/default_product"/>
 
 
     <TextView
-        android:layout_alignTop="@id/iv_item_grid_down_logo"
-        android:layout_toRightOf="@id/iv_item_grid_down_logo"
         android:id="@+id/tv_item_grid_down_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@id/iv_item_grid_down_logo"
+        android:layout_toRightOf="@id/iv_item_grid_down_logo"
         android:textColor="@color/font_colour_33"/>
 
-    <TextView
-        android:layout_toRightOf="@id/iv_item_grid_down_logo"
-        android:id="@+id/tv_item_grid_down_price"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tv_item_grid_down_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:textColor="@color/font_colour_1515"
-        android:textSize="16sp"/>
+        android:layout_toRightOf="@id/iv_item_grid_down_logo">
 
-    <TextView
+        <TextView
+            android:id="@+id/tv_item_grid_down_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font_colour_1515"
+            android:textSize="16sp"/>
 
-        android:layout_toRightOf="@id/iv_item_grid_down_logo"
-        android:layout_alignBottom="@id/iv_item_grid_down_logo"
-        android:id="@+id/tv_item_grid_down_shop_name"
-        android:layout_width="wrap_content"
-        android:textSize="@dimen/font_size_10sp"
+        <TextView
+            android:id="@+id/tv_item_grid_down_old_price"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_8dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_item_grid_down_price"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/font_colour_99"/>
+        android:layout_alignBottom="@id/iv_item_grid_down_logo"
+        android:layout_toRightOf="@id/iv_item_grid_down_logo">
+
+        <TextView
+            android:id="@+id/tv_item_grid_down_sold_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font_colour_99"
+            android:textSize="@dimen/font_size_10sp"/>
+
+        <TextView
+            android:id="@+id/tv_item_grid_down_keep_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font_colour_99"
+            android:textSize="@dimen/font_size_10sp"/>
+    </RelativeLayout>
+
 
     <TextView
         android:layout_width="match_parent"

@@ -21,7 +21,7 @@
             android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
 
         <TextView
-            android:text="@string/allmed"
+
             android:id="@+id/tv_supplier_title_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,8 +59,7 @@
             android:padding="@dimen/margin_size_4dp"
             android:textSize="@dimen/font_size_14sp"
             android:background="@drawable/search_white_8px"
-            android:drawableLeft="@drawable/v2_0_search_hui"
-            android:hint="@string/et_enter_medicine_name" />
+            android:drawableLeft="@drawable/v2_0_search_hui"/>
 
         <TextView
             android:id="@+id/tv_grid_down_search"

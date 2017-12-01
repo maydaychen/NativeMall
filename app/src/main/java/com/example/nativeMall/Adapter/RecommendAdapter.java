@@ -7,12 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.nativeMall.Config;
+import com.example.nativeMall.Bean.AttrbuteBean;
 import com.example.nativeMall.R;
 import com.loopj.android.image.SmartImageView;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 作者：JTR on 2016/8/29 16:30
@@ -20,7 +19,7 @@ import java.util.Map;
  */
 public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.ViewHolder> implements View.OnClickListener {
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;
-    private List<Map<String, Object>> mData;
+    private List<AttrbuteBean.ResultBean> mData;
     private Context mContext = null;
 
     //define interface
@@ -28,7 +27,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
         void onItemClick(View view, int data);
     }
 
-    public RecommendAdapter(Context context, List<Map<String, Object>> mData) {
+    public RecommendAdapter(Context context, List<AttrbuteBean.ResultBean> mData) {
         this.mContext = context;
         this.mData = mData;
     }
@@ -36,9 +35,9 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
 
     //创建新View，被LayoutManager所调用
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_mall_recommend, viewGroup, false);
-        ViewHolder vh = new ViewHolder(view);
+    public RecommendAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_recommend_goods, viewGroup, false);
+        RecommendAdapter.ViewHolder vh = new RecommendAdapter.ViewHolder(view);
         view.setOnClickListener(this);
         return vh;
     }
@@ -46,10 +45,11 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
 
     //将数据与界面进行绑定的操作
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        viewHolder.price.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price), (String) mData.get(position).get("price")));
-        viewHolder.name.setText((String) mData.get(position).get("name"));
-        viewHolder.logo.setImageUrl(Config.PIC_URL + mData.get(position).get("logo"));
+    public void onBindViewHolder(RecommendAdapter.ViewHolder viewHolder, int position) {
+        viewHolder.name.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price), mData.get(position).getMarketprice()));
+        viewHolder.sold.setText(String.format(mContext.getResources().getString(R.string.sold), mData.get(position).getSales()));
+        viewHolder.total.setText(String.format(mContext.getResources().getString(R.string.goods_detail_inventory), mData.get(position).getTotal()));
+        viewHolder.logo.setImageUrl(mData.get(position).getThumb());
         viewHolder.itemView.setTag(position);
     }
 
@@ -68,21 +68,25 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
         }
     }
 
-    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
+    public void setOnItemClickListener(RecommendAdapter.OnRecyclerViewItemClickListener listener) {
         this.mOnItemClickListener = listener;
     }
 
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView price;
         public TextView name;
+        public TextView sold;
+        public TextView total;
         public SmartImageView logo;
+
 
         public ViewHolder(View view) {
             super(view);
-            price = (TextView) view.findViewById(R.id.tv_recommend_price);
-            name = (TextView) view.findViewById(R.id.tv_recommend_name);
-            logo = (SmartImageView) view.findViewById(R.id.iv_recommend_logo);
+            name = view.findViewById(R.id.tv_hot_goods_name);
+            sold = view.findViewById(R.id.tv_recommend_sold);
+            total = view.findViewById(R.id.tv_recommend_total);
+            logo = view.findViewById(R.id.iv_hot_goods_logo);
+
         }
     }
 }

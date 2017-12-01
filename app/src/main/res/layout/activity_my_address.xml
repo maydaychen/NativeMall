@@ -11,7 +11,7 @@
         android:id="@+id/rl_mine_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/search_background">
+        android:background="@color/font_blue">
 
         <ImageView
             android:id="@+id/iv_choose_doc_back"
@@ -23,8 +23,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/tv_white_24_margin8"
-            android:text="@string/tv_my_address"/>
+            android:layout_centerInParent="true"
+            android:padding="@dimen/margin_size_8dp"
+            android:text="@string/tv_my_address"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_18sp"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -57,8 +60,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_item_address"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

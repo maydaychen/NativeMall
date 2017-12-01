@@ -1,18 +1,19 @@
 package com.example.nativeMall.Adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.nativeMall.Config;
+import com.example.nativeMall.Bean.GridDownBean;
 import com.example.nativeMall.R;
 import com.loopj.android.image.SmartImageView;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 作者：JTR on 2016/9/1 14:54
@@ -20,17 +21,25 @@ import java.util.Map;
  */
 public class GridDownAdapter extends RecyclerView.Adapter<GridDownAdapter.ViewHolder> implements View.OnClickListener {
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;
-    private List<Map<String, Object>> mData;
+    private List<GridDownBean.ResultBean> mData = new ArrayList<>();
     private Context mContext = null;
+
+    public void addAllData(List<GridDownBean.ResultBean> dataList) {
+        this.mData.addAll(dataList);
+        notifyDataSetChanged();
+    }
+
+    public void clearData() {
+        this.mData.clear();
+    }
 
     //define interface
     public interface OnRecyclerViewItemClickListener {
         void onItemClick(View view, int data);
     }
 
-    public GridDownAdapter(Context context, List<Map<String, Object>> mData) {
+    public GridDownAdapter(Context context) {
         this.mContext = context;
-        this.mData = mData;
     }
 
 
@@ -48,10 +57,13 @@ public class GridDownAdapter extends RecyclerView.Adapter<GridDownAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         viewHolder.setIsRecyclable(false);
-        viewHolder.name.setText((String) mData.get(position).get("name"));
-        viewHolder.price.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price), (String) mData.get(position).get("shopprice")));
-        viewHolder.shopname.setText((String) mData.get(position).get("sname"));
-        viewHolder.logo.setImageUrl(Config.PIC_URL + mData.get(position).get("url"));
+        viewHolder.name.setText(mData.get(position).getTitle());
+        viewHolder.price.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price), (String) mData.get(position).getMarketprice()));
+        viewHolder.sold.setText(String.format(mContext.getResources().getString(R.string.sold), (String) mData.get(position).getSales()));
+        viewHolder.keep.setText(String.format(mContext.getResources().getString(R.string.goods_detail_inventory), (String) mData.get(position).getTotal()));
+        viewHolder.old_price.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price), (String) mData.get(position).getProductprice()));
+        viewHolder.old_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        viewHolder.logo.setImageUrl(mData.get(position).getThumb());
         viewHolder.itemView.setTag(position);
     }
 
@@ -79,14 +91,18 @@ public class GridDownAdapter extends RecyclerView.Adapter<GridDownAdapter.ViewHo
         public SmartImageView logo;
         public TextView name;
         public TextView price;
-        public TextView shopname;
+        public TextView old_price;
+        public TextView sold;
+        public TextView keep;
 
         public ViewHolder(View view) {
             super(view);
-            logo = (SmartImageView) view.findViewById(R.id.iv_item_grid_down_logo);
-            name = (TextView) view.findViewById(R.id.tv_item_grid_down_name);
-            price = (TextView) view.findViewById(R.id.tv_item_grid_down_price);
-            shopname = (TextView) view.findViewById(R.id.tv_item_grid_down_shop_name);
+            logo = view.findViewById(R.id.iv_item_grid_down_logo);
+            name = view.findViewById(R.id.tv_item_grid_down_name);
+            price = view.findViewById(R.id.tv_item_grid_down_price);
+            old_price = view.findViewById(R.id.tv_item_grid_down_old_price);
+            sold = view.findViewById(R.id.tv_item_grid_down_sold_num);
+            keep = view.findViewById(R.id.tv_item_grid_down_keep_num);
         }
     }
 }

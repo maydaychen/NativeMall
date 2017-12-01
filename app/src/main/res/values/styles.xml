@@ -256,9 +256,9 @@
     </style>
 
     <style name="tv_white_24_margin8">
-        <item name="android:layout_margin">@dimen/margin_size_8dp</item>
+        <item name="android:padding">@dimen/margin_size_8dp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/font_size_24sp</item>
+        <item name="android:textSize">@dimen/font_size_18sp</item>
         <item name="android:layout_centerInParent">true</item>
     </style>
 
@@ -331,6 +331,21 @@
     <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="tv_title">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/font_666</item>
+    </style>
+    <style name="button_red">
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginLeft">11dp</item>
+        <item name="android:layout_marginRight">11dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/boder_red</item>
     </style>
 </resources>
 

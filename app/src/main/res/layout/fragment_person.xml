@@ -9,7 +9,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="160dp"
@@ -25,10 +24,11 @@
 
             <com.loopj.android.image.SmartImageView
                 android:id="@+id/iv_my_logo"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_below="@id/iv_person_shezhi"
-                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:padding="@dimen/margin_size_8dp"
                 android:src="@drawable/v2_0_login_touxianga"/>
 
             <TextView
@@ -40,17 +40,41 @@
                 android:layout_marginLeft="@dimen/margin_size_16dp"
                 android:layout_marginTop="@dimen/margin_size_8dp"
                 android:layout_toRightOf="@id/iv_my_logo"
-                android:text="请登录"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_20sp"
+                android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/tv_person_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_person_username"
                 android:layout_toRightOf="@id/iv_my_logo"
                 android:paddingLeft="@dimen/margin_size_16dp"
-                android:text="ID:"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_18sp"/>
+
+            <TextView
+                android:id="@+id/tv_person_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/iv_my_logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_size_8dp"
+                android:paddingRight="@dimen/margin_size_16dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_16sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_person_username"
+                android:paddingRight="@dimen/margin_size_16dp"
+                android:text="购物专用"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_16sp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -89,8 +113,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:weightSum="4">
+            android:weightSum="5">
+            <RelativeLayout
+                android:id="@+id/rl_all_order"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/margin_size_8dp">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"/>
+
+                <ImageView
+                    android:id="@+id/iv0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/order_pay_stay_img"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv0"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="@dimen/margin_size_2dp"
+                    android:text="全部"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_12sp"/>
+            </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_daizhifu"
                 android:layout_width="0dp"
@@ -243,7 +295,7 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_person_kaidian"
+            android:id="@+id/rl_person_fenxiao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_size_8dp"
@@ -261,7 +313,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/iv_person_kaidian"
-                android:text="我要开店"/>
+                android:text="分销中心"/>
 
             <ImageView
                 style="@style/iv_padding_8_right"
@@ -358,7 +410,69 @@
                 android:src="@drawable/index_more"/>
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_colour_ee"/>
 
+        <RelativeLayout
+            android:id="@+id/rl_person_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_person_collect"
+                style="@style/iv_padding_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/v2_0_my_jiankangka"/>
+
+            <TextView
+                style="@style/tv_center_33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_person_collect"
+                android:text="我的收藏"/>
+
+            <ImageView
+                style="@style/iv_padding_8_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/index_more"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_colour_ee"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_person_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_person_history"
+                style="@style/iv_padding_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/v2_0_my_jiankangka"/>
+
+            <TextView
+                style="@style/tv_center_33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_person_history"
+                android:text="我的足迹"/>
+
+            <ImageView
+                style="@style/iv_padding_8_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/index_more"/>
+        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>

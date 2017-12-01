@@ -47,7 +47,7 @@ public class TopicCommentAdapter extends RecyclerView.Adapter<TopicCommentAdapte
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         viewHolder.name.setText((String) mData.get(position).get("name"));
         viewHolder.content.setText((String) mData.get(position).get("content"));
-        viewHolder.time.setText(String.format(mContext.getResources().getString(R.string.tv_hot_topic_time),(String) mData.get(position).get("time")));
+//        viewHolder.time.setText(String.format(mContext.getResources().getString(R.string.tv_hot_topic_time),(String) mData.get(position).get("time")));
         viewHolder.logo.setImageResource(R.drawable.tab_wo);
         viewHolder.itemView.setTag(position);
     }
