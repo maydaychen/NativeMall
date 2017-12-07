@@ -26,13 +26,12 @@ public class Config {
 
     public static com.example.nativeMall.Bean.UserBean userBean = new com.example.nativeMall.Bean.UserBean();
 
-    public static List<String> shistory = new ArrayList<>();
-    public static List<String> supplier_history = new ArrayList<>();
-
     public static final int PASSWORD_MINGWEN = 0x90;
     public static final int PASSWORD_MIWEN = 0x81;
 
     public static int ToDoctListFlag; //为1进入DoctDateDetailAct,2进入OnlineAskDoctAct;
 
     public static List<PatientBean> patientBeanList = new ArrayList<>();
+
+    public static String TAG = "chenyi";
 }

@@ -22,8 +22,10 @@ import com.example.nativeMall.http.ProgressSubscriber;
 import com.example.nativeMall.http.SubscriberOnNextListener;
 import com.example.nativeMall.ui.Activity.FenxiaoActivity;
 import com.example.nativeMall.ui.Activity.LoginActivity;
+import com.example.nativeMall.ui.Activity.MoneyActivity;
 import com.example.nativeMall.ui.Activity.MyAddressActivity;
 import com.example.nativeMall.ui.Activity.MyHistoryActivity;
+import com.example.nativeMall.ui.Activity.MyOrderActivity;
 import com.example.nativeMall.ui.Activity.MyShoucangActivity;
 import com.example.nativeMall.ui.Activity.SettingActivity;
 import com.google.gson.Gson;
@@ -126,9 +128,14 @@ public class PersonFragment extends Fragment {
                 preferences.getString("access_token", ""), preferences.getString("sessionkey", ""), sign, time);
     }
 
-    @OnClick({R.id.rl_all_order, R.id.rl_daizhifu, R.id.rl_daifahuo, R.id.rl_yifahuo, R.id.rl_yiwancheng, R.id.rl_person_fenxiao, R.id.rl_person_invite, R.id.rl_person_money, R.id.rl_person_address, R.id.rl_person_collect, R.id.rl_person_history})
+    @OnClick({R.id.rl_person_orders, R.id.rl_all_order, R.id.rl_daizhifu, R.id.rl_daifahuo, R.id.rl_yifahuo, R.id.rl_yiwancheng, R.id.rl_person_fenxiao, R.id.rl_person_invite, R.id.rl_person_money, R.id.rl_person_address, R.id.rl_person_collect, R.id.rl_person_history})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.rl_person_orders:
+                Intent orders = new Intent(getActivity(), MyOrderActivity.class);
+                orders.putExtra("id",0);
+                startActivity(orders);
+                break;
             case R.id.rl_all_order:
                 break;
             case R.id.rl_daizhifu:
@@ -149,6 +156,7 @@ public class PersonFragment extends Fragment {
             case R.id.rl_person_invite:
                 break;
             case R.id.rl_person_money:
+                startActivity(new Intent(getActivity(), MoneyActivity.class));
                 break;
             case R.id.rl_person_address:
                 startActivity(new Intent(getActivity(), MyAddressActivity.class));

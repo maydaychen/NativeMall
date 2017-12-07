@@ -25,6 +25,8 @@ public class GouwucheAdapter extends RecyclerView.Adapter<GouwucheAdapter.ViewHo
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;
     private List<GouwucheBean.ResultBean.ListBean> mData;
     private Context mContext;
+    private CheckInterface checkInterface;
+    private ModifyCountInterface modifyCountInterface;
 
     //define interface
     public interface OnRecyclerViewItemClickListener {
@@ -36,6 +38,13 @@ public class GouwucheAdapter extends RecyclerView.Adapter<GouwucheAdapter.ViewHo
         this.mData = mData;
     }
 
+    public void setCheckInterface(CheckInterface checkInterface) {
+        this.checkInterface = checkInterface;
+    }
+
+    public void setModifyCountInterface(ModifyCountInterface modifyCountInterface) {
+        this.modifyCountInterface = modifyCountInterface;
+    }
 
     //创建新View，被LayoutManager所调用
     @Override
@@ -56,14 +65,23 @@ public class GouwucheAdapter extends RecyclerView.Adapter<GouwucheAdapter.ViewHo
         viewHolder.mTvNum.setText(mData.get(position).getTotal());
         viewHolder.mTvPrice.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price), mData.get(position).getMarketprice()));
         viewHolder.mTvReduce.setOnClickListener(view -> {
-            if (Integer.valueOf(mData.get(position).getTotal()) > 1) {
-                viewHolder.mTvNum.setText(Integer.valueOf(mData.get(position).getTotal()) - 1 + "");
-                mData.get(position).setTotal(Integer.valueOf(mData.get(position).getTotal()) - 1 + "");
-            }
+            // 暴露增加接口
+            modifyCountInterface.doDecrease(position,  viewHolder.mTvNum, viewHolder.mCheckBox.isChecked());
+//            if (Integer.valueOf(mData.get(position).getTotal()) > 1) {
+//                viewHolder.mTvNum.setText(Integer.valueOf(mData.get(position).getTotal()) - 1 + "");
+//                mData.get(position).setTotal(Integer.valueOf(mData.get(position).getTotal()) - 1 + "");
+//            }
         });
         viewHolder.mTvAdd.setOnClickListener(view -> {
-            viewHolder.mTvNum.setText(Integer.valueOf(mData.get(position).getTotal()) + 1 + "");
-            mData.get(position).setTotal(Integer.valueOf(mData.get(position).getTotal()) + 1 + "");
+            // 暴露增加接口
+            modifyCountInterface.doIncrease(position,  viewHolder.mTvNum, viewHolder.mCheckBox.isChecked());
+//            viewHolder.mTvNum.setText(Integer.valueOf(mData.get(position).getTotal()) + 1 + "");
+//            mData.get(position).setTotal(Integer.valueOf(mData.get(position).getTotal()) + 1 + "");
+        });
+        viewHolder.mCheckBox.setOnClickListener(v -> {
+            // 暴露子选接口
+            viewHolder.mCheckBox.setChecked(((CheckBox) v).isChecked());
+            checkInterface.checkChild(position, ((CheckBox) v).isChecked());
         });
         viewHolder.itemView.setTag(position);
     }
@@ -110,4 +128,42 @@ public class GouwucheAdapter extends RecyclerView.Adapter<GouwucheAdapter.ViewHo
             ButterKnife.bind(this, view);
         }
     }
+
+    /**
+     * 复选框接口
+     */
+    public interface CheckInterface {
+        /**
+         * 子选框状态改变时触发的事件
+         *
+         * @param childPosition 子元素位置
+         * @param isChecked     子元素选中与否
+         */
+        void checkChild(int childPosition, boolean isChecked);
+    }
+
+    /**
+     * 改变数量的接口
+     */
+    public interface ModifyCountInterface {
+        /**
+         * 增加操作
+         *
+         * @param childPosition 子元素位置
+         * @param showCountView 用于展示变化后数量的View
+         * @param isChecked     子元素选中与否
+         */
+        void doIncrease(int childPosition, View showCountView, boolean isChecked);
+
+        /**
+         * 删减操作
+         *
+         * @param childPosition 子元素位置
+         * @param showCountView 用于展示变化后数量的View
+         * @param isChecked     子元素选中与否
+         */
+        void doDecrease(int childPosition, View showCountView, boolean isChecked);
+
+    }
+
 }

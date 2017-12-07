@@ -277,4 +277,22 @@ public class HttpJsonMethod {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
+
+    public void getCode(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String sign, int timestamp) {
+        movieService.getCode(accessToken, sessionKey, sign, timestamp)
+//                .map(new HttpResultFunc<>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void tixianList(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String sign, int timestamp) {
+        movieService.tixianList(accessToken, sessionKey, sign, timestamp)
+//                .map(new HttpResultFunc<>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
 }

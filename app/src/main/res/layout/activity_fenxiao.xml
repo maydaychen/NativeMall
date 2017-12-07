@@ -367,6 +367,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_fenxiao_promote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_size_8dp"
@@ -398,6 +399,7 @@
         android:background="@color/line_colour_ee"/>
 
     <RelativeLayout
+        android:id="@+id/rl_fenxiao_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white">

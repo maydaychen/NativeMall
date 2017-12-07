@@ -1,30 +1,14 @@
 package com.example.nativeMall.ui.Fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.nativeMall.Adapter.RecyclerViewAdapter;
-import com.example.nativeMall.Bean.OrderBean;
-import com.example.nativeMall.Config;
 import com.example.nativeMall.R;
-import com.example.nativeMall.Util;
-import com.example.nativeMall.http.Http;
 import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,74 +23,53 @@ public class AllOrderFragment extends Fragment {
 
     private Gson mGson = new Gson();
 
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            String data = msg.obj.toString();
-            switch (msg.what) {
-                case 0:
-                    List<Map<String, Object>> list = new ArrayList<>();
-                    try {
-                        JSONObject mJSONObject = new JSONObject(data);
-                        if (mJSONObject.getString("success").equals("T")) {
-                            OrderBean orderBean = mGson.fromJson(data, OrderBean.class);
-
-                            for (int i = 0; i < orderBean.getData().size(); i++) {
-                                ArrayList<String> imgList = new ArrayList<>();
-                                Map<String, Object> map = new HashMap<>();
-                                map.put("storename", orderBean.getData().get(i).getStorename());
-                                map.put("payfee", orderBean.getData().get(i).getPayfee());
-                                map.put("oid", orderBean.getData().get(i).getOid());
-                                map.put("sname", orderBean.getData().get(i).getStorename());
-                                map.put("orderstate", orderBean.getData().get(i).getOrderstate());
-                                int num = 0;
-                                for (int j = 0; j < orderBean.getData().get(i).getDetails().size(); j++) {
-                                    imgList.add(orderBean.getData().get(i).getDetails().get(j).getShowimg());
-                                    num += Integer.parseInt(orderBean.getData().get(i).getDetails().get(j).getBuycount());
-                                }
-                                map.put("img", imgList);
-                                map.put("num", num);
-                                list.add(map);
-                            }
-                            //竖直排列、正向排序
-                            recylcerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                            //添加了一个灰色背景
-                            recylcerview.setBackgroundResource(R.color.background);
-                            recylcerview.setAdapter(new RecyclerViewAdapter(list, getActivity(), mHandler));
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-            }
-        }
-    };
-
-    Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            String data = msg.obj.toString();
-            switch (msg.what) {
-                case 0:
-                    Util.showMsg(getContext(), data);
-                    initData();
-                    break;
-                case 1:
-//                    OrderDetailBean orderDetailBean = mGson.fromJson(data, OrderDetailBean.class);
-//                    Intent intent2 = new Intent(getActivity(), CommentGoodsActivity.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("order", orderDetailBean.getData());
-//                    intent2.putExtras(bundle);
-//                    getActivity().startActivity(intent2);
-                    break;
-            }
-        }
-    };
+//    Handler handler = new Handler() {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            String data = msg.obj.toString();
+//            switch (msg.what) {
+//                case 0:
+//                    List<Map<String, Object>> list = new ArrayList<>();
+//                    try {
+//                        JSONObject mJSONObject = new JSONObject(data);
+//                        if (mJSONObject.getString("success").equals("T")) {
+//                            OrderBean orderBean = mGson.fromJson(data, OrderBean.class);
+//
+//                            for (int i = 0; i < orderBean.getData().size(); i++) {
+//                                ArrayList<String> imgList = new ArrayList<>();
+//                                Map<String, Object> map = new HashMap<>();
+//                                map.put("storename", orderBean.getData().get(i).getStorename());
+//                                map.put("payfee", orderBean.getData().get(i).getPayfee());
+//                                map.put("oid", orderBean.getData().get(i).getOid());
+//                                map.put("sname", orderBean.getData().get(i).getStorename());
+//                                map.put("orderstate", orderBean.getData().get(i).getOrderstate());
+//                                int num = 0;
+//                                for (int j = 0; j < orderBean.getData().get(i).getDetails().size(); j++) {
+//                                    imgList.add(orderBean.getData().get(i).getDetails().get(j).getShowimg());
+//                                    num += Integer.parseInt(orderBean.getData().get(i).getDetails().get(j).getBuycount());
+//                                }
+//                                map.put("img", imgList);
+//                                map.put("num", num);
+//                                list.add(map);
+//                            }
+//                            //竖直排列、正向排序
+//                            recylcerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+//                            //添加了一个灰色背景
+//                            recylcerview.setBackgroundResource(R.color.background);
+//                            recylcerview.setAdapter(new RecyclerViewAdapter(list, getActivity(), mHandler));
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    break;
+//            }
+//        }
+//    };
 
     private void initData() {
-        Map<String, String> param2 = new HashMap<>();
-        param2.put("uid", Config.userBean.getData().getUid());
-        Http.getInstance().init(getActivity(), handler, mGson.toJson(param2), "order/findOrderlist", 0).sendMsg();
+//        Map<String, String> param2 = new HashMap<>();
+//        param2.put("uid", Config.userBean.getData().getUid());
+//        Http.getInstance().init(getActivity(), handler, mGson.toJson(param2), "order/findOrderlist", 0).sendMsg();
     }
 
     @Override

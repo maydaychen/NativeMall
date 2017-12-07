@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nativeMall.ui.Activity.MyShoucangActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_mine_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/font_blue">
+
+        <ImageView
+            android:id="@+id/iv_choose_doc_back"
+            style="@style/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+        <TextView
+            style="@style/tv_white_24_margin8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提现"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_tixian_1"
+        android:layout_below="@id/rl_mine_title"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/font_blue"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="可提现金额"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_18sp"/>
+
+        <TextView
+            android:id="@+id/tv_total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0元"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_shouru"
+        android:layout_below="@id/ll_tixian_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/margin_size_12dp"
+        android:text="收入"/>
+
+    <View
+        android:id="@+id/ll_1"
+        android:layout_below="@id/tv_shouru"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_money1"
+        android:layout_below="@id/ll_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_size_12dp"
+            android:text="累计销售收益"/>
+
+        <TextView
+            android:id="@+id/tv_tixian_sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/margin_size_12dp"/>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_below="@id/rl_money1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_tixian_total"
+        android:layout_below="@id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_size_12dp"
+            android:text="累计管理收益"/>
+
+        <TextView
+            android:id="@+id/tv_tixian_manage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/margin_size_12dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_tixian_zhichu_useless"
+        android:layout_below="@id/rl_tixian_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_size_8dp"
+        android:background="@color/white"
+        android:padding="@dimen/margin_size_12dp"
+        android:text="支出"/>
+
+    <View
+        android:id="@+id/line3"
+        android:layout_below="@id/tv_tixian_zhichu_useless"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:layout_below="@id/line3"
+        android:id="@+id/rl_tixian_zhichu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_size_12dp"
+            android:text="已提现金额"/>
+
+        <ImageView
+            android:id="@+id/iv_tixian_more"
+            android:layout_width="wrap_content"
+            android:padding="@dimen/margin_size_12dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/index_more"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tv_tixian_zhichu"
+            android:layout_toLeftOf="@id/iv_tixian_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_size_12dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:text="提现"
+        android:textColor="@color/white"
+        android:background="@color/font_blue"
+        android:textSize="@dimen/font_size_18sp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+</RelativeLayout>

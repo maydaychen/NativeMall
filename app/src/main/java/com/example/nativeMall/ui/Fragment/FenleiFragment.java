@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +81,6 @@ public class FenleiFragment extends Fragment {
         preferences = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
 
         getLeftOnNext = jsonObject -> {
-            Log.i("chenyi", "get banner onNext: " + jsonObject.toString());
             if (jsonObject.getInt("statusCode") == 1) {
                 CategoryBean indexBean = gson.fromJson(jsonObject.toString(), CategoryBean.class);
                 for (CategoryBean.ResultBean resultBean : indexBean.getResult()) {
@@ -102,7 +100,6 @@ public class FenleiFragment extends Fragment {
             }
         };
         getRightOnNext = jsonObject -> {
-            Log.i("chenyi", "get right fenlei onNext: " + jsonObject.toString());
             if (jsonObject.getInt("statusCode") == 1) {
                 CategoryRightBean indexBean = gson.fromJson(jsonObject.toString(), CategoryRightBean.class);
                 GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3, LinearLayoutManager.VERTICAL, false);

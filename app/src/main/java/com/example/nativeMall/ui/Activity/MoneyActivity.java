@@ -21,7 +21,10 @@ public class MoneyActivity extends InitActivity {
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_money);
         ButterKnife.bind(this);
-
+        mTbCoupons.setTabMode(TabLayout.MODE_FIXED);
+        mTbCoupons.addTab(mTbCoupons.newTab().setText("待使用"));
+        mTbCoupons.addTab(mTbCoupons.newTab().setText("已使用"));
+        mTbCoupons.addTab(mTbCoupons.newTab().setText("已过期"));
     }
 
     @Override

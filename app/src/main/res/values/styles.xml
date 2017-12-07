@@ -263,7 +263,7 @@
     </style>
 
     <style name="tv_person_center_vertical_padding_8">
-        <item name="android:padding">@dimen/margin_size_8dp</item>
+        <item name="android:padding">@dimen/margin_size_10dp</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

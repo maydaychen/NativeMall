@@ -129,10 +129,10 @@ public interface BlueService {
     @FormUrlEncoded
     @PUT("/addresses")
     rx.Observable<JSONObject> editAddress(@Field("access_token") String access_token, @Field("sessionkey") String sessionkey,
-                                           @Field("realname") String realname, @Field("mobile") String mobile,
-                                           @Field("province") String province, @Field("city") String city,
-                                           @Field("area") String area, @Field("address") String address,
-                                           @Field("sign") String sign, @Field("timestamp") int timestamp);
+                                          @Field("realname") String realname, @Field("mobile") String mobile,
+                                          @Field("province") String province, @Field("city") String city,
+                                          @Field("area") String area, @Field("address") String address,
+                                          @Field("sign") String sign, @Field("timestamp") int timestamp);
 
     @Headers("addons: ewei_shop")
     @GET("/members/memberInfo")
@@ -181,4 +181,12 @@ public interface BlueService {
     @GET("/products/search")
     rx.Observable<JSONObject> search_goods(@Query("access_token") String accessToken, @Query("keywords") String keywords, @Query("sessionkey") String sessionKey,
                                            @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
+    @GET("/qrimgs")
+    rx.Observable<JSONObject> getCode(@Query("access_token") String accessToken,@Query("sessionkey") String sessionkey, @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
+    @GET("/commissions/recordStatistics")
+    rx.Observable<JSONObject> tixianList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey, @Query("sign") String sign, @Query("timestamp") int timestamp);
 }

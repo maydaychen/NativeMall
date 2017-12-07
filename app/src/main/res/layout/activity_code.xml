@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.nativeMall.ui.Activity.MyAddressActivity">
+    tools:context="com.example.nativeMall.ui.Activity.MyShoucangActivity">
 
     <RelativeLayout
         android:id="@+id/rl_mine_title"
@@ -22,25 +21,14 @@
             android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
 
         <TextView
+            style="@style/tv_white_24_margin8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="@dimen/margin_size_8dp"
-            android:text="优惠券"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_size_18sp"/>
+            android:text="@string/app_name"/>
     </RelativeLayout>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tb_coupons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:tabSelectedTextColor="@color/blue"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_coupons"
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/iv_code"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
 </LinearLayout>

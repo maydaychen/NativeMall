@@ -217,6 +217,10 @@
         </activity>
         <activity android:name=".ui.Activity.MoneyActivity">
         </activity>
+        <activity android:name=".ui.Activity.CodeActivity">
+        </activity>
+        <activity android:name=".ui.Activity.TixianActivity">
+        </activity>
     </application>
 
 </manifest>
