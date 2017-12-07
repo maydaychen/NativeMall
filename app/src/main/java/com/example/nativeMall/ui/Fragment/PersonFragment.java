@@ -20,10 +20,12 @@ import com.example.nativeMall.Utils;
 import com.example.nativeMall.http.HttpJsonMethod;
 import com.example.nativeMall.http.ProgressSubscriber;
 import com.example.nativeMall.http.SubscriberOnNextListener;
+import com.example.nativeMall.ui.Activity.FenxiaoActivity;
 import com.example.nativeMall.ui.Activity.LoginActivity;
 import com.example.nativeMall.ui.Activity.MyAddressActivity;
 import com.example.nativeMall.ui.Activity.MyHistoryActivity;
 import com.example.nativeMall.ui.Activity.MyShoucangActivity;
+import com.example.nativeMall.ui.Activity.SettingActivity;
 import com.google.gson.Gson;
 import com.loopj.android.image.SmartImageView;
 
@@ -44,6 +46,7 @@ public class PersonFragment extends Fragment {
     @BindView(R.id.tv_person_price)
     TextView mTvPersonPrice;
     private SharedPreferences preferences;
+    private MemberBean indexBean;
     private SubscriberOnNextListener<JSONObject> infoOnNext;
     private Gson mGson = new Gson();
 
@@ -83,7 +86,7 @@ public class PersonFragment extends Fragment {
         preferences = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
         infoOnNext = jsonObject -> {
             if (jsonObject.getInt("statusCode") == 1) {
-                MemberBean indexBean = mGson.fromJson(jsonObject.toString(), MemberBean.class);
+                indexBean = mGson.fromJson(jsonObject.toString(), MemberBean.class);
                 mTvPersonUsername.setText(indexBean.getResult().getNickname());
                 mTvPersonId.setText(String.format(getActivity().getResources().getString(R.string.person_id), indexBean.getResult().getId()));
                 mTvPersonPrice.setText(String.format(getActivity().getResources().getString(R.string.person_price), indexBean.getResult().getCredit1()));
@@ -96,8 +99,11 @@ public class PersonFragment extends Fragment {
 
     public void initView() {
         mIvPersonShezhi.setOnClickListener(view -> {
-//            Intent intent = new Intent(getActivity(), SettingActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(getActivity(), SettingActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("member", indexBean.getResult());
+            intent.putExtras(bundle);
+            startActivity(intent);
         });
 
         ivMyLogo.setOnClickListener(v -> {
@@ -134,6 +140,11 @@ public class PersonFragment extends Fragment {
             case R.id.rl_yiwancheng:
                 break;
             case R.id.rl_person_fenxiao:
+                Intent intent = new Intent(getActivity(), FenxiaoActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("member", indexBean.getResult());
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
             case R.id.rl_person_invite:
                 break;

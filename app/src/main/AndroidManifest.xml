@@ -213,6 +213,10 @@
         <activity android:name=".ui.Activity.ImagePreviewActivity"/>
         <activity android:name=".ui.Activity.MyHistoryActivity">
         </activity>
+        <activity android:name=".ui.Activity.FenxiaoActivity">
+        </activity>
+        <activity android:name=".ui.Activity.MoneyActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -114,6 +114,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:weightSum="5">
+
             <RelativeLayout
                 android:id="@+id/rl_all_order"
                 android:layout_width="0dp"
@@ -143,6 +144,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_size_12sp"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/rl_daizhifu"
                 android:layout_width="0dp"
@@ -474,5 +476,14 @@
                 android:src="@drawable/index_more"/>
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/font_colour_33"
+            android:padding="@dimen/margin_size_12dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:text="退出登录"/>
     </LinearLayout>
 </ScrollView>

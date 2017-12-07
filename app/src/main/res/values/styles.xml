@@ -262,6 +262,24 @@
         <item name="android:layout_centerInParent">true</item>
     </style>
 
+    <style name="tv_person_center_vertical_padding_8">
+        <item name="android:padding">@dimen/margin_size_8dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="et_person_center_vertical_padding_8">
+        <item name="android:background">@null</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/font_666</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <style name="tv_font_20px_333">
         <item name="android:textSize">@dimen/font_size_10sp</item>
         <item name="android:textColorHint">@color/font_black</item>
@@ -338,6 +356,7 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/font_666</item>
     </style>
+
     <style name="button_red">
         <item name="android:padding">10dp</item>
         <item name="android:layout_marginLeft">11dp</item>

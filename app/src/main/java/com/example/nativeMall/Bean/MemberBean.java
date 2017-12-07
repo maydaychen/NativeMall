@@ -1,12 +1,13 @@
 package com.example.nativeMall.Bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by user on 2017/11/23.
  */
 
-public class MemberBean {
+public class MemberBean implements Serializable{
     /**
      * statusCode : 1
      * result : {"id":"204","openid":"oNSO9wHBr-KbfKt0sNybs2wByWHY","level":"0","agentid":"0","weixin":"大王","realname":"汤正刚","mobile":"18915787525","createtime":"1502412809","agenttime":"1502413146","status":"1","isagent":"1","agentlevel":"0","nickname":"山不转水转","credit1":"29.00","credit2":"0.00","inviter":"0","gender":"1","birthyear":"","birthmonth":"","birthday":"","avatar":"http://wx.qlogo.cn/mmopen/NVScz79licL81hfJAKvrHyPUZAMQICIBNDTWnILibDXYH2uJnlBZ3rvtibzmNo0opLr9bprKl1qgQ6KEczZg0dyGQHXJWvNUPRQ/132","province":"江苏","city":"苏州","area":"","childtime":"0","parent_name":"江苏岗隆数码科技有限公司","leveldetail":{"level":0,"levelname":"尊享会员","discount":0},"agentleveldetail":{"levelname":"顶级分销商","commission1":"1.6","commission2":"0.4","commission3":0,"commission_fugou":[],"priority":0}}
@@ -31,7 +32,7 @@ public class MemberBean {
         this.result = result;
     }
 
-    public static class ResultBean {
+    public static class ResultBean implements Serializable{
         /**
          * id : 204
          * openid : oNSO9wHBr-KbfKt0sNybs2wByWHY
@@ -316,7 +317,7 @@ public class MemberBean {
             this.agentleveldetail = agentleveldetail;
         }
 
-        public static class LeveldetailBean {
+        public static class LeveldetailBean implements Serializable{
             /**
              * level : 0
              * levelname : 尊享会员
@@ -352,7 +353,7 @@ public class MemberBean {
             }
         }
 
-        public static class AgentleveldetailBean {
+        public static class AgentleveldetailBean implements Serializable{
             /**
              * levelname : 顶级分销商
              * commission1 : 1.6

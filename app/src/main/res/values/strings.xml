@@ -73,6 +73,7 @@
     <string name="tv_my_youhui_detail">已用、未用优惠券</string>
     <string name="tv_my_shoucang">我的收藏</string>
     <string name="tv_my_zuji">我的足迹</string>
+    <string name="tv_fenxiao">分销中心</string>
     <string name="tv_my_setting">设置</string>
     <string name="tv_change_address">编辑地址</string>
     <string name="delete">删除</string>
@@ -96,4 +97,9 @@
     <string name="input_phone_number">请输入手机号</string>
     <string name="tv_my_order">我的订单</string>
     <string name="change">修改</string>
+    <string name="fenxiao_nickname">昵称:%1$s</string>
+    <string name="fenxiao_id">会员ID:%1$s</string>
+    <string name="fenxiao_level">等级:%1$s</string>
+    <string name="fenxiao_recommender">推荐人:%1$s</string>
+    <string name="fenxiao_recommend_money">推广费:%1$s</string>
 </resources>
