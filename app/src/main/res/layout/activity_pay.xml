@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -8,24 +7,23 @@
               tools:context=".ui.Activity.PayActivity">
 
     <RelativeLayout
-        android:id="@+id/rl_pay_title"
+        android:id="@+id/rl_my_order_title"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/white">
+        android:layout_height="wrap_content"
+        android:background="@color/font_blue">
 
         <ImageView
             android:id="@+id/iv_guige_back"
             style="@style/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/back"/>
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
 
         <TextView
-            style="@style/tv_title"
+            style="@style/tv_white_24_margin8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="支付"/>
-
     </RelativeLayout>
 
     <View
@@ -37,7 +35,6 @@
         android:id="@+id/rl_pay_solder"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/rl_pay_title"
         android:background="@color/white">
 
         <TextView
@@ -92,26 +89,10 @@
     </RelativeLayout>
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/rl_pay_price"
-        android:layout_marginTop="@dimen/margin_size_8dp"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:padding="@dimen/margin_size_8dp"
-        android:text="@string/tv_pay_kind"
-        android:textSize="@dimen/font_size_14sp"/>
-
-    <TextView
-        android:id="@+id/pry_kind_line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/line_colour_ee"/>
-
     <RelativeLayout
         android:id="@+id/rl_ali"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_size_8dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:padding="@dimen/margin_size_8dp">
@@ -141,6 +122,12 @@
             android:padding="@dimen/margin_size_8dp"/>
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/pry_kind_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_colour_ee"/>
+
     <RelativeLayout
         android:id="@+id/rl_wechat"
         android:layout_width="match_parent"
@@ -166,14 +153,13 @@
         <CheckBox
             android:id="@+id/cb_pay_wechat"
             android:layout_width="wrap_content"
-            android:checked="true"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:button="@drawable/selector_check"
+            android:checked="true"
             android:padding="@dimen/margin_size_8dp"/>
     </RelativeLayout>
-
 
 
     <Button

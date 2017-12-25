@@ -99,6 +99,16 @@ public class GouwucheBean {
             private String marketprice;
             private String productprice;
 
+            public boolean isChoosed() {
+                return choosed;
+            }
+
+            public void setChoosed(boolean choosed) {
+                this.choosed = choosed;
+            }
+
+            private boolean choosed;
+
             public String getId() {
                 return id;
             }

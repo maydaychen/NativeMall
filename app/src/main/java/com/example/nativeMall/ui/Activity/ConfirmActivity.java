@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -29,10 +28,6 @@ import com.jakewharton.rxbinding.view.RxView;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -49,9 +44,7 @@ public class ConfirmActivity extends InitActivity {
     @BindView(R.id.et_confirm_remark)
     EditText mEtConfirmRemark;
     private Gson gson = new Gson();
-    private List<Map<String, Object>> pic_list = new ArrayList<>();
     private SubscriberOnNextListener<JSONObject> confirmOnNext;
-    //    private SubscriberOnNextListener<JSONObject> confirmOnNext;
     private SharedPreferences preferences;
     private static final int SHOW_SUBACTIVITY = 1;
     private PreOrderBean mBuyNowBean;
@@ -77,8 +70,6 @@ public class ConfirmActivity extends InitActivity {
 
     @BindView(R.id.tv_confirm_price)
     TextView mTvConfirmPrice;
-    @BindView(R.id.tv_confirm_num)
-    TextView mTvConfirmNum;
     @BindView(R.id.rv_confirm_showimg)
     RecyclerView mRvConfirmShowimg;
 
@@ -136,20 +127,15 @@ public class ConfirmActivity extends InitActivity {
         mTvOrderYunfei.setText(String.format(getResources().getString(R.string.mall_daily_nowprice_plus), mBuyNowBean.getResult().getDispatches().get(0).getPrice() + ""));
         mTvOrderZhekou.setText(String.format(getResources().getString(R.string.mall_daily_nowprice_minus), mBuyNowBean.getResult().getMemberDiscount().getDiscountprice() + ""));
         mTvConfirmPrice.setText(String.format(getResources().getString(R.string.mall_daily_nowprice), mBuyNowBean.getResult().getMemberDiscount().getRealprice() + ""));
-        mTvConfirmNum.setText(String.format(getResources().getString(R.string.tv_order_num), mBuyNowBean.getResult().getOrderGoods().get(0).getTotal() + ""));
         mTvConfirmSendKind.setText(mBuyNowBean.getResult().getDispatches().get(0).getDispatchname());
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(ConfirmActivity.this, 3, LinearLayoutManager.VERTICAL, false) {
+        mRvConfirmShowimg.setLayoutManager(new LinearLayoutManager(getApplicationContext()) {
             @Override
             public boolean canScrollVertically() {
                 return false;
             }
-        };
-        mRvConfirmShowimg.setLayoutManager(layoutManager);
-        Map<String, Object> map = new HashMap<>();
-        map.put("logo", mBuyNowBean.getResult().getOrderGoods().get(0).getThumb());
-        pic_list.add(map);
-        ConfirmPicAdapter confirmPicAdapter = new ConfirmPicAdapter(pic_list);
+        });
+        ConfirmPicAdapter confirmPicAdapter = new ConfirmPicAdapter(mBuyNowBean.getResult().getOrderGoods(), getApplicationContext());
         mRvConfirmShowimg.setAdapter(confirmPicAdapter);
 
         mTvAddAddress.setOnClickListener(v -> {
@@ -178,23 +164,16 @@ public class ConfirmActivity extends InitActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (resultCode) {
-            case RESULT_OK:
-//                HttpShopMethod.getInstance().get_address_price(
-//                        new ProgressSubscriber(addressOnNext, ConfirmActivity.this),
-//                        preferences.getString("access_token", ""), preferences.getString("sessionkey", ""), mBuyNowBean.getResult().getOrderGoods().get(0).getGoodsid(),
-//                        data.getStringExtra("said"), mBuyNowBean.getResult().getOrderGoods().get(0).getTotal() + "");
-                if (data != null) {
-                    mRlConfirmAddress.setVisibility(View.VISIBLE);
-                    mTvAddAddress.setVisibility(View.GONE);
-                    AddressBean.ResultBean.ListBean addressBean = (AddressBean.ResultBean.ListBean) data.getSerializableExtra("address");
-                    addressId = addressBean.getId();
-                    mTvConfirmName.setText(addressBean.getRealname());
-                    mTvConfirmTelephone.setText(addressBean.getMobile());
-                    mTvConfirmAddress.setText(addressBean.getProvince() + addressBean.getCity() +
-                            addressBean.getArea() + addressBean.getAddress());
-                }
-                break;
+        if (data != null) {
+            mRlConfirmAddress.setVisibility(View.VISIBLE);
+            mTvAddAddress.setVisibility(View.GONE);
+            AddressBean.ResultBean.ListBean addressBean = (AddressBean.ResultBean.ListBean) data.getSerializableExtra("address");
+            addressId = addressBean.getId();
+            mTvConfirmName.setText(addressBean.getRealname());
+            mTvConfirmTelephone.setText(addressBean.getMobile());
+            mTvConfirmAddress.setText(addressBean.getProvince() + addressBean.getCity() +
+                    addressBean.getArea() + addressBean.getAddress());
+
         }
     }
 

@@ -33,7 +33,14 @@ public class GridDownActivity extends InitActivity implements PullLoadMoreRecycl
     TextView mTvSupplierTitleName;
     @BindView(R.id.rv_grid_down_list)
     PullLoadMoreRecyclerView mRvGridDownList;
-
+    @BindView(R.id.tv_fenlei_zonghe)
+    TextView mTvFenleiZonghe;
+    @BindView(R.id.tv_fenlei_xiaoliang)
+    TextView mTvFenleiXiaoliang;
+    @BindView(R.id.tv_fenlei_zuixin)
+    TextView mTvFenleiZuixin;
+    @BindView(R.id.tv_fenlei_jiage)
+    TextView mTvFenleiJiage;
 
     private GridDownAdapter mRecyclerViewAdapter;
     private Gson mGson = new Gson();
@@ -41,6 +48,7 @@ public class GridDownActivity extends InitActivity implements PullLoadMoreRecycl
     private SubscriberOnNextAndErrorListener<JSONObject> categoryOnNext;
     private int page = 1;
     private String sortType = "";
+    private String ccate = "";
 
     @Override
     public void initView(Bundle savedInstanceState) {
@@ -52,6 +60,10 @@ public class GridDownActivity extends InitActivity implements PullLoadMoreRecycl
     @Override
     public void initData() {
         preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+        try {
+            ccate = getIntent().getStringExtra("ccate");
+        } catch (NullPointerException ignored) {
+        }
         RecyclerView recyclerView = mRvGridDownList.getRecyclerView();
         recyclerView.setVerticalScrollBarEnabled(true);
         mRvGridDownList.setRefreshing(false);
@@ -82,6 +94,8 @@ public class GridDownActivity extends InitActivity implements PullLoadMoreRecycl
                             Toast.makeText(GridDownActivity.this, "已经加载完毕！", Toast.LENGTH_LONG).show();
                         }
                     }
+                } else {
+                    Toast.makeText(GridDownActivity.this, jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -91,16 +105,55 @@ public class GridDownActivity extends InitActivity implements PullLoadMoreRecycl
                 mRvGridDownList.setPullLoadMoreCompleted();
             }
         };
-
-        initCategoryGoods();
+//        initCategoryGoods();
+        mTvFenleiZonghe.setOnClickListener(view -> {
+            mTvFenleiZonghe.setTextColor(getResources().getColor(R.color.font_blue));
+            mTvFenleiXiaoliang.setTextColor(getResources().getColor(R.color.gray));
+            mTvFenleiZuixin.setTextColor(getResources().getColor(R.color.gray));
+            mTvFenleiJiage.setTextColor(getResources().getColor(R.color.gray));
+            sortType = "";
+            setRefresh();
+            initCategoryGoods();
+        });
+        mTvFenleiXiaoliang.setOnClickListener(view -> {
+            mTvFenleiZonghe.setTextColor(getResources().getColor(R.color.gray));
+            mTvFenleiXiaoliang.setTextColor(getResources().getColor(R.color.font_blue));
+            mTvFenleiZuixin.setTextColor(getResources().getColor(R.color.gray));
+            mTvFenleiJiage.setTextColor(getResources().getColor(R.color.gray));
+            sortType = "sales";
+            setRefresh();
+            initCategoryGoods();
+        });
+        mTvFenleiZuixin.setOnClickListener(view -> {
+            mTvFenleiZonghe.setTextColor(getResources().getColor(R.color.gray));
+            mTvFenleiXiaoliang.setTextColor(getResources().getColor(R.color.gray));
+            mTvFenleiZuixin.setTextColor(getResources().getColor(R.color.font_blue));
+            mTvFenleiJiage.setTextColor(getResources().getColor(R.color.gray));
+            sortType = "new";
+            setRefresh();
+            initCategoryGoods();
+        });
+        mTvFenleiJiage.setOnClickListener(view -> {
+            mTvFenleiZonghe.setTextColor(getResources().getColor(R.color.gray));
+            mTvFenleiXiaoliang.setTextColor(getResources().getColor(R.color.gray));
+            mTvFenleiZuixin.setTextColor(getResources().getColor(R.color.gray));
+            mTvFenleiJiage.setTextColor(getResources().getColor(R.color.font_blue));
+            sortType = "price_desc";
+            setRefresh();
+            initCategoryGoods();
+        });
+        mTvFenleiZonghe.performClick();
     }
 
     private void initCategoryGoods() {
         String sign = "";
         int time = (int) (System.currentTimeMillis() / 1000);
+        if (!"".equals(ccate) && null != ccate) {
+            sign = sign + "ccate=" + ccate + "&";
+        }
         sign = sign + "page=" + page + "&";
         sign = sign + "pcate=" + getIntent().getStringExtra("cateid") + "&";
-        sign = sign + "psize=" + 10 + "&";
+        sign = sign + "psize=10&";
         sign = sign + "sessionkey=" + preferences.getString("sessionkey", "") + "&";
         if (!"".equals(sortType)) {
             sign = sign + "sorttype=" + sortType + "&";
@@ -109,11 +162,10 @@ public class GridDownActivity extends InitActivity implements PullLoadMoreRecycl
         sign = sign + "key=" + preferences.getString("auth_key", "");
         Log.i("chenyi", "initCategoryGoods: " + sign);
         sign = Utils.md5(sign);
-        Log.i("chenyi", "initCategoryGoods: " + sign);
         HttpJsonMethod.getInstance().getCategoryGoods(
                 new ProgressErrorSubscriber<>(categoryOnNext, GridDownActivity.this),
                 preferences.getString("access_token", ""), preferences.getString("sessionkey", ""),
-                getIntent().getStringExtra("cateid"), page, sortType, sign, time);
+                ccate, getIntent().getStringExtra("cateid"), page, sortType, sign, time);
     }
 
     @Override

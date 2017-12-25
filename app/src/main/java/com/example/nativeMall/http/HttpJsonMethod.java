@@ -104,8 +104,8 @@ public class HttpJsonMethod {
                 .subscribe(subscriber);
     }
 
-    public void getCategoryGoods(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String pcate, int pnum, String sorttype, String sign, int timestamp) {
-        movieService.getCategoryGoods(accessToken, sessionKey, "", pcate, 10, pnum, sorttype, sign, timestamp)
+    public void getCategoryGoods(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String ccate, String pcate, int pnum, String sorttype, String sign, int timestamp) {
+        movieService.getCategoryGoods(accessToken, sessionKey, ccate, pcate, 10, pnum, sorttype, sign, timestamp)
 //                .map(new HttpResultFunc<>())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -122,8 +122,8 @@ public class HttpJsonMethod {
                 .subscribe(subscriber);
     }
 
-    public void getAttributes(Subscriber<JSONObject> subscriber, String accessToken, String attributes, int page, int psize, String sign, int timestamp) {
-        movieService.getAttributes(accessToken, attributes, page, psize, sign, timestamp)
+    public void getAttributes(Subscriber<JSONObject> subscriber, String accessToken,String sortType, String attributes, int page, int psize, String sign, int timestamp) {
+        movieService.getAttributes(accessToken, sortType, attributes, page, psize, sign, timestamp)
 //                .map(new HttpResultFunc<>())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -140,7 +140,7 @@ public class HttpJsonMethod {
                 .subscribe(subscriber);
     }
 
-    public void buy_now(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String goodsid, int optionid, String cartids, int total, String sign, int timestamp) {
+    public void buy_now(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String goodsid, String optionid, String cartids, String total, String sign, int timestamp) {
         movieService.buy_now(accessToken, sessionKey, goodsid, optionid, cartids, total, sign, timestamp)
 //                .map(new HttpResultFunc<>())
                 .subscribeOn(Schedulers.io())
@@ -260,6 +260,15 @@ public class HttpJsonMethod {
                 .subscribe(subscriber);
     }
 
+    public void changeCart(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String cartid, String type, String sign, int timestamp) {
+        movieService.changeCart(accessToken, sessionKey, cartid, type, sign, timestamp)
+//                .map(new HttpResultFunc<>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
     public void cartNum(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String sign, int timestamp) {
         movieService.cartNum(accessToken, sessionKey, sign, timestamp)
 //                .map(new HttpResultFunc<>())
@@ -269,8 +278,17 @@ public class HttpJsonMethod {
                 .subscribe(subscriber);
     }
 
+    public void deleteCart(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String id, String sign, int timestamp) {
+        movieService.deleteCart(accessToken, sessionKey, id, sign, timestamp)
+//                .map(new HttpResultFunc<>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
     public void search_goods(Subscriber<JSONObject> subscriber, String accessToken, String keywords, String sessionKey, String sign, int timestamp) {
-        movieService.search_goods(accessToken, keywords, sessionKey, sign, timestamp)
+        movieService.searchGoods(accessToken, keywords, sessionKey, sign, timestamp)
 //                .map(new HttpResultFunc<>())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -289,6 +307,51 @@ public class HttpJsonMethod {
 
     public void tixianList(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String sign, int timestamp) {
         movieService.tixianList(accessToken, sessionKey, sign, timestamp)
+//                .map(new HttpResultFunc<>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void couponList(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String page, String status, String psize, String sign, int timestamp) {
+        movieService.couponList(accessToken, sessionKey, page, status, psize, sign, timestamp)
+//                .map(new HttpResultFunc<>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void couponTitle(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String sign, int timestamp) {
+        movieService.couponTitle(accessToken, sessionKey, sign, timestamp)
+//                .map(new HttpResultFunc<>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void couponDetail(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String id, String sign, int timestamp) {
+        movieService.couponDetail(accessToken, sessionKey, id, sign, timestamp)
+//                .map(new HttpResultFunc<>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void usefulCouponList(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String page, String catid, String psize, String sign, int timestamp) {
+        movieService.usefulCouponList(accessToken, sessionKey, page, catid, psize, sign, timestamp)
+//                .map(new HttpResultFunc<>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void orderList(Subscriber<JSONObject> subscriber, String accessToken, String sessionKey, String page, String status, String psize, String sign, int timestamp) {
+        movieService.orderList(accessToken, sessionKey, page, status, psize, sign, timestamp)
 //                .map(new HttpResultFunc<>())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())

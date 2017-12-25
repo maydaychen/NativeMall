@@ -20,6 +20,7 @@
     <string name="goods_detail_comment">用户评价</string>
     <string name="gouwuche">购物车</string>
     <string name="tv_mall_price">￥%1$s</string>
+    <string name="tv_mall_num">X %1$s</string>
     <string name="fenlei">分类</string>
     <string name="myOrder">我的订单</string>
     <string name="main">首页</string>
@@ -82,6 +83,7 @@
     <string name="confirm_order">确认订单</string>
     <string name="tv_order_number">订单号：%1$s</string>
     <string name="tv_order_time">下单时间：%1$s</string>
+    <string name="tv_order_useful_time">有效期至：%1$s</string>
     <string name="tv_confirm_order_num">数量：%1$s</string>
     <string name="tv_config_delete">删除订单</string>
     <string name="tv_daifahuo_tuikuan">退款</string>
@@ -102,4 +104,8 @@
     <string name="fenxiao_level">等级:%1$s</string>
     <string name="fenxiao_recommender">推荐人:%1$s</string>
     <string name="fenxiao_recommend_money">推广费:%1$s</string>
+    <string name="fenxiao_lijian">立减:%1$s</string>
+    <string name="tv_coupon_available_num">您可领取%1$s张</string>
+    <string name="permition">此应用需要获取相机及相册权限</string>
+    <string name="rationale_locate">此应用需要存储卡及相关权限</string>
 </resources>

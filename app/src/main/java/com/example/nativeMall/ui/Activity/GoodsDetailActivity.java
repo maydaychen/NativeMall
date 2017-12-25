@@ -3,18 +3,27 @@ package com.example.nativeMall.ui.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nativeMall.Adapter.PropertyAdapter;
 import com.example.nativeMall.Bean.GoodsDetailBean;
+import com.example.nativeMall.Bean.ImageInfo;
 import com.example.nativeMall.R;
 import com.example.nativeMall.Utils;
 import com.example.nativeMall.http.HttpJsonMethod;
@@ -22,9 +31,13 @@ import com.example.nativeMall.http.ProgressSubscriber;
 import com.example.nativeMall.http.SubscriberOnNextListener;
 import com.example.nativeMall.ui.widget.GlideImageLoader;
 import com.google.gson.Gson;
+import com.loopj.android.image.SmartImageView;
 import com.youth.banner.Banner;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,7 +59,7 @@ public class GoodsDetailActivity extends InitActivity {
     private GoodsDetailBean indexBean;
     private int total = 1;
     private boolean IS_SHOUCANG = false;
-
+    private PropertyAdapter propertyAdapter;
 
     @BindView(R.id.scrollView)
     ScrollView mScrollView;
@@ -143,7 +156,7 @@ public class GoodsDetailActivity extends InitActivity {
                 Toast.makeText(GoodsDetailActivity.this, "加入购物车成功！", Toast.LENGTH_SHORT).show();
             }
         };
-        cartNumOnNext= jsonObject -> {
+        cartNumOnNext = jsonObject -> {
             if (jsonObject.getInt("statusCode") == 1) {
             }
         };
@@ -177,7 +190,7 @@ public class GoodsDetailActivity extends InitActivity {
                 preferences.getString("access_token", ""), preferences.getString("sessionkey", ""), sign, time);
     }
 
-    private void buy_now(int optionId) {
+    private void buy_now(String optionId) {
         String sign = "";
         int time = (int) (System.currentTimeMillis() / 1000);
 //        sign = sign + "cartids=" + pid + "&";
@@ -191,7 +204,7 @@ public class GoodsDetailActivity extends InitActivity {
         HttpJsonMethod.getInstance().buy_now(
                 new ProgressSubscriber(buyNowOnNext, GoodsDetailActivity.this),
                 preferences.getString("access_token", ""), preferences.getString("sessionkey", ""),
-                getIntent().getStringExtra("id"), optionId, "", total, sign, time);
+                getIntent().getStringExtra("id"), optionId + "", "", total + "", sign, time);
     }
 
     private void add_shoucang() {
@@ -254,7 +267,8 @@ public class GoodsDetailActivity extends InitActivity {
                 addCart("847");
                 break;
             case R.id.tv_buynow:
-                buy_now(847);
+//                buy_now(847);
+                showPopupWindow(getApplicationContext());
                 break;
             case R.id.iv_choose_doc_back:
                 finish();
@@ -264,70 +278,84 @@ public class GoodsDetailActivity extends InitActivity {
         }
     }
 
-    //    private void showPopupWindow(Context context) {
-//        View contentView = LayoutInflater.from(this).inflate(
-//                R.layout.popwindow_good_detail, null);
-//        final SmartImageView smartImageView = contentView.findViewById(R.id.iv_pop_goods);
-//        final TextView tvrepository = contentView.findViewById(R.id.tv_repository);
-//        TextView tvPrice = contentView.findViewById(R.id.tv_price);
-//        TextView tvSubCount = contentView.findViewById(R.id.tv_subtraction);
-//        final TextView tvAddCount = contentView.findViewById(R.id.tv_addition);
-//        final TextView tvGoodCount = contentView.findViewById(R.id.tv_good_count);
-//        TextView tvBuyNow = (TextView) contentView.findViewById(R.id.tv_buy_now);
-//        final ImageInfo info = new ImageInfo();
-//
-//        final PopupWindow popupWindow = new PopupWindow(contentView,
-//                WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT,
-//                true);
-//        tvGoodCount.setText(total + "");
-//        tvAddCount.setOnClickListener(v -> {
-//
-//            total++;
-//            tvGoodCount.setText(total + "");
-//        });
-//        tvSubCount.setOnClickListener(v -> {
-//            if (total > 1) {
-//                total--;
-//                tvGoodCount.setText(total + "");
-//            }
-//        });
-//        tvBuyNow.setOnClickListener(v -> {
-//            popupWindow.dismiss();
-//            HttpJsonMethod.getInstance().buy_now(
-//                    new ProgressSubscriber(buyNowOnNext, GoodsDetailActivity.this),
-//                    preferences.getString("access_token", ""), preferences.getString("sessionkey", ""), getIntent().getStringExtra("id"), tvGoodCount.getText().toString());
-//        });
-//        tvPrice.setText(String.format(getResources().getString(R.string.price), indexBean.getResult().getGoods().getMarketprice()));
-//        tvrepository.setText(String.format(getResources().getString(R.string.goods_detail_inventory), indexBean.getResult().getGoods().getTotal()));
-//        smartImageView.setImageUrl(indexBean.getResult().getGoods().getThumb());
-//        smartImageView.setOnClickListener(v -> {
-//            info.setBigImageUrl(indexBean.getResult().getGoods().getThumb());
-//            info.imageViewWidth = smartImageView.getWidth();
-//            info.imageViewHeight = smartImageView.getHeight();
-//            int[] points = new int[2];
-//            smartImageView.getLocationInWindow(points);
-//            info.imageViewX = points[0];
-//            info.imageViewY = points[1];
-//            Intent intent = new Intent(context, ImagePreviewActivity.class);
-//            Bundle bundle = new Bundle();
-//            bundle.putSerializable("IMAGE_INFO", info);
-//            intent.putExtras(bundle);
-//            startActivity(intent);
-////            ((Activity) context).overridePendingTransition(0, 0);
-//        });
-//        ColorDrawable dw = new ColorDrawable(0x00000000);
-//        popupWindow.setBackgroundDrawable(dw);
-//        WindowManager.LayoutParams lp = getWindow().getAttributes();
-//        lp.alpha = 0.4f;
-//        getWindow().setAttributes(lp);
-//        popupWindow.setOnDismissListener(() -> {
-//            WindowManager.LayoutParams lp1 = getWindow().getAttributes();
-//            lp1.alpha = 1f;
-//            getWindow().setAttributes(lp1);
-//        });
-//
-//        popupWindow.showAtLocation(GoodsDetailActivity.this.findViewById(R.id.rl_mine_title),
-//                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-//
-//    }
+    private void showPopupWindow(Context context) {
+        View contentView = LayoutInflater.from(this).inflate(
+                R.layout.popwindow_good_detail, null);
+        final SmartImageView smartImageView = contentView.findViewById(R.id.iv_pop_goods);
+        final TextView tvrepository = contentView.findViewById(R.id.tv_repository);
+        TextView tvPrice = contentView.findViewById(R.id.tv_price);
+        TextView tvSubCount = contentView.findViewById(R.id.tv_subtraction);
+        final TextView tvAddCount = contentView.findViewById(R.id.tv_addition);
+        final TextView tvGoodCount = contentView.findViewById(R.id.tv_good_count);
+        TextView tvBuyNow = contentView.findViewById(R.id.tv_buy_now);
+        final ListView gouwucheAdd = contentView.findViewById(R.id.rv_good_detail_add);
+        final ImageInfo info = new ImageInfo();
+
+        final PopupWindow popupWindow = new PopupWindow(contentView,
+                WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT,
+                true);
+
+        //购物属性修改
+        ArrayList<ArrayMap<String, Object>> outsideList = new ArrayList<>();//颜色属性数据
+        for (GoodsDetailBean.ResultBean.SpecsBean specsBean : indexBean.getResult().getSpecs()) {
+            ArrayMap<String, Object> mStringObjectMap = new ArrayMap<>();
+            mStringObjectMap.put("type",specsBean.getTitle());
+            List<String> inside_list = new ArrayList<>();
+            for (GoodsDetailBean.ResultBean.SpecsBean.ItemsBean itemsBean : specsBean.getItems()) {
+                inside_list.add(itemsBean.getTitle());
+            }
+            mStringObjectMap.put("lable", inside_list);
+            outsideList.add(mStringObjectMap);
+        }
+        propertyAdapter = new PropertyAdapter(GoodsDetailActivity.this.getApplicationContext(), outsideList, tvrepository, indexBean, smartImageView);
+        gouwucheAdd.setAdapter(propertyAdapter);
+
+        tvGoodCount.setText(total + "");
+        tvAddCount.setOnClickListener(v -> {
+            total++;
+            tvGoodCount.setText(total + "");
+        });
+        tvSubCount.setOnClickListener(v -> {
+            if (total > 1) {
+                total--;
+                tvGoodCount.setText(total + "");
+            }
+        });
+        tvBuyNow.setOnClickListener(v -> {
+            popupWindow.dismiss();
+            buy_now(propertyAdapter.getPid());
+        });
+        tvPrice.setText(String.format(getResources().getString(R.string.price_detail), indexBean.getResult().getGoods().getMarketprice()));
+        tvrepository.setText(String.format(getResources().getString(R.string.goods_detail_inventory), indexBean.getResult().getGoods().getTotal()));
+        smartImageView.setImageUrl(indexBean.getResult().getGoods().getThumb());
+        smartImageView.setOnClickListener(v -> {
+            info.setBigImageUrl(indexBean.getResult().getGoods().getThumb());
+            info.imageViewWidth = smartImageView.getWidth();
+            info.imageViewHeight = smartImageView.getHeight();
+            int[] points = new int[2];
+            smartImageView.getLocationInWindow(points);
+            info.imageViewX = points[0];
+            info.imageViewY = points[1];
+            Intent intent = new Intent(context, ImagePreviewActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("IMAGE_INFO", info);
+            intent.putExtras(bundle);
+            startActivity(intent);
+//            ((Activity) context).overridePendingTransition(0, 0);
+        });
+        ColorDrawable dw = new ColorDrawable(0x00000000);
+        popupWindow.setBackgroundDrawable(dw);
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = 0.4f;
+        getWindow().setAttributes(lp);
+        popupWindow.setOnDismissListener(() -> {
+            WindowManager.LayoutParams lp1 = getWindow().getAttributes();
+            lp1.alpha = 1f;
+            getWindow().setAttributes(lp1);
+        });
+
+        popupWindow.showAtLocation(GoodsDetailActivity.this.findViewById(R.id.rl_mine_title),
+                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+
+    }
 }

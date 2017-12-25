@@ -1,6 +1,7 @@
 package com.example.nativeMall.ui.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,6 +28,7 @@ import com.example.nativeMall.Utils;
 import com.example.nativeMall.http.HttpJsonMethod;
 import com.example.nativeMall.http.ProgressSubscriber;
 import com.example.nativeMall.http.SubscriberOnNextListener;
+import com.example.nativeMall.ui.Activity.GridDownActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -52,6 +54,7 @@ public class FenleiFragment extends Fragment {
     private List<String> left_list = new ArrayList<>();
     private Gson gson = new Gson();
     private FenleiBean fenleiBean;
+    private CategoryBean categoryBean;
     int currentItem = 0;
     private SubscriberOnNextListener<JSONObject> getLeftOnNext;
     private SubscriberOnNextListener<JSONObject> getRightOnNext;
@@ -82,8 +85,8 @@ public class FenleiFragment extends Fragment {
 
         getLeftOnNext = jsonObject -> {
             if (jsonObject.getInt("statusCode") == 1) {
-                CategoryBean indexBean = gson.fromJson(jsonObject.toString(), CategoryBean.class);
-                for (CategoryBean.ResultBean resultBean : indexBean.getResult()) {
+                categoryBean = gson.fromJson(jsonObject.toString(), CategoryBean.class);
+                for (CategoryBean.ResultBean resultBean : categoryBean.getResult()) {
                     left_list.add(resultBean.getName());
                 }
                 final FenleiLeftAdapter fenleiLeftAdapter = new FenleiLeftAdapter(getContext(), R.layout.layout_fenlei, left_list);
@@ -92,9 +95,9 @@ public class FenleiFragment extends Fragment {
                 fenleiList.setOnItemClickListener((adapterView, view, i, l) -> {
                     currentItem = i;
                     fenleiList.setAdapter(fenleiLeftAdapter);
-                    initRightCategory(indexBean.getResult().get(i).getId());
+                    initRightCategory(categoryBean.getResult().get(i).getId());
                 });
-                initRightCategory(indexBean.getResult().get(0).getId());
+                initRightCategory(categoryBean.getResult().get(0).getId());
             } else {
                 Toast.makeText(getActivity(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
             }
@@ -104,9 +107,15 @@ public class FenleiFragment extends Fragment {
                 CategoryRightBean indexBean = gson.fromJson(jsonObject.toString(), CategoryRightBean.class);
                 GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3, LinearLayoutManager.VERTICAL, false);
                 mFenleiListRight.setLayoutManager(layoutManager);
-//                FenleiAdapter mFenleiAdapter = new FenleiAdapter(list, getActivity());
                 mFenleiRightAdapter = new FenleiRightAdapter(getActivity(), indexBean.getResult());
                 mFenleiListRight.setAdapter(mFenleiRightAdapter);
+                mFenleiRightAdapter.setOnItemClickListener((view, data) -> {
+                    Intent intent2 = new Intent(getActivity(), GridDownActivity.class);
+                    intent2.putExtra("title", indexBean.getResult().get(data).getName());
+                    intent2.putExtra("cateid", categoryBean.getResult().get(currentItem).getId());
+                    intent2.putExtra("ccate", indexBean.getResult().get(data).getId());
+                    startActivity(intent2);
+                });
             } else {
                 Toast.makeText(getActivity(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
             }

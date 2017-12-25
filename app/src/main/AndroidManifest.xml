@@ -61,21 +61,15 @@
             android:launchMode="singleTask"/>
         <activity android:name=".ui.Activity.SearchActivity"/>
         <activity android:name=".ui.Activity.GoodsDetailActivity"/>
-        <activity android:name=".ui.Activity.ZizhiActivity"/>
         <activity android:name=".ui.Activity.GridDownActivity"/>
         <activity android:name=".ui.Activity.GouwucheActivity"/>
         <activity android:name=".ui.Activity.FenleiActivity"/>
         <activity android:name=".ui.Activity.EasyBuyActivity"/>
         <activity android:name=".ui.Activity.ConfirmActivity"/>
-        <activity android:name=".ui.Activity.OnekeyRegAct"/>
-        <activity android:name=".ui.Activity.OnlineInquiryAct"/>
         <activity android:name=".ui.Activity.HotTopicAct"/>
-        <activity android:name=".ui.Activity.DoctListAct"/>
         <activity android:name=".ui.Activity.DoctDateDetailAct"/>
         <activity android:name=".ui.Activity.HospDetailAct"/>
-        <activity android:name=".ui.Activity.FreeAskAct"/>
         <activity android:name=".ui.Activity.QualityAskAct"/>
-        <activity android:name=".ui.Activity.AllDepmtAct"/>
         <activity android:name=".ui.Activity.DateMsgAct"/>
         <activity android:name=".ui.Activity.AddPatientAct"/>
         <activity android:name=".ui.Activity.ConfirmSickMsgAct"/>
@@ -89,21 +83,9 @@
         </activity>
         <activity android:name=".ui.Activity.SettingActivity">
         </activity>
-        <activity android:name=".ui.Activity.ChangePasswordActivity">
-        </activity>
-        <activity android:name=".ui.Activity.SettingMessageActivity">
-        </activity>
-        <activity android:name=".ui.Activity.MessageCenterActivity">
-        </activity>
         <activity android:name=".ui.Activity.MyAddressActivity">
         </activity>
         <activity android:name=".ui.Activity.ChangeAddressActivity">
-        </activity>
-        <activity android:name=".ui.Activity.SystemMessageActivity">
-        </activity>
-        <activity android:name=".ui.Activity.TieziMessageActivity">
-        </activity>
-        <activity android:name=".ui.Activity.HuodongMessageActivity">
         </activity>
         <activity android:name=".ui.Activity.DoctInfoAct">
         </activity>
@@ -127,8 +109,6 @@
         </activity>
         <activity android:name=".ui.Activity.GeneCheckAct">
         </activity>
-        <activity android:name=".ui.Activity.MenzhenAct">
-        </activity>
         <activity android:name=".ui.Activity.MedicalStoreAct">
         </activity>
         <activity android:name=".ui.Activity.InsuranceListAct">
@@ -139,15 +119,6 @@
         </activity>
         <activity android:name=".ui.Activity.ActivateCardStep3Act">
         </activity>
-        <activity android:name=".ui.Activity.MedicalStoreDtlAct">
-        </activity>
-        <activity android:name=".ui.Activity.GaMDetailAct">
-        </activity>
-        <activity android:name=".ui.Activity.PayCodeAct">
-        </activity>
-        <activity
-            android:name=".ui.Activity.SupplierActivity"
-            android:launchMode="singleTask"/>
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -162,17 +133,9 @@
             android:name=".ui.Activity.MyOrderActivity"
             android:launchMode="singleTask">
         </activity>
-        <activity
-            android:name=".ui.Activity.AllMedicineActivity"
-            android:launchMode="singleTask">
-        </activity>
         <activity android:name=".ui.Activity.OrderDetailActivity">
         </activity>
-        <activity android:name=".ui.Activity.MyAddressListActivity">
-        </activity>
         <activity android:name=".ui.Activity.ConfirmOrderActivity">
-        </activity>
-        <activity android:name=".ui.Activity.CommentGoodsActivity">
         </activity>
         <activity android:name=".ui.Activity.AboutActivity">
         </activity>
@@ -185,30 +148,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".ui.Activity.CheckPhoneAct">
-        </activity>
-        环信AppKey
-        <meta-data
-            android:name="EASEMOB_APPKEY"
-            android:value="1121161018178867#healthstore"/>
-        <!-- 声明SDK所需的service SDK核心功能 -->
-        <service
-            android:name="com.hyphenate.chat.EMChatService"
-            android:exported="true"/>
-        <!-- 声明SDK所需的receiver -->
-        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-
-                <data android:scheme="package"/>
-            </intent-filter>
-            <!-- 可选filter -->
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.USER_PRESENT"/>
-            </intent-filter>
-        </receiver>
-
+        <activity android:name=".ui.Activity.CheckPhoneAct"/>
         <activity android:name=".ui.Activity.MyChat"/>
         <activity android:name=".ui.Activity.ImagePreviewActivity"/>
         <activity android:name=".ui.Activity.MyHistoryActivity">
@@ -221,6 +161,23 @@
         </activity>
         <activity android:name=".ui.Activity.TixianActivity">
         </activity>
+        <activity android:name=".ui.Activity.GetCouponsActivity">
+        </activity>
+        <activity android:name=".ui.Activity.CouponDetailActivity">
+        </activity>
+        <activity android:name=".ui.Activity.CategoryHotActivity">
+        </activity>
+        <activity android:name=".ui.Activity.CategoryLatestActivity">
+        </activity>
+        <activity android:name=".ui.Activity.CategoryRecommendActivity">
+        </activity>
+
+        <meta-data
+            android:name="Mob-AppKey"
+            android:value="2348ebd1213e0"/>
+        <meta-data
+            android:name="Mob-AppSecret"
+            android:value="3b0055af2e7864201b13f6aee8a94e00"/>
     </application>
 
 </manifest>

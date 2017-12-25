@@ -27,8 +27,8 @@
 
         <com.loopj.android.image.SmartImageView
             android:id="@+id/iv_med_pic"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="13dp"
             android:scaleType="centerCrop"/>
@@ -38,27 +38,39 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="13dp">
 
-            <ImageView
-                android:layout_marginTop="20dp"
-                android:src="@drawable/index_more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/tv_intro"
+            <RelativeLayout
+                android:id="@+id/rl_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textColor="@color/font_colour_33"
-                android:textSize="14sp"/>
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_gouwuche_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:padding="@dimen/margin_size_8dp"
+                    android:src="@drawable/ic_delete_forever_black_18dp"/>
+
+                <TextView
+                    android:id="@+id/tv_intro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/iv_gouwuche_delete"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/font_colour_33"
+                    android:textSize="14sp"/>
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_guige"
-                android:layout_below="@id/tv_intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/rl_title"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="8dp"
                 android:ellipsize="end"
@@ -68,11 +80,10 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_below="@id/tv_guige"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_below="@id/tv_guige"
                 android:layout_marginTop="@dimen/margin_size_8dp"
-                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -101,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="15dp"
+                    android:paddingRight="15dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -110,16 +121,18 @@
                         android:layout_height="25dp"
                         android:background="@drawable/text_angle_gray"
                         android:gravity="center"
+                        android:padding="@dimen/margin_size_4dp"
                         android:text="一"
                         android:textColor="@color/grey_color1"
                         android:textSize="12sp"/>
 
                     <TextView
                         android:id="@+id/tv_num"
-                        android:layout_width="25dp"
+                        android:layout_width="30dp"
                         android:layout_height="25dp"
                         android:background="@drawable/text_angle"
                         android:gravity="center"
+                        android:padding="@dimen/margin_size_4dp"
                         android:singleLine="true"
                         android:text="1"
                         android:textColor="@color/grey_color1"
@@ -131,6 +144,7 @@
                         android:layout_height="25dp"
                         android:background="@drawable/text_angle_right"
                         android:gravity="center"
+                        android:padding="@dimen/margin_size_4dp"
                         android:text="+"
                         android:textColor="@color/grey_color1"
                         android:textSize="12sp"/>
@@ -139,9 +153,9 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <!--<View-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0.5dp"-->
-    <!--android:background="@color/line_colour_ee"/>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
 
 </LinearLayout>

@@ -1,7 +1,5 @@
 package com.example.nativeMall.ui.Fragment;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,9 +28,11 @@ import com.example.nativeMall.Utils;
 import com.example.nativeMall.http.HttpJsonMethod;
 import com.example.nativeMall.http.ProgressSubscriber;
 import com.example.nativeMall.http.SubscriberOnNextListener;
+import com.example.nativeMall.ui.Activity.CategoryHotActivity;
+import com.example.nativeMall.ui.Activity.CategoryLatestActivity;
+import com.example.nativeMall.ui.Activity.CategoryRecommendActivity;
 import com.example.nativeMall.ui.Activity.GoodsDetailActivity;
 import com.example.nativeMall.ui.Activity.GridDownActivity;
-import com.example.nativeMall.ui.Activity.LoginActivity;
 import com.example.nativeMall.ui.Activity.SearchActivity;
 import com.example.nativeMall.ui.widget.GlideImageLoader;
 import com.example.nativeMall.ui.widget.GrideViewScroll;
@@ -102,13 +102,8 @@ public class MainFragment extends Fragment {
             savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, root);
-
         initData();
-        initBanner();
-        initCategory();
-        getHot();
-        getLatest();
-        getRecommend();
+
         return root;
     }
 
@@ -124,6 +119,12 @@ public class MainFragment extends Fragment {
                     editor.putString("auth_key", indexBean.getResult().getAuth_key());
                     editor.putInt("access_time", indexBean.getResult().getTimestamp());
                     editor.apply();
+
+                    initBanner();
+                    initCategory();
+                    getHot();
+                    getLatest();
+                    getRecommend();
                     break;
                 case 10003:
                     Toast.makeText(getActivity(), "服务器错误，请稍后再试...", Toast.LENGTH_SHORT).show();
@@ -134,22 +135,15 @@ public class MainFragment extends Fragment {
             }
         };
         bannerOnNext = jsonObject -> {
-            switch (jsonObject.getInt("statusCode")) {
-                case 1:
-                    BannerBean indexBean = gson.fromJson(jsonObject.toString(), BannerBean.class);
-                    List<String> banner = new ArrayList<>();
-                    for (BannerBean.ResultBean resultBean : indexBean.getResult()) {
-                        banner.add(resultBean.getThumb());
-                    }
-                    mBanner.setImages(banner).setImageLoader(new GlideImageLoader()).start();
-                    mBanner.isAutoPlay(true);
-                    mBanner.setOnBannerListener(position -> Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show());
-                    break;
-                case 10010:
-                    logout(getActivity());
-                    break;
-                default:
-                    break;
+            if (jsonObject.getInt("statusCode") == 1) {
+                BannerBean indexBean = gson.fromJson(jsonObject.toString(), BannerBean.class);
+                List<String> banner = new ArrayList<>();
+                for (BannerBean.ResultBean resultBean : indexBean.getResult()) {
+                    banner.add(resultBean.getThumb());
+                }
+                mBanner.setImages(banner).setImageLoader(new GlideImageLoader()).start();
+                mBanner.isAutoPlay(true);
+                mBanner.setOnBannerListener(position -> Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show());
             }
         };
         categoryOnNext = jsonObject -> {
@@ -178,8 +172,6 @@ public class MainFragment extends Fragment {
                     }
 
                 });
-            } else {
-                Toast.makeText(getActivity(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
             }
         };
         hotOnNext = jsonObject -> {
@@ -210,8 +202,6 @@ public class MainFragment extends Fragment {
                     intent.putExtra("id", indexBean.getResult().get(data).getId());
                     startActivity(intent);
                 });
-            } else {
-                Toast.makeText(getActivity(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
             }
         };
         recommendOnNext = jsonObject -> {
@@ -235,29 +225,8 @@ public class MainFragment extends Fragment {
                     intent.putExtra("id", indexBean.getResult().get(data).getId());
                     startActivity(intent);
                 });
-            } else {
-                Toast.makeText(getActivity(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
             }
         };
-    }
-
-    public static void logout(Activity context) {
-        new AlertDialog.Builder(context)
-                .setTitle("警告")
-                .setCancelable(false)
-                .setMessage("账号验证失效，请重新登录！")
-                .setPositiveButton("确定", (dialog, which) -> {
-                    SharedPreferences mySharedPreferences = context.getSharedPreferences("user",
-                            Activity.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = mySharedPreferences.edit();
-                    editor.putBoolean("autoLog", false);
-                    if (editor.commit()) {
-                        context.finish();
-                        Intent intent = new Intent(context, LoginActivity.class);
-                        context.startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    }
-                })
-                .show();
     }
 
     private void initBanner() {
@@ -293,7 +262,7 @@ public class MainFragment extends Fragment {
         sign = Utils.md5(sign);
         HttpJsonMethod.getInstance().getAttributes(
                 new ProgressSubscriber(hotOnNext, getActivity()),
-                preferences.getString("access_token", ""), "ishot:1", 1, 10, sign, time);
+                preferences.getString("access_token", ""), "", "ishot:1", 1, 10, sign, time);
     }
 
     private void getLatest() {
@@ -307,7 +276,7 @@ public class MainFragment extends Fragment {
         sign = Utils.md5(sign);
         HttpJsonMethod.getInstance().getAttributes(
                 new ProgressSubscriber(latestOnNext, getActivity()),
-                preferences.getString("access_token", ""), "isnew:1", 1, 10, sign, time);
+                preferences.getString("access_token", ""), "", "isnew:1", 1, 10, sign, time);
     }
 
     private void getRecommend() {
@@ -321,7 +290,7 @@ public class MainFragment extends Fragment {
         sign = Utils.md5(sign);
         HttpJsonMethod.getInstance().getAttributes(
                 new ProgressSubscriber(recommendOnNext, getActivity()),
-                preferences.getString("access_token", ""), "isrecommand:1", 1, 10, sign, time);
+                preferences.getString("access_token", ""), "", "isrecommand:1", 1, 10, sign, time);
     }
 
     @OnClick({R.id.tv_main_search, R.id.tv_main_hot_more, R.id.tv_main_latest_more, R.id.tv_main_recommend_more})
@@ -331,10 +300,13 @@ public class MainFragment extends Fragment {
                 startActivity(new Intent(getContext(), SearchActivity.class));
                 break;
             case R.id.tv_main_hot_more:
+                startActivity(new Intent(getActivity(), CategoryHotActivity.class));
                 break;
             case R.id.tv_main_latest_more:
+                startActivity(new Intent(getActivity(), CategoryLatestActivity.class));
                 break;
             case R.id.tv_main_recommend_more:
+                startActivity(new Intent(getActivity(), CategoryRecommendActivity.class));
                 break;
             default:
                 break;

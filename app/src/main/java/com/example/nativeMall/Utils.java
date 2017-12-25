@@ -1,8 +1,12 @@
 package com.example.nativeMall;
 
+import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +14,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
 import android.util.Base64;
+
+import com.example.nativeMall.ui.Activity.LoginActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
@@ -109,5 +115,24 @@ public class Utils {
             return false;
         }
         return false;
+    }
+
+    public static void logout(Activity context) {
+        new AlertDialog.Builder(context)
+                .setTitle("警告")
+                .setCancelable(false)
+                .setMessage("账号验证失效，请重新登录！")
+                .setPositiveButton("确定", (dialog, which) -> {
+                    SharedPreferences mySharedPreferences = context.getSharedPreferences("user",
+                            Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = mySharedPreferences.edit();
+                    editor.putBoolean("autoLog", false);
+                    if (editor.commit()) {
+                        context.finish();
+                        Intent intent = new Intent(context, LoginActivity.class);
+                        context.startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    }
+                })
+                .show();
     }
 }

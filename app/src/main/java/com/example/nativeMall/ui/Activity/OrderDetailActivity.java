@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.nativeMall.Adapter.ConfirmPicAdapter;
 import com.example.nativeMall.Bean.OrderDetailBean;
 import com.example.nativeMall.R;
 import com.example.nativeMall.Util;
@@ -171,9 +170,9 @@ public class OrderDetailActivity extends InitActivity {
                                 return false;
                             }
                         };
-                        mRvConfirmShowimg.setLayoutManager(layoutManager);
-                        ConfirmPicAdapter confirmPicAdapter = new ConfirmPicAdapter(pic_list);
-                        mRvConfirmShowimg.setAdapter(confirmPicAdapter);
+//                        mRvConfirmShowimg.setLayoutManager(layoutManager);
+//                        ConfirmPicAdapter confirmPicAdapter = new ConfirmPicAdapter(pic_list);
+//                        mRvConfirmShowimg.setAdapter(confirmPicAdapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

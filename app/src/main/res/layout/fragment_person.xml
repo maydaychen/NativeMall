@@ -477,6 +477,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/tv_person_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

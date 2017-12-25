@@ -56,8 +56,7 @@
             android:layout_height="match_parent"></ListView>
 
         <View
-            style="@style/divide_line_horizontal_little_999"
-            android:layout_marginTop="@dimen/margin_size_30dp">
+            style="@style/divide_line_horizontal_little_999">
         </View>
 
         <View

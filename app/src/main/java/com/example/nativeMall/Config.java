@@ -1,5 +1,7 @@
 package com.example.nativeMall;
 
+import android.os.Environment;
+
 import com.example.nativeMall.Bean.PatientBean;
 
 import java.util.ArrayList;
@@ -34,4 +36,6 @@ public class Config {
     public static List<PatientBean> patientBeanList = new ArrayList<>();
 
     public static String TAG = "chenyi";
+    public static String fileName = Environment.getExternalStorageDirectory() + "/nativemall.png";
+
 }

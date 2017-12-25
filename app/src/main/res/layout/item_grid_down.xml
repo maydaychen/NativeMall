@@ -53,12 +53,15 @@
             android:id="@+id/tv_item_grid_down_sold_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_8dp"
             android:textColor="@color/font_colour_99"
             android:textSize="@dimen/font_size_10sp"/>
 
         <TextView
             android:id="@+id/tv_item_grid_down_keep_num"
             android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_size_8dp"
             android:layout_height="wrap_content"
             android:textColor="@color/font_colour_99"
             android:textSize="@dimen/font_size_10sp"/>

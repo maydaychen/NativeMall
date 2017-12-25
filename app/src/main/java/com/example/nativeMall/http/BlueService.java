@@ -68,7 +68,7 @@ public interface BlueService {
 
     @Headers("addons: ewei_shop")
     @GET("/products/categories")
-    rx.Observable<JSONObject> getCategoryGoods(@Query("access_token") String access_token, @Query("session_key") String session_key, @Query("ccate") String ccate,
+    rx.Observable<JSONObject> getCategoryGoods(@Query("access_token") String access_token, @Query("sessionkey") String session_key, @Query("ccate") String ccate,
                                                @Query("pcate") String pcate, @Query("psize") int psize, @Query("page") int page, @Query("sorttype") String sorttype,
                                                @Query("sign") String sign, @Query("timestamp") int timestamp);
 
@@ -79,7 +79,8 @@ public interface BlueService {
 
     @Headers("addons: ewei_shop")
     @GET("/products/attributes")
-    rx.Observable<JSONObject> getAttributes(@Query("access_token") String access_token, @Query("attributes") String attributes, @Query("page") int page,
+    rx.Observable<JSONObject> getAttributes(@Query("access_token") String access_token,
+                                            @Query("sorttype") String sorttype, @Query("attributes") String attributes, @Query("page") int page,
                                             @Query("psize") int psize, @Query("sign") String sign, @Query("timestamp") int timestamp);
 
     @Headers("addons: ewei_shop")
@@ -90,7 +91,7 @@ public interface BlueService {
     @Headers("addons: ewei_shop")
     @GET("/orders/confirm")
     rx.Observable<JSONObject> buy_now(@Query("access_token") String accessToken, @Query("sessionkey") String sessionKey, @Query("goodsid") String goodsid,
-                                      @Query("optionid") int optionid, @Query("cartids") String cartids, @Query("total") int total,
+                                      @Query("optionid") String optionid, @Query("cartids") String cartids, @Query("total") String total,
                                       @Query("sign") String sign, @Query("timestamp") int timestamp);
 
     @Headers("addons: ewei_shop")
@@ -165,6 +166,7 @@ public interface BlueService {
     rx.Observable<JSONObject> cartsList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionKey,
                                         @Query("sign") String sign, @Query("timestamp") int timestamp);
 
+
     @Headers("addons: ewei_shop")
     @FormUrlEncoded
     @POST("/carts")
@@ -173,20 +175,60 @@ public interface BlueService {
                                       @Field("sign") String sign, @Field("timestamp") int timestamp);
 
     @Headers("addons: ewei_shop")
+    @FormUrlEncoded
+    @PUT("/carts")
+    rx.Observable<JSONObject> changeCart(@Field("access_token") String access_token, @Field("sessionkey") String sessionkey,
+                                         @Field("cartid") String cartid, @Field("type") String type,
+                                         @Field("sign") String sign, @Field("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
+    @DELETE("/carts")
+    rx.Observable<JSONObject> deleteCart(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey,
+                                         @Query("cartid") String cartid, @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
     @GET("/carts/cartNums")
     rx.Observable<JSONObject> cartNum(@Query("access_token") String accessToken, @Query("sessionkey") String sessionKey,
                                       @Query("sign") String sign, @Query("timestamp") int timestamp);
 
     @Headers("addons: ewei_shop")
     @GET("/products/search")
-    rx.Observable<JSONObject> search_goods(@Query("access_token") String accessToken, @Query("keywords") String keywords, @Query("sessionkey") String sessionKey,
-                                           @Query("sign") String sign, @Query("timestamp") int timestamp);
+    rx.Observable<JSONObject> searchGoods(@Query("access_token") String accessToken, @Query("keywords") String keywords, @Query("sessionkey") String sessionKey,
+                                          @Query("sign") String sign, @Query("timestamp") int timestamp);
 
     @Headers("addons: ewei_shop")
     @GET("/qrimgs")
-    rx.Observable<JSONObject> getCode(@Query("access_token") String accessToken,@Query("sessionkey") String sessionkey, @Query("sign") String sign, @Query("timestamp") int timestamp);
+    rx.Observable<JSONObject> getCode(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey, @Query("sign") String sign, @Query("timestamp") int timestamp);
 
     @Headers("addons: ewei_shop")
     @GET("/commissions/recordStatistics")
     rx.Observable<JSONObject> tixianList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey, @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
+    @GET("/coupons/my")
+    rx.Observable<JSONObject> couponList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey,
+                                         @Query("page") String page, @Query("status") String status, @Query("psize") String psize,
+                                         @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
+    @GET("/coupons")
+    rx.Observable<JSONObject> usefulCouponList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey,
+                                               @Query("page") String page, @Query("catid") String catid, @Query("psize") String psize,
+                                               @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
+    @GET("/coupons/category")
+    rx.Observable<JSONObject> couponTitle(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey,
+                                          @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
+    @GET("/coupons/detail")
+    rx.Observable<JSONObject> couponDetail(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey, @Query("couponid") String couponid,
+                                           @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
+    @GET("/orders")
+    rx.Observable<JSONObject> orderList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey,
+                                        @Query("page") String page, @Query("status") String status, @Query("psize") String psize,
+                                        @Query("sign") String sign, @Query("timestamp") int timestamp);
 }

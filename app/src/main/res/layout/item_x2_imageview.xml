@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.loopj.android.image.SmartImageView xmlns:android="http://schemas.android.com/apk/res/android"
-                                        android:id="@+id/imageview_item"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_centerInParent="true"
-                                        android:layout_gravity="center"
-                                        android:layout_marginLeft="@dimen/margin_size_8dp"
-                                        android:layout_marginTop="@dimen/margin_size_8dp"
-                                        android:layout_marginBottom="@dimen/margin_size_8dp"
-                                        android:scaleType="centerCrop"
-    />
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             android:layout_centerInParent="true"
+                                             android:background="@color/white">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/imageview_item"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="@dimen/margin_size_8dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/tv_item_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:layout_marginEnd="8dp"
+        android:padding="@dimen/margin_size_8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintStart_toEndOf="@+id/imageview_item"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="84dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            />
+
+        <TextView
+            android:id="@+id/tv_item_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
 

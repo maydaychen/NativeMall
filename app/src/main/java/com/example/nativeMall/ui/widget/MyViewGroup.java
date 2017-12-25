@@ -11,7 +11,7 @@ import android.view.ViewGroup;
  */
 public class MyViewGroup extends ViewGroup {
 
-    private final static int VIEW_MARGIN = 40;
+    private final static int VIEW_MARGIN = 14;
 
     public MyViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);

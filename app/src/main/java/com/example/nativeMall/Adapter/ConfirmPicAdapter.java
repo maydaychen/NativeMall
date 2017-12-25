@@ -1,15 +1,20 @@
 package com.example.nativeMall.Adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.nativeMall.Bean.PreOrderBean;
 import com.example.nativeMall.R;
 import com.loopj.android.image.SmartImageView;
 
 import java.util.List;
-import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * 作者：JTR on 2016/10/9 11:04
@@ -17,15 +22,17 @@ import java.util.Map;
  */
 public class ConfirmPicAdapter extends RecyclerView.Adapter<ConfirmPicAdapter.ViewHolder> implements View.OnClickListener {
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;
-    private List<Map<String, Object>> mData;
+    private List<PreOrderBean.ResultBean.OrderGoodsBean> mData;
+    private Context mContext;
 
     //define interface
     public interface OnRecyclerViewItemClickListener {
         void onItemClick(View view, int data);
     }
 
-    public ConfirmPicAdapter(List<Map<String, Object>> mData) {
+    public ConfirmPicAdapter(List<PreOrderBean.ResultBean.OrderGoodsBean> mData, Context context) {
         this.mData = mData;
+        this.mContext = context;
     }
 
 
@@ -42,7 +49,11 @@ public class ConfirmPicAdapter extends RecyclerView.Adapter<ConfirmPicAdapter.Vi
     //将数据与界面进行绑定的操作
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        viewHolder.logo.setImageUrl((String) mData.get(position).get("logo"));
+        viewHolder.mIvMedPic.setImageUrl(mData.get(position).getThumb());
+        viewHolder.mTvContirmPrice.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price), mData.get(position).getMarketprice()));
+        viewHolder.mTvContirmTitle.setText(mData.get(position).getTitle());
+        viewHolder.mTvOption.setText("规格：" + mData.get(position).getOptiontitle());
+        viewHolder.mTvContirmNum.setText("X" + mData.get(position).getTotal());
         viewHolder.itemView.setTag(position);
     }
 
@@ -65,13 +76,21 @@ public class ConfirmPicAdapter extends RecyclerView.Adapter<ConfirmPicAdapter.Vi
         this.mOnItemClickListener = listener;
     }
 
-    //自定义的ViewHolder，持有每个Item的的所有界面元素
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public SmartImageView logo;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.iv_med_pic)
+        SmartImageView mIvMedPic;
+        @BindView(R.id.tv_contirm_price)
+        TextView mTvContirmPrice;
+        @BindView(R.id.tv_contirm_title)
+        TextView mTvContirmTitle;
+        @BindView(R.id.tv_contirm_num)
+        TextView mTvContirmNum;
+        @BindView(R.id.tv_option)
+        TextView mTvOption;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
-            logo = (SmartImageView) view.findViewById(R.id.iv_item_confirm_img);
+            ButterKnife.bind(this, view);
         }
     }
 }

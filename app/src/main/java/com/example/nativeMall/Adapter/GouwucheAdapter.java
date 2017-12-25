@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nativeMall.Bean.GouwucheBean;
@@ -64,19 +65,15 @@ public class GouwucheAdapter extends RecyclerView.Adapter<GouwucheAdapter.ViewHo
         viewHolder.mTvGuige.setText(mData.get(position).getOptiontitle());
         viewHolder.mTvNum.setText(mData.get(position).getTotal());
         viewHolder.mTvPrice.setText(String.format(mContext.getResources().getString(R.string.tv_mall_price), mData.get(position).getMarketprice()));
+        viewHolder.mCheckBox.setChecked(mData.get(position).isChoosed());
+        viewHolder.mImageView.setOnClickListener(view -> modifyCountInterface.doDelete(position));
         viewHolder.mTvReduce.setOnClickListener(view -> {
             // 暴露增加接口
             modifyCountInterface.doDecrease(position,  viewHolder.mTvNum, viewHolder.mCheckBox.isChecked());
-//            if (Integer.valueOf(mData.get(position).getTotal()) > 1) {
-//                viewHolder.mTvNum.setText(Integer.valueOf(mData.get(position).getTotal()) - 1 + "");
-//                mData.get(position).setTotal(Integer.valueOf(mData.get(position).getTotal()) - 1 + "");
-//            }
         });
         viewHolder.mTvAdd.setOnClickListener(view -> {
             // 暴露增加接口
             modifyCountInterface.doIncrease(position,  viewHolder.mTvNum, viewHolder.mCheckBox.isChecked());
-//            viewHolder.mTvNum.setText(Integer.valueOf(mData.get(position).getTotal()) + 1 + "");
-//            mData.get(position).setTotal(Integer.valueOf(mData.get(position).getTotal()) + 1 + "");
         });
         viewHolder.mCheckBox.setOnClickListener(v -> {
             // 暴露子选接口
@@ -122,6 +119,8 @@ public class GouwucheAdapter extends RecyclerView.Adapter<GouwucheAdapter.ViewHo
         TextView mTvNum;
         @BindView(R.id.tv_add)
         TextView mTvAdd;
+        @BindView(R.id.iv_gouwuche_delete)
+        ImageView mImageView;
 
         ViewHolder(View view) {
             super(view);
@@ -163,6 +162,8 @@ public class GouwucheAdapter extends RecyclerView.Adapter<GouwucheAdapter.ViewHo
          * @param isChecked     子元素选中与否
          */
         void doDecrease(int childPosition, View showCountView, boolean isChecked);
+
+        void doDelete(int childPosition);
 
     }
 

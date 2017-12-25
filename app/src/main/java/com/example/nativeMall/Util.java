@@ -19,10 +19,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.nativeMall.Bean.GoodsDetailBean;
 import com.example.nativeMall.ui.Activity.LoginActivity;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -50,7 +52,7 @@ import cz.msebera.android.httpclient.protocol.HTTP;
  * 邮箱：2091320109@qq.com
  */
 public class Util {
-    private static final String TAG = "Util";
+    private static final String TAG = "chenyi";
 
 
     public static boolean isNetworkAvailable(Context context) {
@@ -297,12 +299,20 @@ public class Util {
         return time;
     }
 
-    public static int check(List<Integer> list) {
+    public static int check(List<String> list, List<GoodsDetailBean.ResultBean.OptionsBean> optionsBean) {
+        String contect = "";
         for (int i = 0; i < list.size(); i++) {
-            for (int j = i + 1; j < list.size(); j++) {
-                if (list.get(i) == (list.get(j))) {
-                    return list.get(j);
-                }
+            if (i == list.size() - 1) {
+                contect = contect + list.get(i);
+            } else {
+                contect = contect + list.get(i) + "_";
+            }
+
+        }
+        Log.i(TAG, "check: "+contect);
+        for (int i = 0; i < optionsBean.size(); i++) {
+            if (optionsBean.get(i).getSpecs().equals(contect)) {
+                return i;
             }
         }
         return -1;

@@ -56,7 +56,7 @@ public class AllOrderFragment extends Fragment {
 //                            recylcerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 //                            //添加了一个灰色背景
 //                            recylcerview.setBackgroundResource(R.color.background);
-//                            recylcerview.setAdapter(new RecyclerViewAdapter(list, getActivity(), mHandler));
+//                            recylcerview.setAdapter(new MyOrderAdapter(list, getActivity(), mHandler));
 //                        }
 //                    } catch (JSONException e) {
 //                        e.printStackTrace();

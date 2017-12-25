@@ -34,39 +34,13 @@
         android:layout_height="0.5dp"
         android:background="@color/line_colour_ee"/>
 
-    <RelativeLayout
-        android:id="@+id/rl_order_detail"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_item_order_pic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_item_order_pic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <ImageView
-            android:id="@+id/daishouhuo_jiantou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/margin_size_8dp"
-            android:src="@drawable/index_more"/>
-
-        <TextView
-            android:id="@+id/tv_order_total_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/margin_size_8dp"
-            android:layout_toLeftOf="@id/daishouhuo_jiantou"
-            android:clickable="false"
-            android:text="@string/tv_order_num"
-            android:textSize="@dimen/font_size_10sp"/>
-    </RelativeLayout>
+    </android.support.v7.widget.RecyclerView>
 
     <TextView
         android:layout_width="match_parent"
@@ -75,27 +49,50 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv_order_total_price"
             android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
             android:padding="@dimen/margin_size_12dp"
+            android:textColor="@color/font_colour_33"
             android:text="@string/tv_order_total_price"
-            android:textColor="@color/font_666"
             android:textSize="@dimen/font_size_10sp"/>
 
-        <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="30dp"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_marginRight="@dimen/margin_size_8dp"-->
-        <!--android:textSize="@dimen/font_size_10sp"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:background="@drawable/br_order_green"-->
-        <!--android:text="@string/tv_daifahuo_tuikuan"-->
-        <!--android:textColor="@color/font_colour_22"/>-->
+        <TextView
+            android:id="@+id/tv_order_total_num"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@id/tv_order_total_price"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/font_colour_99"
+            android:layout_marginRight="@dimen/margin_size_8dp"
+            android:text="@string/tv_order_num"
+            android:textSize="@dimen/font_size_12sp"/>
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_colour_ee"/>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:background="@color/white">-->
+
+        <!--&lt;!&ndash;<Button&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="30dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginRight="@dimen/margin_size_8dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textSize="@dimen/font_size_10sp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:background="@drawable/br_order_green"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:text="@string/tv_daifahuo_tuikuan"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textColor="@color/font_colour_22"/>&ndash;&gt;-->
+    <!--</RelativeLayout>-->
 </LinearLayout>

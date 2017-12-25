@@ -1,6 +1,8 @@
 package com.example.nativeMall.ui.Fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nativeMall.Adapter.GouwucheAdapter;
 import com.example.nativeMall.Bean.GouwucheBean;
@@ -24,6 +27,7 @@ import com.example.nativeMall.entity.ProductInfo;
 import com.example.nativeMall.http.HttpJsonMethod;
 import com.example.nativeMall.http.ProgressSubscriber;
 import com.example.nativeMall.http.SubscriberOnNextListener;
+import com.example.nativeMall.ui.Activity.ConfirmActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -33,6 +37,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 作者：JTR on 2016/8/29 10:35
@@ -47,14 +52,20 @@ public class GouwucheFragment extends Fragment implements SwipeRefreshLayout.OnR
     CheckBox mAllChekbox;
     @BindView(R.id.tv_total_price)
     TextView mTvTotalPrice;
+
     private SubscriberOnNextListener<JSONObject> cartsOnNext;
+    private SubscriberOnNextListener<JSONObject> deleteOnNext;
+    private SubscriberOnNextListener<JSONObject> buyNowOnNext;
+    private SubscriberOnNextListener<JSONObject> changeOnNext;
     private SharedPreferences preferences;
     private static final String EXTRA_CONTENT = "content";
     private Gson gson = new Gson();
     private GouwucheAdapter mGouwucheAdapter;
     private List<ProductInfo> children = new ArrayList<>();
-    private int totalCount = 0;
     private GouwucheBean gouwucheBean;
+    //记录删除位置
+    private int deletePostion;
+    private int totalCount = 0;
 
     @Nullable
     @Override
@@ -94,24 +105,48 @@ public class GouwucheFragment extends Fragment implements SwipeRefreshLayout.OnR
         mSwipeContainer.setSize(SwipeRefreshLayout.DEFAULT);
 
         cartsOnNext = jsonObject -> {
-            gouwucheBean = gson.fromJson(jsonObject.toString(), GouwucheBean.class);
-            Log.i("chenyi", "gouwuche initData: " + jsonObject.toString());
+            if (jsonObject.getInt("statusCode") == 1) {
+                gouwucheBean = gson.fromJson(jsonObject.toString(), GouwucheBean.class);
+                Log.i("chenyi", "gouwuche initData: " + jsonObject.toString());
 
-            for (int k = 0; k < gouwucheBean.getResult().getList().size(); k++) {
-                double price = Double.parseDouble(gouwucheBean.getResult().getList().get(k).getMarketprice());
-                ProductInfo productInfo = new ProductInfo(k + "", "商品", gouwucheBean.getResult().getList().get(k).getThumb(), gouwucheBean.getResult().getList().get(k).getTitle(),
-                        price, Integer.valueOf(gouwucheBean.getResult().getList().get(k).getTotal()), "", gouwucheBean.getResult().getList().get(k).getGoodsid());
-                children.add(productInfo);
+                for (int k = 0; k < gouwucheBean.getResult().getList().size(); k++) {
+                    double price = Double.parseDouble(gouwucheBean.getResult().getList().get(k).getMarketprice());
+                    ProductInfo productInfo = new ProductInfo(k + "", "商品", gouwucheBean.getResult().getList().get(k).getThumb(), gouwucheBean.getResult().getList().get(k).getTitle(),
+                            price, Integer.valueOf(gouwucheBean.getResult().getList().get(k).getTotal()), "", gouwucheBean.getResult().getList().get(k).getGoodsid());
+                    children.add(productInfo);
+                }
+
+                mRvCartList.setLayoutManager(new LinearLayoutManager(getActivity()));
+                mGouwucheAdapter = new GouwucheAdapter(getActivity(), gouwucheBean.getResult().getList());
+                mGouwucheAdapter.setCheckInterface(this);
+                mGouwucheAdapter.setModifyCountInterface(this);
+                mRvCartList.setAdapter(mGouwucheAdapter);
+            } else {
+                Toast.makeText(getActivity(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
             }
-
-            mRvCartList.setLayoutManager(new LinearLayoutManager(getActivity()));
-            mGouwucheAdapter = new GouwucheAdapter(getActivity(), gouwucheBean.getResult().getList());
-            mGouwucheAdapter.setCheckInterface(this);
-            mGouwucheAdapter.setModifyCountInterface(this);
-            mRvCartList.setAdapter(mGouwucheAdapter);
         };
-
-        mAllChekbox.setOnCheckedChangeListener((compoundButton, b) -> doCheckAll(b));
+        deleteOnNext = jsonObject -> {
+            if (jsonObject.getInt("statusCode") == 1) {
+                Toast.makeText(getContext(), "删除成功!", Toast.LENGTH_SHORT).show();
+                gouwucheBean.getResult().getList().remove(deletePostion);
+                mGouwucheAdapter.notifyDataSetChanged();
+            } else {
+                Toast.makeText(getActivity(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
+            }
+        };
+        buyNowOnNext = jsonObject -> {
+            if (jsonObject.getInt("statusCode") == 1) {
+                Log.i("chenyi", "onNext: " + jsonObject.toString());
+                Intent intent = new Intent(getActivity(), ConfirmActivity.class);
+                intent.putExtra("objs", jsonObject.toString());
+                startActivity(intent);
+            } else {
+                Toast.makeText(getActivity(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
+            }
+        };
+        changeOnNext = jsonObject -> {
+        };
+        mAllChekbox.setOnClickListener(view -> doCheckAll());
     }
 
     private void initDetail() {
@@ -128,11 +163,13 @@ public class GouwucheFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void checkChild(int childPosition, boolean isChecked) {
+        gouwucheBean.getResult().getList().get(childPosition).setChoosed(isChecked);
         // 判断改组下面的所有子元素是否是同一种状态
         children.get(childPosition).setChoosed(isChecked);
+
         boolean allChildSameState = true;
         for (int i = 0; i < children.size(); i++) {
-            if (children.get(i).isChoosed() != isChecked) {
+            if (!children.get(i).isChoosed()) {
                 allChildSameState = false;
                 break;
             }
@@ -157,6 +194,7 @@ public class GouwucheFragment extends Fragment implements SwipeRefreshLayout.OnR
         gouwucheBean.getResult().getList().get(childPosition).setTotal(currentCount + "");
         mGouwucheAdapter.notifyDataSetChanged();
         calculate();
+        changeCart(gouwucheBean.getResult().getList().get(childPosition).getId(), "1");
     }
 
     @Override
@@ -173,6 +211,23 @@ public class GouwucheFragment extends Fragment implements SwipeRefreshLayout.OnR
         gouwucheBean.getResult().getList().get(childPosition).setTotal(currentCount + "");
         mGouwucheAdapter.notifyDataSetChanged();
         calculate();
+        changeCart(gouwucheBean.getResult().getList().get(childPosition).getId(), "-1");
+    }
+
+    @Override
+    public void doDelete(int childPosition) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage("确定要删除该商品么？" + childPosition);
+        builder.setTitle(R.string.app_name);
+
+        builder.setPositiveButton("确认", (dialog, which) -> {
+            deletePostion = childPosition;
+            deleteGood(gouwucheBean.getResult().getList().get(childPosition).getId());
+            dialog.dismiss();
+        });
+
+        builder.setNegativeButton("取消", (dialog, which) -> dialog.dismiss());
+        builder.create().show();
     }
 
     /**
@@ -186,7 +241,6 @@ public class GouwucheFragment extends Fragment implements SwipeRefreshLayout.OnR
     private void calculate() {
         totalCount = 0;
         double totalPrice = 0.00;
-
         for (int j = 0; j < children.size(); j++) {
             ProductInfo product = children.get(j);
             if (product.isChoosed()) {
@@ -199,12 +253,77 @@ public class GouwucheFragment extends Fragment implements SwipeRefreshLayout.OnR
 //        tv_go_to_pay.setText("去支付(" + totalCount + ")");
     }
 
-    private void doCheckAll(Boolean b) {
+    private void doCheckAll() {
         for (int j = 0; j < children.size(); j++) {
-            children.get(j).setChoosed(b);
+            children.get(j).setChoosed(mAllChekbox.isChecked());
+            gouwucheBean.getResult().getList().get(j).setChoosed(mAllChekbox.isChecked());
         }
         mGouwucheAdapter.notifyDataSetChanged();
         calculate();
     }
 
+    private void deleteGood(String id) {
+        String sign = "";
+        int time = (int) (System.currentTimeMillis() / 1000);
+        sign = sign + "cartid=" + id + "&";
+        sign = sign + "sessionkey=" + preferences.getString("sessionkey", "") + "&";
+        sign = sign + "timestamp=" + time + "&";
+        sign = sign + "key=" + preferences.getString("auth_key", "");
+        sign = Utils.md5(sign);
+        HttpJsonMethod.getInstance().deleteCart(
+                new ProgressSubscriber(deleteOnNext, getActivity()),
+                preferences.getString("access_token", ""), preferences.getString("sessionkey", ""), id, sign, time);
+    }
+
+    private void buy_now(String cateId) {
+        String sign = "";
+        int time = (int) (System.currentTimeMillis() / 1000);
+        sign = sign + "cartids=" + cateId + "&";
+        sign = sign + "sessionkey=" + preferences.getString("sessionkey", "") + "&";
+        sign = sign + "timestamp=" + time + "&";
+        sign = sign + "key=" + preferences.getString("auth_key", "");
+        sign = Utils.md5(sign);
+        HttpJsonMethod.getInstance().buy_now(
+                new ProgressSubscriber(buyNowOnNext, getActivity()),
+                preferences.getString("access_token", ""), preferences.getString("sessionkey", ""),
+                "", "", cateId, "", sign, time);
+    }
+
+    private void changeCart(String cateId, String num) {
+        String sign = "";
+        int time = (int) (System.currentTimeMillis() / 1000);
+        sign = sign + "cartids=" + cateId + "&";
+        sign = sign + "sessionkey=" + preferences.getString("sessionkey", "") + "&";
+        sign = sign + "timestamp=" + time + "&";
+        sign = sign + "type=" + num + "&";
+        sign = sign + "key=" + preferences.getString("auth_key", "");
+        sign = Utils.md5(sign);
+        HttpJsonMethod.getInstance().changeCart(
+                new ProgressSubscriber(buyNowOnNext, getActivity()),
+                preferences.getString("access_token", ""),
+                preferences.getString("sessionkey", ""), cateId, num, sign, time);
+    }
+
+    @OnClick(R.id.tv_go_to_pay)
+    public void onViewClicked() {
+        List<String> ids = new ArrayList();
+        String cateId = "";
+        for (GouwucheBean.ResultBean.ListBean listBean : gouwucheBean.getResult().getList()) {
+            if (listBean.isChoosed()) {
+                ids.add(listBean.getId());
+            }
+        }
+        if (ids.size() == 0) {
+            Toast.makeText(getActivity(), "请选择需要购买的商品", Toast.LENGTH_SHORT).show();
+        } else {
+            for (int i = 0; i < ids.size(); i++) {
+                if (i == ids.size() - 1) {
+                    cateId = cateId + ids.get(i);
+                } else {
+                    cateId = cateId + ids.get(i) + ",";
+                }
+            }
+            buy_now(cateId);
+        }
+    }
 }

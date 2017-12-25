@@ -54,9 +54,9 @@ public class PayActivity extends InitActivity {
         setContentView(R.layout.activity_pay);
         ButterKnife.bind(this);
         EventBus.getDefault().register(this);
+        preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
         mTvPaySolderDetail.setText(getIntent().getStringExtra("order_num"));
         mTvPayMoneyDetail.setText(String.format(getResources().getString(R.string.tv_mall_price), getIntent().getStringExtra("price")));
-        preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
 
         payOnNext = jsonObject -> {
             if (jsonObject.getInt("statusCode") == 1) {

@@ -38,7 +38,7 @@
         android:background="@color/white"
         app:tabSelectedTextColor="@color/blue"/>
 
-    <android.support.v7.widget.RecyclerView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/rv_coupons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
