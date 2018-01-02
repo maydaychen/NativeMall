@@ -53,7 +53,7 @@ public interface BlueService {
     @Headers({"Content-Type:application/x-www-form-urlencoded", "addons: ewei_shop"})
     @FormUrlEncoded
     @POST("/uploads")
-    rx.Observable<JSONObject> getAva(@Field("access_token") String access_token, @Field("avatar") String avatar,
+    rx.Observable<JSONObject> getAva(@Field("access_token") String access_token, @Field("image") String avatar,
                                      @Field("sessionkey") String sessionkey, @Field("sign") String sign, @Field("timestamp") int timestamp);
 
     @Headers("addons: ewei_shop")
@@ -211,6 +211,11 @@ public interface BlueService {
                                          @Query("sign") String sign, @Query("timestamp") int timestamp);
 
     @Headers("addons: ewei_shop")
+    @GET("/coupons/mypay")
+    rx.Observable<JSONObject> useCouponList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey,
+                                            @Query("goods") String page, @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
     @GET("/coupons")
     rx.Observable<JSONObject> usefulCouponList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey,
                                                @Query("page") String page, @Query("catid") String catid, @Query("psize") String psize,
@@ -230,5 +235,11 @@ public interface BlueService {
     @GET("/orders")
     rx.Observable<JSONObject> orderList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey,
                                         @Query("page") String page, @Query("status") String status, @Query("psize") String psize,
+                                        @Query("sign") String sign, @Query("timestamp") int timestamp);
+
+    @Headers("addons: ewei_shop")
+    @GET("/commissions/teamsLists")
+    rx.Observable<JSONObject> patenerList(@Query("access_token") String accessToken, @Query("sessionkey") String sessionkey,
+                                        @Query("page") String page, @Query("type") String status, @Query("psize") String psize,
                                         @Query("sign") String sign, @Query("timestamp") int timestamp);
 }

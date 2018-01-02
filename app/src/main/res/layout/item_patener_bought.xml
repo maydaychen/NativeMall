@@ -1,0 +1,28 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_size_8dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:duplicateParentState="true"
+        android:text="已购买伙伴"
+        android:textColor="@color/selecter_fenxiao"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+    <TextView
+        android:id="@+id/tv_patener_bought_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:duplicateParentState="true"
+        android:text="%1$s 人"
+        android:textColor="@color/selecter_fenxiao"/>
+</LinearLayout>

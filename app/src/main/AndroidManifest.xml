@@ -39,7 +39,6 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
-        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@drawable/logo_logo"
         android:installLocation="auto"
@@ -171,6 +170,29 @@
         </activity>
         <activity android:name=".ui.Activity.CategoryRecommendActivity">
         </activity>
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <!-- 集成line客户端登录授权，需要添如下格式的过滤器 -->
+            <intent-filter>
+                <data android:scheme="line.1477692153"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="Mob-AppKey"
@@ -178,6 +200,13 @@
         <meta-data
             android:name="Mob-AppSecret"
             android:value="3b0055af2e7864201b13f6aee8a94e00"/>
+
+        <activity android:name=".ui.Activity.CalendarActivity">
+        </activity>
+        <activity android:name=".ui.Activity.UseCouponActivity">
+        </activity>
+        <activity android:name=".ui.Activity.PatenerActivity">
+        </activity>
     </application>
 
 </manifest>

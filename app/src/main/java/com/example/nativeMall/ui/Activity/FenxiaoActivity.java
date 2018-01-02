@@ -50,6 +50,9 @@ public class FenxiaoActivity extends InitActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_all_friend:
+                Intent orders = new Intent(FenxiaoActivity.this, PatenerActivity.class);
+                orders.putExtra("id", 0);
+                startActivity(orders);
                 break;
             case R.id.rl_bought_friend:
                 break;

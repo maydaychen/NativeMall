@@ -93,11 +93,6 @@ public class PersonFragment extends Fragment {
         preferences = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
 
         infoOnNext = jsonObject -> {
-            if (jsonObject.getInt("statusCode") == 1) {
-
-            } else {
-                Toast.makeText(getActivity(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
-            }
             switch (jsonObject.getInt("statusCode")) {
                 case 1:
                     indexBean = mGson.fromJson(jsonObject.toString(), MemberBean.class);
@@ -246,8 +241,8 @@ public class PersonFragment extends Fragment {
 //        oks.setImagePath("file:///android_asset/logo.jpg");//确保SDcard下面存在此张图片
 //        oks.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503506356816&di=5dadbd01e162deb6601a801dc6258361&imgtype=0&src=http%3A%2F%2Fimg1.bitautoimg.com%2Fautoalbum%2Ffiles%2F20170407%2F958%2F16325395873602_5454777_3.jpg%3Fr%3D20170703");//确保SDcard下面存在此张图片
         // url仅在微信（包括好友和朋友圈）中使用
-        oks.setUrl("https://fir.im/lag3");
-        oks.setTitleUrl("https://fir.im/lag3");
+        oks.setUrl("http://fir.im/bual");
+        oks.setTitleUrl("http://fir.im/bual");
 //        oks.setSiteUrl("https://fir.im/lag3");
 //        oks.setUrl("http://www.baidu.com");
         // 启动分享GUI

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.example.nativeMall.ui.Activity.MyAddressActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_mine_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/font_blue">
+
+        <ImageView
+            android:id="@+id/iv_choose_doc_back"
+            style="@style/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+        <TextView
+            style="@style/tv_white_24_margin8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的伙伴"/>
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tl_tab"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"/>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:weightSum="3">-->
+
+
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/selecter_fenxiao"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical"-->
+            <!--android:padding="@dimen/margin_size_8dp">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:duplicateParentState="true"-->
+                <!--android:text="已购买伙伴"-->
+                <!--android:textColor="@color/selecter_fenxiao"/>-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:duplicateParentState="true"-->
+                <!--android:text="%1$s 人"-->
+                <!--android:textColor="@color/selecter_fenxiao"/>-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/selecter_fenxiao"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical"-->
+            <!--android:padding="@dimen/margin_size_8dp">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:duplicateParentState="true"-->
+                <!--android:text="未购买伙伴"-->
+                <!--android:textColor="@color/selecter_fenxiao"/>-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:duplicateParentState="true"-->
+                <!--android:text="%1$s 人"-->
+                <!--android:textColor="@color/selecter_fenxiao"/>-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_size_20dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/tv_paterner_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@color/search_background"
+            android:padding="@dimen/margin_size_8dp"
+            android:text="搜索"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_18sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/tv_paterner_search"
+            android:background="@color/white"
+            android:hint="输入手机号、粉丝ID"
+            android:padding="@dimen/margin_size_8dp"/>
+    </RelativeLayout>
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/rv_item_address"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+</LinearLayout>

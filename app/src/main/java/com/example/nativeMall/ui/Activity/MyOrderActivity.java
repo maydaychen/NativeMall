@@ -103,7 +103,7 @@ public class MyOrderActivity extends InitActivity {
         mRvOrders.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                couponsAdapter.clearData();
+                mGoodsBeanList.clear();
                 couponsAdapter.notifyDataSetChanged();
                 page = 1;
                 getData();

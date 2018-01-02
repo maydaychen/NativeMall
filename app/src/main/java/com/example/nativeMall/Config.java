@@ -31,7 +31,7 @@ public class Config {
     public static final int PASSWORD_MINGWEN = 0x90;
     public static final int PASSWORD_MIWEN = 0x81;
 
-    public static int ToDoctListFlag; //为1进入DoctDateDetailAct,2进入OnlineAskDoctAct;
+    public static int ToDoctListFlag;
 
     public static List<PatientBean> patientBeanList = new ArrayList<>();
 

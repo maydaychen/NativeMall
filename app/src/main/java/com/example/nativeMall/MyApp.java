@@ -83,8 +83,7 @@ public class MyApp extends Application {
                     processName = info.processName;
                     return processName;
                 }
-            } catch (Exception e) {
-                // Log.d("Process", "Error>> :"+ e.toString());
+            } catch (Exception ignored) {
             }
         }
         return processName;

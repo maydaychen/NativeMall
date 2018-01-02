@@ -165,6 +165,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_tixian"
         android:text="提现"
         android:textColor="@color/white"
         android:background="@color/font_blue"

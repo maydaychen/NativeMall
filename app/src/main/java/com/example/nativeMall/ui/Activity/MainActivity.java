@@ -1,13 +1,9 @@
 package com.example.nativeMall.ui.Activity;
 
 import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -46,11 +42,9 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.READ_PHONE_STATE;
 import static com.example.nativeMall.Config.fileName;
 
-public class MainActivity extends InitActivity  implements EasyPermissions.PermissionCallbacks{
+public class MainActivity extends InitActivity implements EasyPermissions.PermissionCallbacks {
 
     private TabLayout mTabTl;
     public static ViewPager mContentVp;
@@ -61,6 +55,7 @@ public class MainActivity extends InitActivity  implements EasyPermissions.Permi
     public static String szImei;
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
     private static final String TAG = "MainActivity";
+
     @Override
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);
@@ -143,6 +138,7 @@ public class MainActivity extends InitActivity  implements EasyPermissions.Permi
 
     @Override
     public void initData() {
+        saveImg();
         try {
             if (Util.fileExist(this, "data.obj")) {
                 FileInputStream fin = openFileInput("data.obj");
@@ -220,7 +216,7 @@ public class MainActivity extends InitActivity  implements EasyPermissions.Permi
                 Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         if (EasyPermissions.hasPermissions(this, perms)) {
             // Have permissions, do the thing!
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo_logo);
             File file = new File(fileName);
             if (!file.exists()) {
                 try {

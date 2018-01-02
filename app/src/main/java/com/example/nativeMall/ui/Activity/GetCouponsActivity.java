@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nativeMall.Adapter.CouponsAdapter;
@@ -72,7 +71,6 @@ public class GetCouponsActivity extends InitActivity {
             mRvCoupons.refreshComplete();
             mRvCoupons.loadMoreComplete();
             if (jsonObject.getInt("statusCode") == 1) {
-                Log.i("chenyi", "initView: " + jsonObject.toString());
                 CouponsBean couponsBean = gson.fromJson(jsonObject.toString(), CouponsBean.class);
                 mGoodsBeanList.addAll(couponsBean.getResult());
                 couponsAdapter.setOnItemClickListener((view, data) -> {

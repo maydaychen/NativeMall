@@ -64,18 +64,25 @@ public class TixianActivity extends InitActivity {
         sign = sign + "timestamp=" + time + "&";
         sign = sign + "key=" + preferences.getString("auth_key", "");
         sign = Utils.md5(sign);
-        HttpJsonMethod.getInstance().getCode(
+        HttpJsonMethod.getInstance().tixianList(
                 new ProgressSubscriber(tixianOnNext, TixianActivity.this),
                 preferences.getString("access_token", ""), preferences.getString("sessionkey", ""), sign, time);
     }
 
-    @OnClick({R.id.iv_choose_doc_back, R.id.rl_tixian_zhichu})
+    @OnClick({R.id.iv_choose_doc_back, R.id.rl_tixian_zhichu, R.id.tv_tixian})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_choose_doc_back:
                 finish();
                 break;
             case R.id.rl_tixian_zhichu:
+                break;
+            case R.id.tv_tixian:
+                if (mTixianBean.getResult().getOk().getC_money_sum()==0) {
+                    Toast.makeText(this, "没有可提现金额", Toast.LENGTH_SHORT).show();
+                }else {
+
+                }
                 break;
             default:
                 break;

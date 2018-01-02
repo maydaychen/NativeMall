@@ -195,6 +195,54 @@
         android:layout_height="1dp"
         android:background="@color/line_colour_ee"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_person_city"
+            style="@style/tv_person_center_vertical_padding_8"
+            android:text="所在城市"/>
+
+
+        <TextView
+            android:id="@+id/et_person_city"
+            style="@style/et_person_center_vertical_padding_8"
+            android:layout_toRightOf="@id/tv_person_city"
+            android:hint="请选择所在城市"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_colour_ee"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_person_birthday"
+            style="@style/tv_person_center_vertical_padding_8"
+            android:text="出生日期"/>
+
+
+        <TextView
+            android:id="@+id/et_person_birthday"
+            style="@style/et_person_center_vertical_padding_8"
+            android:layout_toRightOf="@id/tv_person_birthday"
+            android:hint="请选择出生日期"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_colour_ee"/>
+
     <TextView
         android:id="@+id/button"
         android:layout_width="match_parent"
@@ -209,4 +257,6 @@
         android:gravity="center"
         android:padding="8dp"
         android:text="@string/save"/>
+
+
 </LinearLayout>

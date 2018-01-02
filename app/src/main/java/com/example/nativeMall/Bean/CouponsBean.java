@@ -1,12 +1,13 @@
 package com.example.nativeMall.Bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by user on 2017/12/9.
  */
 
-public class CouponsBean {
+public class CouponsBean implements Serializable{
     /**
      * statusCode : 1
      * result : [{"id":"880","couponid":"42","gettime":"1512789733","timelimit":"1","timedays":"5","timestart":"1506787200","timeend":"1513785599","thumb":"","couponname":"礼品券","enough":"25.00","backtype":"0","deduct":"5.00","discount":"9.00","backmoney":"","backcredit":"","backredpack":"","bgcolor":"","free":false,"past":false,"getstatus":3,"gettypestr":"领取","timestr":"2017-12-20","css":"deduct","backstr":"立减","backpre":true,"_backmoney":"5.00"}]
@@ -31,7 +32,7 @@ public class CouponsBean {
         this.result = result;
     }
 
-    public static class ResultBean {
+    public static class ResultBean implements Serializable{
         /**
          * id : 880
          * couponid : 42

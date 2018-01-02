@@ -126,12 +126,15 @@ public class GoodsDetailActivity extends InitActivity {
                 IS_SHOUCANG = indexBean.getResult().isIsfavorite();
                 mIvShoucang.setImageDrawable(indexBean.getResult().isIsfavorite() ? getResources().getDrawable(R.drawable.v2_0_spxq_shoucang_hover) : getResources().getDrawable(R.drawable.v2_0_spxq_shoucang));
                 mTvShoucang.setText(indexBean.getResult().isIsfavorite() ? "已收藏" : "收藏");
+
+
                 wvGoodsDetail.getSettings().setJavaScriptEnabled(true);
+                wvGoodsDetail.getSettings().setUseWideViewPort(true);
+                wvGoodsDetail.getSettings().setLoadWithOverviewMode(true);
 //                String css = "<link rel=\"stylesheet\" href=\"" + s.getCss().get(0) + "\" type=\"text/css\">";
                 String html = "<html><head>" + "</head><body>" + indexBean.getResult().getGoods().getContent() + "</body></html>";
                 html = html.replace("<div class=\"img-place-holder\">", "");
                 wvGoodsDetail.loadDataWithBaseURL("x-data://base", html, "text/html", "UTF-8", null);
-
             } else {
                 Toast.makeText(GoodsDetailActivity.this, jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
             }
@@ -142,7 +145,6 @@ public class GoodsDetailActivity extends InitActivity {
                     Toast.makeText(GoodsDetailActivity.this, "取消收藏成功！", Toast.LENGTH_SHORT).show();
                     mIvShoucang.setImageDrawable(getResources().getDrawable(R.drawable.v2_0_spxq_shoucang));
                     mTvShoucang.setText("收藏");
-
                 } else {
                     Toast.makeText(GoodsDetailActivity.this, "收藏成功！", Toast.LENGTH_SHORT).show();
                     mIvShoucang.setImageDrawable(getResources().getDrawable(R.drawable.v2_0_spxq_shoucang_hover));
@@ -299,7 +301,7 @@ public class GoodsDetailActivity extends InitActivity {
         ArrayList<ArrayMap<String, Object>> outsideList = new ArrayList<>();//颜色属性数据
         for (GoodsDetailBean.ResultBean.SpecsBean specsBean : indexBean.getResult().getSpecs()) {
             ArrayMap<String, Object> mStringObjectMap = new ArrayMap<>();
-            mStringObjectMap.put("type",specsBean.getTitle());
+            mStringObjectMap.put("type", specsBean.getTitle());
             List<String> inside_list = new ArrayList<>();
             for (GoodsDetailBean.ResultBean.SpecsBean.ItemsBean itemsBean : specsBean.getItems()) {
                 inside_list.add(itemsBean.getTitle());
